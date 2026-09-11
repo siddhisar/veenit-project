@@ -1,0 +1,243 @@
+/* ============================================================
+   Global styles & design tokens
+   Digital Task Force - ISMS recreation
+   ============================================================ */
+
+:root {
+  /* ---- Forensic / premium palette ----
+     Forest-emerald primary, muted bronze/gold highlight,
+     warm ivory & stone surfaces, graphite text. */
+  --accent: #1c6b52;          /* deep emerald / forest */
+  --accent-2: #2f9e79;        /* brighter emerald (on dark) */
+  --accent-hover: #145140;    /* darker emerald */
+  --accent-soft: rgba(28, 107, 82, 0.10);
+
+  --gold: #b08a46;            /* muted bronze / gold */
+  --gold-2: #caa159;          /* lighter bronze (on dark) */
+  --gold-soft: rgba(176, 138, 70, 0.14);
+
+  /* Dark surfaces (deep forest charcoal) */
+  --dark-1: #0a1712; /* deepest */
+  --dark-2: #0e211a; /* hero / forest */
+  --dark-3: #123026; /* card forest */
+  --dark-4: #16362a;
+
+  /* Light surfaces (warm) */
+  --ivory: #f7f3ea;          /* main warm off-white */
+  --stone: #ede4d3;          /* warm beige section */
+  --cream: #fffdf7;          /* card surface */
+  --light-bg: #f2ecdd;
+  --surface: #f7f3ea;
+
+  /* Text (graphite) */
+  --text-dark: #262a28;       /* charcoal/graphite headings */
+  --text-body: #50554f;
+  --text-muted: #767b72;
+  --text-light: #ddd6c6;      /* on dark */
+  --text-faint: #9a9384;
+
+  --border-light: #e6ddca;    /* warm hairline */
+  --border-dark: rgba(190, 205, 180, 0.14);
+
+  --radius: 14px;
+  --radius-sm: 10px;
+  --shadow-sm: 0 6px 18px rgba(50, 44, 24, 0.06);
+  --shadow-md: 0 16px 42px rgba(50, 44, 24, 0.12);
+  --shadow-blue: 0 18px 45px rgba(28, 107, 82, 0.26);
+
+  --container-max: 1200px;
+  --header-h: 82px;
+
+  --font: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--text-body);
+  background: var(--surface);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font);
+  color: var(--text-dark);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 0.5em;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.25s ease;
+}
+
+p { margin: 0 0 1rem; }
+
+img { max-width: 100%; display: block; }
+
+.container-x {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+/* Section rhythm */
+.section {
+  padding: 96px 0;
+  position: relative;
+}
+.section-sm { padding: 64px 0; }
+
+.eyebrow {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.4px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: clamp(1.9rem, 3.4vw, 2.9rem);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.section-title.on-dark { color: var(--ivory); }
+.eyebrow.on-dark { color: var(--gold-2); }
+
+/* Buttons
+   Override every Bootstrap button CSS variable so no blue/amber default
+   (from .btn-primary or focus rings) can ever show in any state. */
+.btn-cyber {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: var(--accent);
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: var(--accent-hover);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-focus-shadow-rgb: 28, 107, 82;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: var(--accent-hover);
+  --bs-btn-active-border-color: transparent;
+  --bs-btn-active-shadow: none;
+  --bs-btn-disabled-color: #fff;
+  --bs-btn-disabled-bg: var(--accent);
+  --bs-btn-disabled-border-color: transparent;
+  --bs-btn-box-shadow: none;
+
+  background-color: var(--accent);
+  border: 1px solid transparent;
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 26px;
+  border-radius: 10px;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+  box-shadow: 0 8px 22px rgba(28, 107, 82, 0.26);
+}
+.btn-cyber:hover,
+.btn-cyber:focus,
+.btn-cyber:focus-visible,
+.btn-cyber:active,
+.btn-cyber.active,
+.btn-cyber:first-child:active,
+.btn-cyber:not(.btn-check) + .btn-cyber:active {
+  background-color: var(--accent-hover);
+  border-color: transparent;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(20, 81, 64, 0.34);
+}
+.btn-cyber:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(28, 107, 82, 0.35), 0 16px 34px rgba(20, 81, 64, 0.34);
+}
+.btn-cyber:active {
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1.5px solid rgba(202, 161, 89, 0.55);
+  color: var(--ivory);
+  font-weight: 600;
+  padding: 11px 26px;
+  border-radius: 10px;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+.btn-ghost:hover {
+  background: rgba(202, 161, 89, 0.14);
+  border-color: var(--gold-2);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal.d1 { transition-delay: 0.08s; }
+.reveal.d2 { transition-delay: 0.16s; }
+.reveal.d3 { transition-delay: 0.24s; }
+.reveal.d4 { transition-delay: 0.32s; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  display: grid;
+  place-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: all 0.3s ease;
+  z-index: 900;
+  box-shadow: 0 10px 26px rgba(20, 81, 64, 0.4);
+}
+.back-to-top.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.back-to-top:hover { background: var(--accent-hover); transform: translateY(-3px); }
