@@ -32,13 +32,13 @@ export default function ComplianceFramework() {
   return (
     <section className="framework section" id="framework">
       <Container>
-        <p className="eyebrow reveal">Regulatory Alignment</p>
-        <h2 className="section-title reveal">Legal &amp; Compliance Framework</h2>
+        <p className="eyebrow reveal from-top">Regulatory Alignment</p>
+        <h2 className="section-title reveal clip">Legal &amp; Compliance Framework</h2>
 
         <Row className="g-4 justify-content-center framework-row mt-4">
           {FRAMEWORKS.map((f, i) => (
             <Col key={f.title} xs={12} sm={6} md={4} lg>
-              <div className={`framework-card reveal d${(i % 4) + 1}`}>
+              <div className={`framework-card reveal ${['from-left', '', 'from-right', 'zoom-in', 'from-left'][i % 5]} d${(i % 5) + 1}`}>
                 <span className="framework-icon">
                   <i className={`bi ${f.icon}`} />
                 </span>

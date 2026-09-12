@@ -50,7 +50,7 @@ export default function ISMSSection() {
             <Row className="g-3 mt-2 isms-tiles">
               {TILES.map((t, i) => (
                 <Col xs={12} sm={6} key={t.title}>
-                  <div className={`isms-tile ${t.variant} reveal d${(i % 4) + 1}`}>
+                  <div className={`isms-tile ${t.variant} reveal ${i % 2 ? 'from-right' : 'from-left'} d${(i % 4) + 1}`}>
                     <span className="isms-tile-icon">
                       <i className={`bi ${t.icon}`} />
                     </span>

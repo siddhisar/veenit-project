@@ -1,6 +1,6 @@
-export default function ServiceCard({ title, items, delay }) {
+export default function ServiceCard({ title, items, delay, dir = '' }) {
   return (
-    <div className={`service-card reveal d${delay}`}>
+    <div className={`service-card reveal ${dir} d${delay}`}>
       <h3 className="service-title">{title}</h3>
       <ul className="service-list">
         {items.map((item) => (

@@ -41,8 +41,8 @@ export default function ServicesSection() {
     <section className="services section" id="services">
       <div className="services-pattern" aria-hidden="true" />
       <Container className="position-relative">
-        <p className="eyebrow on-dark reveal">Our Services</p>
-        <h2 className="section-title on-dark reveal">
+        <p className="eyebrow on-dark reveal from-top">Our Services</p>
+        <h2 className="section-title on-dark reveal from-right">
           Cyber Security Solutions Aligned with
           <br />
           India&rsquo;s Regulatory Landscape
@@ -51,7 +51,12 @@ export default function ServicesSection() {
         <Row className="g-4 mt-4">
           {SERVICES.map((s, i) => (
             <Col key={s.title} xs={12} md={6} lg={3}>
-              <ServiceCard title={s.title} items={s.items} delay={(i % 4) + 1} />
+              <ServiceCard
+                title={s.title}
+                items={s.items}
+                delay={(i % 4) + 1}
+                dir={['from-left', 'from-top', 'from-top', 'from-right'][i % 4]}
+              />
             </Col>
           ))}
         </Row>

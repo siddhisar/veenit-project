@@ -34,7 +34,7 @@ export default function Footer() {
       <div className="footer-pattern" aria-hidden="true" />
       <Container className="position-relative">
         <Row className="gy-5">
-          <Col lg={3} md={6}>
+          <Col lg={3} md={6} className="reveal d1">
             <div className="footer-brand">
               <img src={logo} alt="DTF-ISMS — Digital Task Force" className="footer-logo" />
               <h4 className="footer-brand-name">DTF-ISMS</h4>
@@ -49,7 +49,7 @@ export default function Footer() {
             </div>
           </Col>
 
-          <Col lg={3} md={6}>
+          <Col lg={3} md={6} className="reveal d2">
             <h5 className="footer-heading">Contact Us</h5>
             <ul className="footer-contact">
               <li>
@@ -71,7 +71,7 @@ export default function Footer() {
             </ul>
           </Col>
 
-          <Col lg={3} md={6}>
+          <Col lg={3} md={6} className="reveal d3">
             <h5 className="footer-heading">Useful Links</h5>
             <ul className="footer-links">
               {USEFUL_LINKS.map((l) => (
@@ -85,7 +85,7 @@ export default function Footer() {
             </ul>
           </Col>
 
-          <Col lg={3} md={6}>
+          <Col lg={3} md={6} className="reveal d4">
             <h5 className="footer-heading">Our Services</h5>
             <ul className="footer-links">
               {SERVICES.map((l) => (

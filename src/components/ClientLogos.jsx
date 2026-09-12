@@ -17,8 +17,8 @@ export default function ClientLogos() {
   return (
     <section className="clients section-sm" id="clients">
       <Container>
-        <p className="eyebrow reveal">Trusted Partnerships</p>
-        <h2 className="section-title reveal">Some of Our Incredible Clients</h2>
+        <p className="eyebrow reveal from-top">Trusted Partnerships</p>
+        <h2 className="section-title reveal clip">Some of Our Incredible Clients</h2>
       </Container>
 
       <div className="client-marquee reveal d1">

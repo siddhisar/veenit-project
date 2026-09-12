@@ -6,7 +6,7 @@ export default function ContactSection() {
     <section className="contact section" id="contact">
       <div className="contact-pattern" aria-hidden="true" />
       <Container className="position-relative">
-        <h2 className="contact-title reveal">Let&rsquo;s Secure Your Digital Frontier</h2>
+        <h2 className="contact-title reveal clip">Let&rsquo;s Secure Your Digital Frontier</h2>
         <p className="contact-lead reveal d1">
           Whether you are navigating the complexities of the DPDP Act 2023, requiring an urgent
           CERT-In Incident Response, or strengthening your defenses with a VAPT Audit, Digital Task
