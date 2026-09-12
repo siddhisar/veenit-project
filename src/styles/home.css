@@ -6,16 +6,16 @@
 /* ---------------- Header ---------------- */
 .site-header {
   height: var(--header-h);
-  background: rgba(8, 10, 36, 0.55);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(7px);
   transition: background 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
   padding: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba(0, 255, 136, 0.12);
+  border-bottom: 1px solid rgba(17, 21, 40, 0.08);
 }
 .site-header.is-scrolled {
-  background: rgba(6, 7, 26, 0.97);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+  background: #ffffff;
+  box-shadow: 0 6px 24px rgba(20, 26, 60, 0.12);
   height: 70px;
 }
 .site-header .container {
@@ -47,7 +47,7 @@
 .brand-logo {
   width: 50px;
   height: 50px;
-  filter: drop-shadow(0 3px 8px rgba(0, 255, 136, 0.32));
+  filter: drop-shadow(0 2px 6px rgba(20, 26, 60, 0.18));
 }
 .brand-text {
   display: flex;
@@ -55,14 +55,14 @@
   line-height: 1;
 }
 .brand-name {
-  color: var(--ivory);
+  color: #10131c;
   font-weight: 800;
   font-size: 1.12rem;
   letter-spacing: 1.5px;
   white-space: nowrap;
 }
 .brand-sub {
-  color: var(--gold-2);
+  color: var(--brand-blue);
   font-weight: 600;
   font-size: 0.58rem;
   letter-spacing: 2.4px;
@@ -71,7 +71,7 @@
 }
 
 .main-nav .nav-link {
-  color: rgba(238, 234, 222, 0.88) !important;
+  color: #000000 !important;
   font-weight: 500;
   font-size: 0.98rem;
   padding: 8px 11px !important;
@@ -86,32 +86,32 @@
   right: 14px;
   bottom: 2px;
   height: 2px;
-  background: var(--gold-2);
+  background: var(--brand-green);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.28s ease;
 }
 .main-nav .nav-link:hover {
-  color: #fff !important;
+  color: var(--accent) !important;
 }
 .main-nav .nav-link:hover::after {
   transform: scaleX(1);
 }
 .about-dd .dropdown-toggle {
-  color: rgba(238, 234, 222, 0.88) !important;
+  color: #000000 !important;
   font-weight: 500;
   font-size: 0.98rem;
 }
 .about-dd .dropdown-menu {
-  background: #0d1030;
-  border: 1px solid rgba(0, 255, 136, 0.18);
+  background: #ffffff;
+  border: 1px solid rgba(17, 21, 40, 0.10);
   border-radius: 12px;
   padding: 8px;
   margin-top: 10px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 18px 40px rgba(20, 26, 60, 0.16);
 }
 .about-dd .dropdown-item {
-  color: #ddd6c6;
+  color: #14181f;
   border-radius: 8px;
   padding: 9px 14px;
   font-size: 0.9rem;
@@ -119,7 +119,7 @@
 }
 .about-dd .dropdown-item:hover {
   background: var(--accent-soft);
-  color: #fff;
+  color: var(--accent-hover);
 }
 .rfp-btn {
   padding: 10px 22px !important;
@@ -131,6 +131,10 @@
 }
 .nav-toggle:focus {
   box-shadow: none;
+}
+/* dark hamburger icon for the light header */
+.nav-toggle .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(17,21,40,0.85)' stroke-width='2.2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
 /* ---------------- Hero ---------------- */
@@ -877,16 +881,17 @@
 /* Collapsed hamburger menu (below the xl breakpoint) */
 @media (max-width: 1199.98px) {
   .site-header {
-    background: rgba(6, 7, 26, 0.97);
+    background: #ffffff;
     height: 68px;
   }
   .site-header.is-scrolled { height: 64px; }
   .navbar-collapse {
-    background: #0a0b28;
+    background: #ffffff;
     margin: 12px -12px -8px;
     padding: 14px 18px 20px;
     border-radius: 12px;
-    border: 1px solid rgba(0, 255, 136, 0.16);
+    border: 1px solid rgba(17, 21, 40, 0.10);
+    box-shadow: 0 18px 40px rgba(20, 26, 60, 0.14);
   }
   .main-nav {
     flex-wrap: wrap;
