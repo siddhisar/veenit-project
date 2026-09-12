@@ -54,8 +54,8 @@ export default function CyberBackground() {
           const dy = a.y - b.y
           const dist = Math.sqrt(dx * dx + dy * dy)
           if (dist < 130) {
-            const alpha = (1 - dist / 130) * 0.32
-            ctx.strokeStyle = `rgba(47, 158, 121, ${alpha})`
+            const alpha = (1 - dist / 130) * 0.3
+            ctx.strokeStyle = `rgba(70, 120, 255, ${alpha})`
             ctx.lineWidth = 0.6
             ctx.beginPath()
             ctx.moveTo(a.x, a.y)
@@ -69,7 +69,7 @@ export default function CyberBackground() {
       for (const n of nodes) {
         ctx.beginPath()
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(202, 161, 89, 0.7)'
+        ctx.fillStyle = 'rgba(0, 255, 136, 0.72)'
         ctx.fill()
 
         n.x += n.vx

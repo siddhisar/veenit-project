@@ -4,46 +4,56 @@
    ============================================================ */
 
 :root {
-  /* ---- Forensic / premium palette ----
-     Forest-emerald primary, muted bronze/gold highlight,
-     warm ivory & stone surfaces, graphite text. */
-  --accent: #1c6b52;          /* deep emerald / forest */
-  --accent-2: #2f9e79;        /* brighter emerald (on dark) */
-  --accent-hover: #145140;    /* darker emerald */
-  --accent-soft: rgba(28, 107, 82, 0.10);
+  /* ---- Blue → Emerald gradient brand system ----
+     Dominant accent: emerald #00ff88. Secondary: deep blue #0700b8.
+     Gradient used for CTAs / prominent areas; emerald for accents & glows;
+     a slightly deeper emerald is used for small text/icons on light bg so
+     contrast stays accessible. */
+  --brand-green: #00ff88;     /* neon emerald (glows, on-dark, gradient) */
+  --brand-blue: #0700b8;      /* deep blue (secondary) */
+  --grad: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
+  --grad-rev: linear-gradient(90deg, #00ff88 0%, #0700b8 100%);
+  --grad-soft: linear-gradient(90deg, rgba(7, 0, 184, 0.12) 0%, rgba(0, 255, 136, 0.14) 100%);
 
-  --gold: #b08a46;            /* muted bronze / gold */
-  --gold-2: #caa159;          /* lighter bronze (on dark) */
-  --gold-soft: rgba(176, 138, 70, 0.14);
+  --accent: #05b368;          /* readable emerald for text/icons on light */
+  --accent-2: #00ff88;        /* neon emerald (on dark) */
+  --accent-hover: #048a50;    /* darker emerald (solid hover) */
+  --accent-soft: rgba(0, 200, 120, 0.12);
 
-  /* Dark surfaces (deep forest charcoal) */
-  --dark-1: #0a1712; /* deepest */
-  --dark-2: #0e211a; /* hero / forest */
-  --dark-3: #123026; /* card forest */
-  --dark-4: #16362a;
+  /* Legacy "gold" tokens repointed to the blue/green system so every
+     existing usage becomes on-theme without touching each component. */
+  --gold: #0700b8;            /* secondary highlight = deep blue */
+  --gold-2: #00ff88;          /* on-dark highlight = emerald */
+  --gold-soft: rgba(0, 255, 136, 0.13);
 
-  /* Light surfaces (warm) */
-  --ivory: #f7f3ea;          /* main warm off-white */
-  --stone: #ede4d3;          /* warm beige section */
-  --cream: #fffdf7;          /* card surface */
-  --light-bg: #f2ecdd;
-  --surface: #f7f3ea;
+  /* Dark surfaces (deep blue-black) */
+  --dark-1: #05061a; /* deepest */
+  --dark-2: #080a24; /* hero */
+  --dark-3: #0d1030; /* card */
+  --dark-4: #12173f;
 
-  /* Text (graphite) */
-  --text-dark: #262a28;       /* charcoal/graphite headings */
-  --text-body: #50554f;
-  --text-muted: #767b72;
-  --text-light: #ddd6c6;      /* on dark */
-  --text-faint: #9a9384;
+  /* Light surfaces (cool) */
+  --ivory: #f4f7fb;          /* main cool off-white */
+  --stone: #e9eef6;          /* cool light section */
+  --cream: #ffffff;          /* card surface */
+  --light-bg: #eef2f9;
+  --surface: #f4f7fb;
 
-  --border-light: #e6ddca;    /* warm hairline */
-  --border-dark: rgba(190, 205, 180, 0.14);
+  /* Text (cool graphite) */
+  --text-dark: #111528;       /* deep blue-charcoal headings */
+  --text-body: #474d5e;
+  --text-muted: #6a7185;
+  --text-light: #cfd7ea;      /* on dark */
+  --text-faint: #8b93a8;
+
+  --border-light: #e0e6f0;    /* cool hairline */
+  --border-dark: rgba(0, 255, 136, 0.16);
 
   --radius: 14px;
   --radius-sm: 10px;
-  --shadow-sm: 0 6px 18px rgba(50, 44, 24, 0.06);
-  --shadow-md: 0 16px 42px rgba(50, 44, 24, 0.12);
-  --shadow-blue: 0 18px 45px rgba(28, 107, 82, 0.26);
+  --shadow-sm: 0 6px 18px rgba(20, 26, 60, 0.06);
+  --shadow-md: 0 16px 42px rgba(20, 26, 60, 0.12);
+  --shadow-blue: 0 18px 45px rgba(0, 180, 110, 0.28);
 
   --container-max: 1200px;
   --header-h: 82px;
@@ -119,39 +129,42 @@ img { max-width: 100%; display: block; }
   margin-bottom: 8px;
 }
 
-.section-title.on-dark { color: var(--ivory); }
-.eyebrow.on-dark { color: var(--gold-2); }
+.section-title.on-dark { color: #fff; }
+.eyebrow.on-dark { color: var(--brand-green); }
 
-/* Buttons
-   Override every Bootstrap button CSS variable so no blue/amber default
-   (from .btn-primary or focus rings) can ever show in any state. */
+/* Buttons — blue→emerald gradient CTA.
+   Bootstrap button CSS variables are neutralised so no default blue/focus
+   ring can ever show; the gradient is applied via background-image, with a
+   subtle text-shadow so white text stays legible over the bright green end. */
 .btn-cyber {
   --bs-btn-color: #fff;
-  --bs-btn-bg: var(--accent);
+  --bs-btn-bg: transparent;
   --bs-btn-border-color: transparent;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: var(--accent-hover);
+  --bs-btn-hover-bg: transparent;
   --bs-btn-hover-border-color: transparent;
-  --bs-btn-focus-shadow-rgb: 28, 107, 82;
+  --bs-btn-focus-shadow-rgb: 0, 200, 120;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: var(--accent-hover);
+  --bs-btn-active-bg: transparent;
   --bs-btn-active-border-color: transparent;
   --bs-btn-active-shadow: none;
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: var(--accent);
+  --bs-btn-disabled-bg: transparent;
   --bs-btn-disabled-border-color: transparent;
   --bs-btn-box-shadow: none;
 
-  background-color: var(--accent);
+  background-color: #0700b8;
+  background-image: var(--grad);
   border: 1px solid transparent;
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
   padding: 12px 26px;
   border-radius: 10px;
   letter-spacing: 0.2px;
   white-space: nowrap;
-  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
-  box-shadow: 0 8px 22px rgba(28, 107, 82, 0.26);
+  text-shadow: 0 1px 2px rgba(3, 10, 40, 0.4);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+  box-shadow: 0 8px 22px rgba(0, 180, 110, 0.28);
 }
 .btn-cyber:hover,
 .btn-cyber:focus,
@@ -160,15 +173,16 @@ img { max-width: 100%; display: block; }
 .btn-cyber.active,
 .btn-cyber:first-child:active,
 .btn-cyber:not(.btn-check) + .btn-cyber:active {
-  background-color: var(--accent-hover);
+  background-image: var(--grad);
   border-color: transparent;
   color: #fff;
   transform: translateY(-3px);
-  box-shadow: 0 16px 34px rgba(20, 81, 64, 0.34);
+  filter: brightness(1.08) saturate(1.05);
+  box-shadow: 0 16px 36px rgba(0, 200, 120, 0.36);
 }
 .btn-cyber:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(28, 107, 82, 0.35), 0 16px 34px rgba(20, 81, 64, 0.34);
+  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.4), 0 16px 36px rgba(0, 200, 120, 0.36);
 }
 .btn-cyber:active {
   transform: translateY(-1px);
@@ -176,8 +190,8 @@ img { max-width: 100%; display: block; }
 
 .btn-ghost {
   background: transparent;
-  border: 1.5px solid rgba(202, 161, 89, 0.55);
-  color: var(--ivory);
+  border: 1.5px solid rgba(0, 255, 136, 0.55);
+  color: #eafff5;
   font-weight: 600;
   padding: 11px 26px;
   border-radius: 10px;
@@ -221,7 +235,7 @@ img { max-width: 100%; display: block; }
   width: 46px;
   height: 46px;
   border-radius: 10px;
-  background: var(--accent);
+  background-image: var(--grad);
   color: #fff;
   border: none;
   display: grid;
@@ -233,11 +247,11 @@ img { max-width: 100%; display: block; }
   transform: translateY(12px);
   transition: all 0.3s ease;
   z-index: 900;
-  box-shadow: 0 10px 26px rgba(20, 81, 64, 0.4);
+  box-shadow: 0 10px 26px rgba(0, 200, 120, 0.4);
 }
 .back-to-top.show {
   opacity: 1;
   pointer-events: auto;
   transform: translateY(0);
 }
-.back-to-top:hover { background: var(--accent-hover); transform: translateY(-3px); }
+.back-to-top:hover { filter: brightness(1.1); transform: translateY(-3px); }

@@ -6,15 +6,15 @@
 /* ---------------- Header ---------------- */
 .site-header {
   height: var(--header-h);
-  background: rgba(14, 33, 26, 0.55);
+  background: rgba(8, 10, 36, 0.55);
   backdrop-filter: blur(7px);
   transition: background 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
   padding: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba(202, 161, 89, 0.10);
+  border-bottom: 1px solid rgba(0, 255, 136, 0.12);
 }
 .site-header.is-scrolled {
-  background: rgba(10, 23, 18, 0.97);
+  background: rgba(6, 7, 26, 0.97);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
   height: 70px;
 }
@@ -47,7 +47,7 @@
 .brand-logo {
   width: 50px;
   height: 50px;
-  filter: drop-shadow(0 3px 8px rgba(176, 138, 70, 0.35));
+  filter: drop-shadow(0 3px 8px rgba(0, 255, 136, 0.32));
 }
 .brand-text {
   display: flex;
@@ -103,8 +103,8 @@
   font-size: 0.98rem;
 }
 .about-dd .dropdown-menu {
-  background: #123026;
-  border: 1px solid rgba(202, 161, 89, 0.18);
+  background: #0d1030;
+  border: 1px solid rgba(0, 255, 136, 0.18);
   border-radius: 12px;
   padding: 8px;
   margin-top: 10px;
@@ -140,14 +140,14 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: linear-gradient(160deg, #0e211a 0%, #0b1a14 55%, #10231b 100%);
+  background: linear-gradient(160deg, #080a24 0%, #060616 55%, #0a0b2a 100%);
 }
 .hero-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
   /* poster acts as a fallback if the video can't load/autoplay */
-  background: #0e211a url('../assets/videos/cyber-hero-poster.jpg') center / cover no-repeat;
+  background: #080a24 url('../assets/videos/cyber-hero-poster.jpg') center / cover no-repeat;
 }
 .hero-video {
   position: absolute;
@@ -172,8 +172,9 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 72% 58%, rgba(28, 107, 82, 0.34), transparent 60%),
-    linear-gradient(180deg, rgba(9, 22, 16, 0.80) 0%, rgba(9, 22, 16, 0.58) 45%, rgba(9, 20, 15, 0.92) 100%);
+    radial-gradient(ellipse at 74% 60%, rgba(0, 255, 136, 0.20), transparent 58%),
+    radial-gradient(ellipse at 20% 30%, rgba(7, 0, 184, 0.30), transparent 55%),
+    linear-gradient(180deg, rgba(6, 7, 26, 0.82) 0%, rgba(6, 7, 26, 0.60) 45%, rgba(5, 6, 20, 0.93) 100%);
 }
 /* forensic fingerprint accent, bottom-left */
 .hero-overlay::before {
@@ -191,8 +192,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(202, 161, 89, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(202, 161, 89, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
   background-size: 54px 54px;
   mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
   -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
@@ -277,7 +278,7 @@
   top: 0;
   height: 4px;
   width: 100%;
-  background: linear-gradient(90deg, var(--accent), var(--gold));
+  background-image: var(--grad);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s ease;
@@ -285,7 +286,7 @@
 .feature-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 24px 52px rgba(40, 60, 40, 0.15);
-  border-color: rgba(28, 107, 82, 0.35);
+  border-color: rgba(0, 255, 136, 0.4);
 }
 .feature-card:hover::before {
   transform: scaleX(1);
@@ -334,8 +335,8 @@
 }
 .framework-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(176, 138, 70, 0.45);
-  box-shadow: 0 18px 40px rgba(40, 60, 40, 0.12);
+  border-color: rgba(0, 255, 136, 0.4);
+  box-shadow: 0 18px 40px rgba(20, 30, 70, 0.14);
 }
 .framework-icon {
   width: 58px;
@@ -370,9 +371,9 @@
 /* ---------------- Services (dark forest contrast) ---------------- */
 .services {
   background:
-    radial-gradient(circle at 18% 12%, rgba(28, 107, 82, 0.22), transparent 42%),
-    radial-gradient(circle at 86% 82%, rgba(176, 138, 70, 0.12), transparent 46%),
-    linear-gradient(180deg, #0c1c16 0%, #10241c 100%);
+    radial-gradient(circle at 18% 12%, rgba(0, 255, 136, 0.18), transparent 42%),
+    radial-gradient(circle at 86% 82%, rgba(7, 0, 184, 0.30), transparent 46%),
+    linear-gradient(180deg, #06071a 0%, #0a0b28 100%);
   overflow: hidden;
 }
 .services-pattern {
@@ -387,7 +388,7 @@
 }
 .service-card {
   background: rgba(255, 253, 247, 0.045);
-  border: 1px solid rgba(202, 161, 89, 0.16);
+  border: 1px solid rgba(0, 255, 136, 0.16);
   border-radius: 16px;
   padding: 28px 24px;
   height: 100%;
@@ -396,9 +397,9 @@
 }
 .service-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(47, 158, 121, 0.6);
-  background: rgba(28, 107, 82, 0.12);
-  box-shadow: 0 22px 50px rgba(6, 20, 14, 0.5);
+  border-color: rgba(0, 255, 136, 0.6);
+  background: rgba(0, 255, 136, 0.08);
+  box-shadow: 0 22px 50px rgba(2, 4, 20, 0.55);
 }
 .service-title {
   color: var(--ivory);
@@ -464,11 +465,11 @@
 }
 .isms-tile:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(20, 40, 28, 0.22);
+  box-shadow: 0 18px 40px rgba(6, 10, 30, 0.24);
 }
 .isms-tile.dark {
-  background: #10241c;
-  color: var(--ivory);
+  background: #0d1030;
+  color: #fff;
 }
 .isms-tile.blue {
   background: var(--accent);
@@ -535,12 +536,12 @@
 }
 .client-logo:hover {
   color: var(--text-dark);
-  border-color: rgba(176, 138, 70, 0.45);
+  border-color: rgba(0, 255, 136, 0.45);
   box-shadow: var(--shadow-sm);
   transform: translateY(-4px);
 }
 .client-logo:hover i {
-  color: var(--gold);
+  color: var(--brand-blue);
 }
 @keyframes marquee {
   from { transform: translateX(0); }
@@ -556,7 +557,7 @@
 .contact-pattern {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(176, 138, 70, 0.09) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(circle, rgba(0, 200, 120, 0.10) 1.5px, transparent 1.5px);
   background-size: 26px 26px;
   opacity: 0.7;
 }
@@ -629,7 +630,7 @@
 /* ---------------- Footer ---------------- */
 .site-footer {
   position: relative;
-  background: linear-gradient(180deg, #10241c 0%, #0a1712 100%);
+  background: linear-gradient(180deg, #0a0b28 0%, #05061a 100%);
   color: #cfc8b6;
   padding-top: 70px;
   overflow: hidden;
@@ -699,7 +700,7 @@
   width: 40px;
   height: 3px;
   border-radius: 3px;
-  background: var(--gold);
+  background-image: var(--grad);
 }
 .footer-contact {
   list-style: none;
@@ -751,7 +752,7 @@
 }
 .footer-bottom {
   margin-top: 55px;
-  border-top: 1px solid rgba(202, 161, 89, 0.14);
+  border-top: 1px solid rgba(0, 255, 136, 0.14);
   padding: 22px 0;
   position: relative;
   z-index: 2;
@@ -876,16 +877,16 @@
 /* Collapsed hamburger menu (below the xl breakpoint) */
 @media (max-width: 1199.98px) {
   .site-header {
-    background: rgba(10, 23, 18, 0.97);
+    background: rgba(6, 7, 26, 0.97);
     height: 68px;
   }
   .site-header.is-scrolled { height: 64px; }
   .navbar-collapse {
-    background: #10241c;
+    background: #0a0b28;
     margin: 12px -12px -8px;
     padding: 14px 18px 20px;
     border-radius: 12px;
-    border: 1px solid rgba(202, 161, 89, 0.16);
+    border: 1px solid rgba(0, 255, 136, 0.16);
   }
   .main-nav {
     flex-wrap: wrap;
