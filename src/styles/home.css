@@ -16,7 +16,7 @@
 .site-header.is-scrolled {
   background: #ffffff;
   box-shadow: 0 6px 24px rgba(20, 26, 60, 0.12);
-  height: 70px;
+  height: 56px;
 }
 .site-header .container {
   max-width: 1300px;
@@ -45,8 +45,8 @@
   flex-shrink: 0;
 }
 .brand-logo {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   filter: drop-shadow(0 2px 6px rgba(20, 26, 60, 0.18));
 }
 .brand-text {
@@ -74,7 +74,7 @@
   color: #000000 !important;
   font-weight: 500;
   font-size: 0.98rem;
-  padding: 8px 11px !important;
+  padding: 6px 11px !important;
   position: relative;
   white-space: nowrap;
   transition: color 0.25s ease;
@@ -882,9 +882,9 @@
 @media (max-width: 1199.98px) {
   .site-header {
     background: #ffffff;
-    height: 68px;
+    height: 58px;
   }
-  .site-header.is-scrolled { height: 64px; }
+  .site-header.is-scrolled { height: 54px; }
   .navbar-collapse {
     background: #ffffff;
     margin: 12px -12px -8px;
