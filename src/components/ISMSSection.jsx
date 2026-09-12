@@ -34,7 +34,7 @@ export default function ISMSSection() {
       <Container>
         <Row className="align-items-center g-5">
           <Col lg={6}>
-            <div className="isms-visual reveal">
+            <div className="isms-visual reveal from-left">
               <img src={ismsVisual} alt="DPDP Act and ISMS compliance illustration" />
             </div>
           </Col>
@@ -42,7 +42,7 @@ export default function ISMSSection() {
             <p className="eyebrow text-start reveal" style={{ textAlign: 'left' }}>
               DPDP Act &amp; ISMS Compliance
             </p>
-            <h2 className="isms-heading reveal d1">
+            <h2 className="isms-heading reveal from-right d1">
               Enabling Privacy, Governance &amp; Information Security Through Structured Compliance
               Frameworks
             </h2>

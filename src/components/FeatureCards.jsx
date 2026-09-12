@@ -30,7 +30,7 @@ export default function FeatureCards() {
         <Row className="g-4 justify-content-center feature-row">
           {FEATURES.map((f, i) => (
             <Col key={f.title} xs={12} sm={6} lg={3}>
-              <div className={`feature-card reveal d${i + 1}`}>
+              <div className={`feature-card reveal ${i % 2 ? 'from-right' : 'from-left'} d${i + 1}`}>
                 <span className="feature-icon">
                   <i className={`bi ${f.icon}`} />
                 </span>

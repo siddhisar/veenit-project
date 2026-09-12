@@ -41,6 +41,17 @@ export default function Hero() {
             Explore Services
           </Button>
         </div>
+
+        <div className="hero-flow" aria-hidden="true">
+          <span className="hero-chip reveal zoom-in d1">Data</span>
+          <span className="hero-chip reveal zoom-in d2">Device</span>
+          <span className="hero-chip reveal zoom-in d3">Email</span>
+          <span className="hero-chip reveal zoom-in d4">Network</span>
+          <i className="bi bi-arrow-right hero-flow-arrow reveal d5" />
+          <span className="hero-chip strong reveal zoom-in d5">Investigation</span>
+          <i className="bi bi-arrow-right hero-flow-arrow reveal d6" />
+          <span className="hero-chip strong reveal zoom-in d6">Report</span>
+        </div>
       </Container>
 
       <div className="hero-fade" />
