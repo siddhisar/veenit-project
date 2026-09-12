@@ -6,17 +6,30 @@
 /* ---------------- Header ---------------- */
 .site-header {
   height: var(--header-h);
+  min-height: var(--header-h);
+  display: flex;
+  align-items: center;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(7px);
   transition: background 0.3s ease, box-shadow 0.3s ease, height 0.3s ease;
-  padding: 0;
+  padding: 0 !important; /* override Bootstrap navbar vertical padding */
   z-index: 1000;
   border-bottom: 1px solid rgba(17, 21, 40, 0.08);
 }
 .site-header.is-scrolled {
   background: #ffffff;
   box-shadow: 0 6px 24px rgba(20, 26, 60, 0.12);
-  height: 56px;
+  height: 52px;
+  min-height: 52px;
+}
+/* kill residual padding on inner navbar pieces so content is vertically centered */
+.site-header .navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+}
+.site-header .navbar-collapse {
+  align-items: center;
 }
 .site-header .container {
   max-width: 1300px;
@@ -45,8 +58,8 @@
   flex-shrink: 0;
 }
 .brand-logo {
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   filter: drop-shadow(0 2px 6px rgba(20, 26, 60, 0.18));
 }
 .brand-text {
@@ -122,8 +135,8 @@
   color: var(--accent-hover);
 }
 .rfp-btn {
-  padding: 10px 22px !important;
-  font-size: 0.92rem;
+  padding: 8px 20px !important;
+  font-size: 0.9rem;
 }
 .nav-toggle {
   border: none;
@@ -882,9 +895,10 @@
 @media (max-width: 1199.98px) {
   .site-header {
     background: #ffffff;
-    height: 58px;
+    height: 56px;
+    min-height: 56px;
   }
-  .site-header.is-scrolled { height: 54px; }
+  .site-header.is-scrolled { height: 52px; min-height: 52px; }
   .navbar-collapse {
     background: #ffffff;
     margin: 12px -12px -8px;
