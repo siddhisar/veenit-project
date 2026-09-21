@@ -2203,37 +2203,34 @@
 .ee-hero-p {
   color: #c3cfe6;
   font-size: clamp(1rem, 1.5vw, 1.12rem);
-  line-height: 1.75;
-  max-width: 760px;
-  margin: 0 auto 16px;
+  line-height: 1.8;
+  max-width: 720px;
+  margin: 0 auto 20px;
+  /* balance wrapping so each line is roughly equal width (symmetric) rather
+     than a long line followed by a short orphan line */
+  text-wrap: balance;
 }
-/* Grouped, bordered panel holding the lead line + evidence grid so the block
-   reads as one intentional unit instead of floating text above loose cards. */
+.ee-hero-p:last-of-type { margin-bottom: 0; }
+/* Borderless container — just centres the lead line + grid and provides spacing */
 .ee-evidence-panel {
-  max-width: 940px;
-  margin: 32px auto 0;
-  padding: 30px 30px 32px;
+  max-width: 900px;
+  margin: 40px auto 0;
   text-align: center;
-  border-radius: 22px;
-  background: linear-gradient(180deg, rgba(51, 189, 230, 0.05), rgba(7, 0, 184, 0.03));
-  border: 1px solid rgba(51, 189, 230, 0.2);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 24px 60px rgba(3, 8, 30, 0.4);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
 }
 .ee-lead-text {
   color: #dbe6fb;
   font-weight: 600;
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: clamp(1.02rem, 1.5vw, 1.14rem);
   line-height: 1.5;
-  margin: 0 auto 14px;
-  max-width: 640px;
+  margin: 0 auto 16px;
+  max-width: 680px;
+  text-wrap: balance;
 }
 .ee-lead-bar {
   display: block;
   width: 72px;
   height: 3px;
-  margin: 0 auto 26px;
+  margin: 0 auto 30px;
   border-radius: 3px;
   background: linear-gradient(90deg, #0700b8, #33bde6);
 }
@@ -2310,6 +2307,7 @@
   font-weight: 600;
   font-size: 1.05rem;
   margin: 30px auto 22px;
+  text-wrap: balance;
 }
 .ee-matters .row { max-width: 960px; margin-inline: auto; }
 .ee-matters .row > [class*='col'] { display: flex; }
@@ -2350,11 +2348,12 @@
 .ee-workflow { background: linear-gradient(180deg, #f4f7fb 0%, #eaf1fb 100%); }
 .ee-workflow-lead {
   text-align: center;
-  max-width: 760px;
-  margin: 14px auto 8px;
+  max-width: 720px;
+  margin: 16px auto 8px;
   color: var(--text-body);
   font-size: 1.05rem;
-  line-height: 1.75;
+  line-height: 1.8;
+  text-wrap: balance;
 }
 .ee-timeline {
   position: relative;
@@ -2440,11 +2439,12 @@
 .ee-approach { background: var(--ivory); }
 .ee-approach-lead {
   text-align: center;
-  max-width: 800px;
-  margin: 14px auto 0;
+  max-width: 760px;
+  margin: 16px auto 0;
   color: var(--text-body);
   font-size: 1.05rem;
-  line-height: 1.75;
+  line-height: 1.8;
+  text-wrap: balance;
 }
 .ee-approach .row { max-width: 1040px; margin-inline: auto; }
 .ee-approach .row > [class*='col'] { display: flex; }
@@ -2569,7 +2569,8 @@
   color: #c3cfe6;
   font-size: 1.05rem;
   line-height: 1.8;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+  text-wrap: balance;
 }
 .ee-support-text p:last-child { margin-bottom: 0; }
 
