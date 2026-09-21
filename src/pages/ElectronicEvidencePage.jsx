@@ -15,6 +15,7 @@ const EVIDENCE_TYPES = [
   { icon: 'bi-file-earmark-image', label: 'Digital photographs and documents' },
   { icon: 'bi-hash', label: 'Hash value and integrity reports' },
   { icon: 'bi-folder2-open', label: 'Digital evidence documentation' },
+  { icon: 'bi-cloud-arrow-down', label: 'Cloud storage and account records' },
   { icon: 'bi-person-badge', label: 'Expert assistance and testimony, where appropriate' }
 ]
 
@@ -118,17 +119,20 @@ export default function ElectronicEvidencePage() {
               and preserve digital records in accordance with applicable Indian evidentiary
               requirements.
             </p>
-            <p className="ee-hero-lead reveal d3">Our services cover a wide range of digital evidence, including:</p>
-            <Row className="g-3 ee-evidence-grid">
-              {EVIDENCE_TYPES.map((e, i) => (
-                <Col xs={12} sm={6} key={e.label}>
-                  <div className="ee-chip reveal zoom-in" style={{ transitionDelay: `${0.05 + i * 0.05}s` }}>
-                    <span className="ee-chip-icon"><i className={`bi ${e.icon}`} /></span>
-                    <span className="ee-chip-label">{e.label}</span>
-                  </div>
-                </Col>
-              ))}
-            </Row>
+            <div className="ee-evidence-panel">
+              <p className="ee-lead-text reveal d3">Our services cover a wide range of digital evidence, including:</p>
+              <span className="ee-lead-bar reveal d3" aria-hidden="true" />
+              <Row className="g-3 ee-evidence-grid">
+                {EVIDENCE_TYPES.map((e, i) => (
+                  <Col xs={12} sm={6} key={e.label}>
+                    <div className="ee-chip reveal zoom-in" style={{ transitionDelay: `${0.05 + (i % 2) * 0.06 + Math.floor(i / 2) * 0.04}s` }}>
+                      <span className="ee-chip-icon"><i className={`bi ${e.icon}`} /></span>
+                      <span className="ee-chip-label">{e.label}</span>
+                    </div>
+                  </Col>
+                ))}
+              </Row>
+            </div>
           </Container>
         </section>
 
