@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react'
-import { Navbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap'
+import { Navbar, Nav, Container, Button } from 'react-bootstrap'
 import { Link, useLocation } from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
+
+const ABOUT = [
+  { icon: 'bi-people', title: 'Our Team', href: '/#framework' },
+  { icon: 'bi-shield-lock', title: 'Cyber Crime Defence', href: '/#isms' },
+  { icon: 'bi-headset', title: 'Cyber Crime Helpline', href: '/#contact' }
+]
 
 // Service links point to the Services section for now; swap `href` for a
 // dedicated route/page per service when those are built.
@@ -9,33 +15,32 @@ const SERVICES = [
   {
     icon: 'bi-file-earmark-check',
     title: 'Electronic Evidence & Section 63 Certification',
-    desc: 'Court-admissible digital evidence with Section 63 certification.',
     href: '/#services'
   },
   {
     icon: 'bi-phone',
     title: 'Mobile Forensics',
-    desc: 'Forensic extraction and analysis of mobile devices.',
     href: '/#services'
   },
   {
     icon: 'bi-bug',
     title: 'Vulnerability Assessment & Penetration Testing (VAPT)',
-    desc: 'Find and fix security weaknesses before attackers do.',
     href: '/#services'
   },
   {
     icon: 'bi-bank',
     title: 'Cyber Law Advocacy',
-    desc: 'Expert legal counsel for cyber law and compliance.',
     href: '/#services'
   }
 ]
 
+const isDesktop = () => window.matchMedia('(min-width: 1200px)').matches
+const isMobile = () => window.matchMedia('(max-width: 1199.98px)').matches
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [expanded, setExpanded] = useState(false)
-  const [servicesOpen, setServicesOpen] = useState(false)
+  const [openMenu, setOpenMenu] = useState(null) // 'about' | 'services' | null
   const { pathname } = useLocation()
 
   useEffect(() => {
@@ -47,10 +52,53 @@ export default function Header() {
 
   const close = () => {
     setExpanded(false)
-    setServicesOpen(false)
+    setOpenMenu(null)
   }
   // On inner pages (over a light background) keep the header solid for contrast.
   const solid = scrolled || pathname !== '/'
+
+  const renderMega = (key, label, items) => (
+    <div
+      className={`services-mega ${openMenu === key ? 'is-open' : ''}`}
+      onMouseEnter={() => { if (isDesktop()) setOpenMenu(key) }}
+      onMouseLeave={() => { if (isDesktop()) setOpenMenu((m) => (m === key ? null : m)) }}
+    >
+      <button
+        type="button"
+        className="nav-link services-toggle"
+        aria-expanded={openMenu === key}
+        onClick={() => { if (isMobile()) setOpenMenu((m) => (m === key ? null : key)) }}
+      >
+        {label}
+        <i className="bi bi-chevron-down services-caret" />
+      </button>
+
+      <div className="services-panel" role="menu">
+        <div className="services-panel-inner">
+          <div className="services-grid">
+            {items.map((it, i) => (
+              <a
+                key={it.title}
+                href={it.href}
+                className="service-item"
+                role="menuitem"
+                style={{ '--i': i }}
+                onClick={close}
+              >
+                <span className="service-item-icon">
+                  <i className={`bi ${it.icon}`} />
+                </span>
+                <span className="service-item-body">
+                  <span className="service-item-title">{it.title}</span>
+                </span>
+                <i className="bi bi-arrow-right service-item-arrow" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
 
   return (
     <Navbar
@@ -76,68 +124,9 @@ export default function Header() {
             <Nav.Link href="/#home" onClick={close}>
               Home
             </Nav.Link>
-            <NavDropdown title="About Us" id="about-dd" className="about-dd">
-              <NavDropdown.Item href="/#framework" onClick={close}>
-                Our Team
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/#isms" onClick={close}>
-                Cyber Crime Defence
-              </NavDropdown.Item>
-              <NavDropdown.Item href="/#contact" onClick={close}>
-                Cyber Crime Helpline
-              </NavDropdown.Item>
-            </NavDropdown>
 
-            <div
-              className={`services-mega ${servicesOpen ? 'is-open' : ''}`}
-              onMouseEnter={() => {
-                // Hover opens on desktop only; mobile uses tap (below).
-                if (window.matchMedia('(min-width: 1200px)').matches) setServicesOpen(true)
-              }}
-              onMouseLeave={() => {
-                if (window.matchMedia('(min-width: 1200px)').matches) setServicesOpen(false)
-              }}
-            >
-              <button
-                type="button"
-                className="nav-link services-toggle"
-                aria-expanded={servicesOpen}
-                onClick={() => {
-                  // Tap toggles the accordion on mobile (< xl).
-                  if (window.matchMedia('(max-width: 1199.98px)').matches) {
-                    setServicesOpen((o) => !o)
-                  }
-                }}
-              >
-                Services
-                <i className="bi bi-chevron-down services-caret" />
-              </button>
-
-              <div className="services-panel" role="menu">
-                <div className="services-panel-inner">
-                  <div className="services-grid">
-                    {SERVICES.map((s, i) => (
-                      <a
-                        key={s.title}
-                        href={s.href}
-                        className="service-item"
-                        role="menuitem"
-                        style={{ '--i': i }}
-                        onClick={close}
-                      >
-                        <span className="service-item-icon">
-                          <i className={`bi ${s.icon}`} />
-                        </span>
-                        <span className="service-item-body">
-                          <span className="service-item-title">{s.title}</span>
-                        </span>
-                        <i className="bi bi-arrow-right service-item-arrow" />
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
+            {renderMega('about', 'About Us', ABOUT)}
+            {renderMega('services', 'Services', SERVICES)}
 
             <Nav.Link href="/#framework" onClick={close}>
               Grow With Us
