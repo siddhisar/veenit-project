@@ -145,7 +145,7 @@ export default function Header() {
             <Nav.Link href="/#framework" onClick={close}>
               Grow With Us
             </Nav.Link>
-            <Nav.Link href="/#contact" onClick={close}>
+            <Nav.Link href="/#contact-info" onClick={close}>
               Contact Us
             </Nav.Link>
             <Button

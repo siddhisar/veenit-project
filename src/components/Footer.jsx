@@ -49,7 +49,7 @@ export default function Footer() {
             </div>
           </Col>
 
-          <Col lg={3} md={6} className="reveal d2">
+          <Col lg={3} md={6} id="contact-info" className="reveal d2">
             <h5 className="footer-heading">Contact Us</h5>
             <ul className="footer-contact">
               <li>
