@@ -3,7 +3,6 @@ import Hero from '../components/Hero.jsx'
 import FeatureCards from '../components/FeatureCards.jsx'
 import ComplianceFramework from '../components/ComplianceFramework.jsx'
 import ServicesSection from '../components/ServicesSection.jsx'
-import ProcessJourney from '../components/ProcessJourney.jsx'
 import ISMSSection from '../components/ISMSSection.jsx'
 import ChainOfCustody from '../components/ChainOfCustody.jsx'
 import ContactSection from '../components/ContactSection.jsx'
@@ -23,7 +22,6 @@ export default function Home() {
         <FeatureCards />
         <ComplianceFramework />
         <ServicesSection />
-        <ProcessJourney />
         <ISMSSection />
         <ChainOfCustody />
         <ClientLogos />
