@@ -69,7 +69,7 @@ export default function CyberBackground() {
       for (const n of nodes) {
         ctx.beginPath()
         ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(0, 255, 136, 0.72)'
+        ctx.fillStyle = 'rgba(51, 189, 230, 0.8)'
         ctx.fill()
 
         n.x += n.vx

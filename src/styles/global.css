@@ -4,27 +4,27 @@
    ============================================================ */
 
 :root {
-  /* ---- Blue → Emerald gradient brand system ----
-     Dominant accent: emerald #00ff88. Secondary: deep blue #0700b8.
-     Gradient used for CTAs / prominent areas; emerald for accents & glows;
-     a slightly deeper emerald is used for small text/icons on light bg so
-     contrast stays accessible. */
-  --brand-green: #00ff88;     /* neon emerald (glows, on-dark, gradient) */
+  /* ---- Blue → Cyan gradient brand system ----
+     Primary: deep blue #0700b8. Secondary accent: cyan-blue #33bde6.
+     Gradient used for CTAs / prominent areas; cyan for accents & glows;
+     a deeper cyan-blue is used for small text/icons on light bg so
+     contrast stays accessible (WCAG AA). */
+  --brand-cyan: #33bde6;     /* cyan-blue (glows, on-dark, gradient) */
   --brand-blue: #0700b8;      /* deep blue (secondary) */
-  --grad: linear-gradient(90deg, #0700b8 0%, #00ff88 100%);
-  --grad-rev: linear-gradient(90deg, #00ff88 0%, #0700b8 100%);
-  --grad-soft: linear-gradient(90deg, rgba(7, 0, 184, 0.12) 0%, rgba(0, 255, 136, 0.14) 100%);
+  --grad: linear-gradient(90deg, #0700b8 0%, #33bde6 100%);
+  --grad-rev: linear-gradient(90deg, #33bde6 0%, #0700b8 100%);
+  --grad-soft: linear-gradient(90deg, rgba(7, 0, 184, 0.12) 0%, rgba(51, 189, 230, 0.14) 100%);
 
-  --accent: #05b368;          /* readable emerald for text/icons on light */
-  --accent-2: #00ff88;        /* neon emerald (on dark) */
-  --accent-hover: #048a50;    /* darker emerald (solid hover) */
-  --accent-soft: rgba(0, 200, 120, 0.12);
+  --accent: #0b76a8;          /* readable cyan-blue for text/icons on light */
+  --accent-2: #33bde6;        /* cyan-blue (on dark) */
+  --accent-hover: #085d84;    /* darker cyan-blue (solid hover) */
+  --accent-soft: rgba(51, 189, 230, 0.12);
 
-  /* Legacy "gold" tokens repointed to the blue/green system so every
+  /* Legacy "gold" tokens repointed to the blue/cyan system so every
      existing usage becomes on-theme without touching each component. */
   --gold: #0700b8;            /* secondary highlight = deep blue */
-  --gold-2: #00ff88;          /* on-dark highlight = emerald */
-  --gold-soft: rgba(0, 255, 136, 0.13);
+  --gold-2: #33bde6;          /* on-dark highlight = cyan-blue */
+  --gold-soft: rgba(51, 189, 230, 0.13);
 
   /* Dark surfaces (deep blue-black) */
   --dark-1: #05061a; /* deepest */
@@ -47,13 +47,13 @@
   --text-faint: #8b93a8;
 
   --border-light: #e0e6f0;    /* cool hairline */
-  --border-dark: rgba(0, 255, 136, 0.16);
+  --border-dark: rgba(51, 189, 230, 0.16);
 
   --radius: 14px;
   --radius-sm: 10px;
   --shadow-sm: 0 6px 18px rgba(20, 26, 60, 0.06);
   --shadow-md: 0 16px 42px rgba(20, 26, 60, 0.12);
-  --shadow-blue: 0 18px 45px rgba(0, 180, 110, 0.28);
+  --shadow-blue: 0 18px 45px rgba(51, 189, 230, 0.28);
 
   --container-max: 1200px;
   --header-h: 58px;
@@ -130,12 +130,12 @@ img { max-width: 100%; display: block; }
 }
 
 .section-title.on-dark { color: #fff; }
-.eyebrow.on-dark { color: var(--brand-green); }
+.eyebrow.on-dark { color: var(--brand-cyan); }
 
-/* Buttons — blue→emerald gradient CTA.
+/* Buttons — blue→cyan gradient CTA.
    Bootstrap button CSS variables are neutralised so no default blue/focus
    ring can ever show; the gradient is applied via background-image, with a
-   subtle text-shadow so white text stays legible over the bright green end. */
+   subtle text-shadow so white text stays legible over the bright cyan end. */
 .btn-cyber {
   --bs-btn-color: #fff;
   --bs-btn-bg: transparent;
@@ -143,7 +143,7 @@ img { max-width: 100%; display: block; }
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: transparent;
   --bs-btn-hover-border-color: transparent;
-  --bs-btn-focus-shadow-rgb: 0, 200, 120;
+  --bs-btn-focus-shadow-rgb: 51, 189, 230;
   --bs-btn-active-color: #fff;
   --bs-btn-active-bg: transparent;
   --bs-btn-active-border-color: transparent;
@@ -164,7 +164,7 @@ img { max-width: 100%; display: block; }
   white-space: nowrap;
   text-shadow: 0 1px 2px rgba(3, 10, 40, 0.4);
   transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
-  box-shadow: 0 8px 22px rgba(0, 180, 110, 0.28);
+  box-shadow: 0 8px 22px rgba(51, 189, 230, 0.28);
 }
 .btn-cyber:hover,
 .btn-cyber:focus,
@@ -178,11 +178,11 @@ img { max-width: 100%; display: block; }
   color: #fff;
   transform: translateY(-3px);
   filter: brightness(1.08) saturate(1.05);
-  box-shadow: 0 16px 36px rgba(0, 200, 120, 0.36);
+  box-shadow: 0 16px 36px rgba(51, 189, 230, 0.36);
 }
 .btn-cyber:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.4), 0 16px 36px rgba(0, 200, 120, 0.36);
+  box-shadow: 0 0 0 3px rgba(51, 189, 230, 0.4), 0 16px 36px rgba(51, 189, 230, 0.36);
 }
 .btn-cyber:active {
   transform: translateY(-1px);
@@ -190,7 +190,7 @@ img { max-width: 100%; display: block; }
 
 .btn-ghost {
   background: transparent;
-  border: 1.5px solid rgba(0, 255, 136, 0.55);
+  border: 1.5px solid rgba(51, 189, 230, 0.55);
   color: #eafff5;
   font-weight: 600;
   padding: 11px 26px;
@@ -199,7 +199,7 @@ img { max-width: 100%; display: block; }
   transition: all 0.25s ease;
 }
 .btn-ghost:hover {
-  background: rgba(202, 161, 89, 0.14);
+  background: rgba(51, 189, 230, 0.14);
   border-color: var(--gold-2);
   color: #fff;
   transform: translateY(-3px);
@@ -282,7 +282,7 @@ img { max-width: 100%; display: block; }
   transform: translateY(12px);
   transition: all 0.3s ease;
   z-index: 900;
-  box-shadow: 0 10px 26px rgba(0, 200, 120, 0.4);
+  box-shadow: 0 10px 26px rgba(51, 189, 230, 0.4);
 }
 .back-to-top.show {
   opacity: 1;

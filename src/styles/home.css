@@ -1,6 +1,6 @@
 /* ============================================================
    Home page / component styles
-   Theme: warm ivory + forest-emerald + bronze (forensic premium)
+   Theme: cool ivory + deep blue + cyan-blue (forensic premium)
    ============================================================ */
 
 /* ---------------- Header ---------------- */
@@ -99,7 +99,7 @@
   right: 14px;
   bottom: 2px;
   height: 2px;
-  background: var(--brand-green);
+  background: var(--brand-cyan);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.28s ease;
@@ -189,7 +189,7 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 74% 60%, rgba(0, 255, 136, 0.20), transparent 58%),
+    radial-gradient(ellipse at 74% 60%, rgba(51, 189, 230, 0.20), transparent 58%),
     radial-gradient(ellipse at 20% 30%, rgba(7, 0, 184, 0.30), transparent 55%),
     linear-gradient(180deg, rgba(6, 7, 26, 0.82) 0%, rgba(6, 7, 26, 0.60) 45%, rgba(5, 6, 20, 0.93) 100%);
 }
@@ -209,8 +209,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 255, 136, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 136, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(51, 189, 230, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 189, 230, 0.05) 1px, transparent 1px);
   background-size: 54px 54px;
   mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
   -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
@@ -302,8 +302,8 @@
 }
 .feature-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 24px 52px rgba(40, 60, 40, 0.15);
-  border-color: rgba(0, 255, 136, 0.4);
+  box-shadow: 0 24px 52px rgba(18, 32, 70, 0.16);
+  border-color: rgba(51, 189, 230, 0.4);
 }
 .feature-card:hover::before {
   transform: scaleX(1);
@@ -347,12 +347,12 @@
   padding: 30px 20px;
   text-align: center;
   width: 100%;
-  box-shadow: 0 4px 16px rgba(50, 44, 24, 0.05);
+  box-shadow: 0 4px 16px rgba(20, 30, 60, 0.06);
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .framework-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(0, 255, 136, 0.4);
+  border-color: rgba(51, 189, 230, 0.4);
   box-shadow: 0 18px 40px rgba(20, 30, 70, 0.14);
 }
 .framework-icon {
@@ -385,10 +385,10 @@
   margin: 0;
 }
 
-/* ---------------- Services (dark forest contrast) ---------------- */
+/* ---------------- Services (dark blue contrast) ---------------- */
 .services {
   background:
-    radial-gradient(circle at 18% 12%, rgba(0, 255, 136, 0.18), transparent 42%),
+    radial-gradient(circle at 18% 12%, rgba(51, 189, 230, 0.18), transparent 42%),
     radial-gradient(circle at 86% 82%, rgba(7, 0, 184, 0.30), transparent 46%),
     linear-gradient(180deg, #06071a 0%, #0a0b28 100%);
   overflow: hidden;
@@ -405,7 +405,7 @@
 }
 .service-card {
   background: rgba(255, 253, 247, 0.045);
-  border: 1px solid rgba(0, 255, 136, 0.16);
+  border: 1px solid rgba(51, 189, 230, 0.16);
   border-radius: 16px;
   padding: 28px 24px;
   height: 100%;
@@ -414,8 +414,8 @@
 }
 .service-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(0, 255, 136, 0.6);
-  background: rgba(0, 255, 136, 0.08);
+  border-color: rgba(51, 189, 230, 0.6);
+  background: rgba(51, 189, 230, 0.08);
   box-shadow: 0 22px 50px rgba(2, 4, 20, 0.55);
 }
 .service-title {
@@ -456,7 +456,7 @@
 .isms-visual {
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(30, 40, 25, 0.22);
+  box-shadow: 0 30px 60px rgba(18, 32, 70, 0.22);
   transition: transform 0.4s ease;
 }
 .isms-visual:hover {
@@ -553,7 +553,7 @@
 }
 .client-logo:hover {
   color: var(--text-dark);
-  border-color: rgba(0, 255, 136, 0.45);
+  border-color: rgba(51, 189, 230, 0.45);
   box-shadow: var(--shadow-sm);
   transform: translateY(-4px);
 }
@@ -574,7 +574,7 @@
 .contact-pattern {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(0, 200, 120, 0.10) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(circle, rgba(51, 189, 230, 0.10) 1.5px, transparent 1.5px);
   background-size: 26px 26px;
   opacity: 0.7;
 }
@@ -639,8 +639,8 @@
 .contact-alert {
   border-radius: 12px;
   border: none;
-  background: #e6f1e6;
-  color: #1c6b52;
+  background: #e3f1f8;
+  color: #0b5a7a;
   font-weight: 500;
 }
 
@@ -769,7 +769,7 @@
 }
 .footer-bottom {
   margin-top: 55px;
-  border-top: 1px solid rgba(0, 255, 136, 0.14);
+  border-top: 1px solid rgba(51, 189, 230, 0.14);
   padding: 22px 0;
   position: relative;
   z-index: 2;
@@ -835,7 +835,7 @@
   padding: 8px 20px;
   border-radius: 999px;
   margin-bottom: 22px;
-  border: 1px solid rgba(28, 107, 82, 0.18);
+  border: 1px solid rgba(11, 118, 168, 0.22);
 }
 .rp-title {
   color: var(--text-dark);
@@ -905,8 +905,8 @@
   color: #bfe9d6;
   padding: 6px 14px;
   border-radius: 999px;
-  border: 1px solid rgba(0, 255, 136, 0.35);
-  background: rgba(0, 255, 136, 0.06);
+  border: 1px solid rgba(51, 189, 230, 0.35);
+  background: rgba(51, 189, 230, 0.06);
   white-space: nowrap;
 }
 .hero-chip.strong {
@@ -916,7 +916,7 @@
   text-shadow: 0 1px 2px rgba(3, 10, 40, 0.4);
 }
 .hero-flow-arrow {
-  color: var(--brand-green);
+  color: var(--brand-cyan);
   font-size: 1rem;
 }
 
@@ -959,7 +959,7 @@
 }
 .journey-step:hover {
   transform: translateY(-6px);
-  border-color: rgba(0, 255, 136, 0.4);
+  border-color: rgba(51, 189, 230, 0.4);
   box-shadow: 0 18px 40px rgba(20, 30, 70, 0.14);
 }
 .journey-node {
@@ -972,7 +972,7 @@
   background: var(--cream);
   color: var(--accent);
   font-size: 1.35rem;
-  border: 2px solid rgba(0, 255, 136, 0.45);
+  border: 2px solid rgba(51, 189, 230, 0.45);
   transition: all 0.3s ease;
 }
 .journey-step:hover .journey-node {
@@ -1031,7 +1031,7 @@
   bottom: 6px;
   width: 3px;
   border-radius: 3px;
-  background-image: linear-gradient(180deg, #0700b8 0%, #00ff88 100%);
+  background-image: linear-gradient(180deg, #0700b8 0%, #33bde6 100%);
   transform-origin: top center;
 }
 .custody-item {
@@ -1046,27 +1046,27 @@
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--brand-green);
+  background: var(--brand-cyan);
   border: 3px solid #080a24;
-  box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.25);
+  box-shadow: 0 0 0 3px rgba(51, 189, 230, 0.25);
 }
 .custody-card {
   display: flex;
   gap: 14px;
   align-items: flex-start;
   background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(0, 255, 136, 0.16);
+  border: 1px solid rgba(51, 189, 230, 0.16);
   border-radius: 14px;
   padding: 18px 20px;
   transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 }
 .custody-card:hover {
   transform: translateX(5px);
-  border-color: rgba(0, 255, 136, 0.4);
-  background: rgba(0, 255, 136, 0.06);
+  border-color: rgba(51, 189, 230, 0.4);
+  background: rgba(51, 189, 230, 0.06);
 }
 .custody-icon {
-  color: var(--brand-green);
+  color: var(--brand-cyan);
   font-size: 1.4rem;
   flex-shrink: 0;
   margin-top: 2px;
