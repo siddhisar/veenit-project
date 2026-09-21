@@ -86,9 +86,6 @@ export default function Header() {
               <NavDropdown.Item href="/#contact" onClick={close}>
                 Cyber Crime Helpline
               </NavDropdown.Item>
-              <NavDropdown.Item href="/#contact" onClick={close}>
-                Partner With Us
-              </NavDropdown.Item>
             </NavDropdown>
 
             <div
