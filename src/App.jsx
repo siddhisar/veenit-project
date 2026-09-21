@@ -3,6 +3,7 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import RequestProposal from './pages/RequestProposal.jsx'
 import ServicePage from './pages/ServicePage.jsx'
+import ElectronicEvidencePage from './pages/ElectronicEvidencePage.jsx'
 
 // Manage scroll on navigation: jump to top on a route change, and smooth-scroll
 // to an in-page section when the URL carries a hash (works across routes too).
@@ -36,6 +37,7 @@ function App() {
       <ScrollManager />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/services/electronic-evidence" element={<ElectronicEvidencePage />} />
         <Route path="/services/:slug" element={<ServicePage />} />
         <Route path="/request-proposal" element={<RequestProposal />} />
         <Route path="*" element={<Home />} />
