@@ -150,22 +150,26 @@
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(17,21,40,0.85)' stroke-width='2.2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* ---------------- Hero ---------------- */
+/* ---------------- Hero (Cyber Crime / Digital Forensics command-center) ---------------- */
 .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: linear-gradient(160deg, #080a24 0%, #060616 55%, #0a0b2a 100%);
+  background:
+    radial-gradient(125% 95% at 50% -10%, #0c1348 0%, #080b2a 46%, #05061a 100%);
 }
 .hero-bg {
   position: absolute;
   inset: 0;
   z-index: 0;
-  /* poster acts as a fallback if the video can't load/autoplay */
-  background: #080a24 url('../assets/videos/cyber-hero-poster.jpg') center / cover no-repeat;
+  /* solid deep-navy base; the poster shows (grayscaled) via the <video>
+     element's own poster attribute, so its baked-in green never appears */
+  background: #080a24;
 }
+/* the source video carries warm/green analytics baked in — dim + desaturate
+   so only a faint blue technical texture reads through the new palette */
 .hero-video {
   position: absolute;
   inset: 0;
@@ -174,7 +178,10 @@
   object-fit: cover;
   display: block;
   z-index: 0;
-  opacity: 0.72;
+  opacity: 0.24;
+  /* fully desaturate so the clip's baked-in green analytics never show;
+     the blue overlays below re-tint the monochrome texture on-theme */
+  filter: grayscale(1) brightness(0.8) contrast(1.05);
 }
 .cyber-canvas {
   position: absolute;
@@ -183,59 +190,176 @@
   height: 100%;
   display: block;
   z-index: 1;
-  opacity: 0.4;
+  opacity: 0.5;
+}
+/* faint circuit / network traces */
+.hero-circuit {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.hero-circuit-lines path {
+  stroke: rgba(51, 189, 230, 0.32);
+  stroke-width: 1;
+}
+.hero-circuit-nodes circle {
+  fill: #33bde6;
+  filter: drop-shadow(0 0 4px rgba(51, 189, 230, 0.9));
+}
+.hero-node-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: heroNodePulse 3.2s ease-in-out infinite;
+}
+@keyframes heroNodePulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1.25); }
+}
+/* forensic shield emblem watermark, centered behind the content */
+.hero-emblem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -54%);
+  width: min(720px, 74vw);
+  height: min(720px, 74vw);
+  z-index: 1;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.hero-emblem-outer { stroke: rgba(51, 189, 230, 0.22); stroke-width: 2; }
+.hero-emblem-inner { fill: rgba(51, 189, 230, 0.03); stroke: rgba(51, 189, 230, 0.12); stroke-width: 1; }
+.hero-emblem-check {
+  stroke: rgba(51, 189, 230, 0.28);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .hero-overlay {
   position: absolute;
   inset: 0;
+  z-index: 2;
+  pointer-events: none;
   background:
-    radial-gradient(ellipse at 74% 60%, rgba(51, 189, 230, 0.20), transparent 58%),
-    radial-gradient(ellipse at 20% 30%, rgba(7, 0, 184, 0.30), transparent 55%),
-    linear-gradient(180deg, rgba(6, 7, 26, 0.82) 0%, rgba(6, 7, 26, 0.60) 45%, rgba(5, 6, 20, 0.93) 100%);
+    radial-gradient(55% 45% at 80% 36%, rgba(51, 189, 230, 0.16), transparent 62%),
+    radial-gradient(55% 55% at 15% 68%, rgba(23, 82, 210, 0.22), transparent 62%),
+    linear-gradient(180deg, rgba(6, 7, 26, 0.55) 0%, rgba(6, 7, 26, 0.28) 42%, rgba(5, 6, 20, 0.88) 100%);
 }
 /* forensic fingerprint accent, bottom-left */
 .hero-overlay::before {
   content: '';
   position: absolute;
-  left: -40px;
-  bottom: -30px;
+  left: -50px;
+  bottom: -40px;
   width: 360px;
   height: 360px;
   background: url('../assets/images/fingerprint.svg') no-repeat center / contain;
-  opacity: 0.5;
+  opacity: 0.45;
   pointer-events: none;
 }
 .hero-grid {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background-image:
-    linear-gradient(rgba(51, 189, 230, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(51, 189, 230, 0.05) 1px, transparent 1px);
-  background-size: 54px 54px;
-  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+    linear-gradient(rgba(51, 189, 230, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 189, 230, 0.04) 1px, transparent 1px);
+  background-size: 46px 46px;
+  mask-image: radial-gradient(ellipse at center, #000 22%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 22%, transparent 72%);
+}
+/* slow security scan sweep */
+.hero-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 220px;
+  z-index: 2;
+  pointer-events: none;
+  background: linear-gradient(180deg, transparent, rgba(51, 189, 230, 0.07), transparent);
+  animation: heroScan 9s linear infinite;
+}
+@keyframes heroScan {
+  0% { transform: translateY(-240px); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(105vh); opacity: 0; }
+}
+.hero-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse 92% 72% at 50% 44%, transparent 42%, rgba(3, 5, 18, 0.72) 100%);
 }
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   text-align: center;
   padding-top: var(--header-h);
 }
-.hero-eyebrow {
-  color: var(--gold-2);
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: rgba(51, 189, 230, 0.08);
+  border: 1px solid rgba(51, 189, 230, 0.3);
+  color: #bfe6f5;
   font-weight: 600;
-  letter-spacing: 1.2px;
+  font-size: 0.78rem;
+  letter-spacing: 1.6px;
   text-transform: uppercase;
-  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
-  margin-bottom: 14px;
+  margin-bottom: 24px;
+  backdrop-filter: blur(4px);
+}
+.hero-badge i {
+  color: var(--brand-cyan);
+  font-size: 0.95rem;
+}
+.hero-eyebrow {
+  color: var(--brand-cyan);
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-size: clamp(0.78rem, 1.3vw, 1rem);
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  height: 1px;
+  width: clamp(22px, 6vw, 72px);
+  background: linear-gradient(90deg, transparent, rgba(51, 189, 230, 0.7));
+}
+.hero-eyebrow::after {
+  background: linear-gradient(90deg, rgba(51, 189, 230, 0.7), transparent);
 }
 .hero-title {
-  color: var(--ivory);
+  color: #ffffff;
   font-weight: 800;
-  font-size: clamp(2.4rem, 6vw, 4.4rem);
-  letter-spacing: -0.5px;
-  margin-bottom: 20px;
-  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.45);
+  font-size: clamp(2.6rem, 6.4vw, 4.9rem);
+  line-height: 1.05;
+  letter-spacing: -1px;
+  margin: 0 auto 26px;
+  max-width: 18ch;
+  text-shadow: 0 2px 42px rgba(51, 189, 230, 0.22), 0 6px 34px rgba(0, 0, 0, 0.5);
+}
+.hero-title-accent {
+  background: linear-gradient(92deg, #7bdcf7 0%, #33bde6 55%, #279fdc 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 .hero-tagline {
   color: #ece6d6;
@@ -244,14 +368,46 @@
   margin-bottom: 22px;
 }
 .hero-desc {
-  color: #cfc8b6;
-  max-width: 760px;
-  margin: 0 auto 34px;
-  font-size: clamp(0.98rem, 1.5vw, 1.12rem);
+  color: #c3cfe6;
+  max-width: 720px;
+  margin: 0 auto 30px;
+  font-size: clamp(1rem, 1.5vw, 1.16rem);
+  line-height: 1.75;
 }
 .hero-desc strong {
-  color: var(--gold-2);
+  color: var(--brand-cyan);
   font-weight: 600;
+}
+.hero-standards {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.hero-standard {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(51, 189, 230, 0.22);
+  color: #d6e2f2;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  backdrop-filter: blur(4px);
+  transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+.hero-standard i {
+  color: var(--brand-cyan);
+  font-size: 1rem;
+}
+.hero-standard:hover {
+  border-color: rgba(51, 189, 230, 0.55);
+  background: rgba(51, 189, 230, 0.07);
+  transform: translateY(-3px);
 }
 .hero-actions {
   display: flex;
@@ -266,7 +422,11 @@
   bottom: 0;
   height: 120px;
   background: linear-gradient(180deg, transparent, var(--ivory));
-  z-index: 1;
+  z-index: 2;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-scan,
+  .hero-node-pulse { animation: none; }
 }
 
 /* ---------------- Feature strip ---------------- */
