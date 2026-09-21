@@ -1983,3 +1983,30 @@
   .cv-core, .cv-check, .cv-status-dot { animation: none; }
   .cv-check { stroke-dashoffset: 0; }
 }
+
+/* "Why Contact" heading — dark title with animated cyan underline accent */
+.contact-why {
+  color: var(--text-dark);
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 22px;
+  text-shadow: 0 2px 26px rgba(51, 189, 230, 0.14);
+}
+.contact-why::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 120px;
+  height: 4px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #0700b8, #33bde6);
+  box-shadow: 0 0 16px rgba(51, 189, 230, 0.5);
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.35s;
+}
+.contact-why.is-visible::after { transform: translateX(-50%) scaleX(1); }
+@media (prefers-reduced-motion: reduce) {
+  .contact-why::after { transition: none; transform: translateX(-50%) scaleX(1); }
+}
