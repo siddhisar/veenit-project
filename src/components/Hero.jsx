@@ -24,13 +24,13 @@ export default function Hero() {
       </div>
 
       <Container className="hero-content">
-        <p className="hero-eyebrow reveal">Where Compliance Meets Cyber Resilience</p>
-        <h1 className="hero-title reveal d1">Cyber Crime Defence - ISMS</h1>
-        <p className="hero-tagline reveal d2">Your Cyber Security is Our Responsibility.</p>
+        <p className="hero-eyebrow reveal">Strengthening Security Through Compliance</p>
+        <h1 className="hero-title reveal d1">Cyber Crime Defence PVT LTD</h1>
         <p className="hero-desc reveal d3">
-          Cyber Crime Defence - ISMS is a <strong>Regulatory-Aligned Cyber Security firm</strong>{' '}
-          delivering <strong>End-to-End Cyber Audits, VAPT, and Compliance Assurance</strong> for
-          Enterprises, Startups.
+          Delivering specialized cybersecurity and digital forensic solutions to protect
+          information, investigate digital incidents, and strengthen organizational resilience.
+          Our services follow rigorous quality and information-security practices aligned with
+          ISO 9001 and ISO 27001 standards.
         </p>
       </Container>
 

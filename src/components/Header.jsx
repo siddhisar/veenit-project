@@ -30,10 +30,9 @@ export default function Header() {
     >
       <Container className="header-inner">
         <Navbar.Brand as={Link} to="/" className="brand" onClick={close}>
-          <img src={logo} alt="DTF-ISMS — Cyber Crime Defence" className="brand-logo" />
+          <img src={logo} alt="Cyber Crime Defence" className="brand-logo" />
           <span className="brand-text">
-            <span className="brand-name">DTF-ISMS</span>
-            <span className="brand-sub">CYBER CRIME DEFENCE</span>
+            <span className="brand-name">CYBER CRIME DEFENCE</span>
           </span>
         </Navbar.Brand>
 
