@@ -1,4 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap'
+import CyberBackground from './CyberBackground.jsx'
 
 const FEATURES = [
   {
@@ -23,9 +24,28 @@ const FEATURES = [
   }
 ]
 
+const CELL_PARTICLES = [
+  { l: '10%', d: '15s', delay: '0s' },
+  { l: '28%', d: '19s', delay: '4s' },
+  { l: '46%', d: '13s', delay: '2s' },
+  { l: '64%', d: '17s', delay: '6s' },
+  { l: '82%', d: '14s', delay: '1s' },
+  { l: '93%', d: '18s', delay: '3.5s' }
+]
+
 export default function FeatureCards() {
   return (
-    <section className="feature-strip">
+    <section className="feature-strip cyber-cell">
+      <div className="cyber-cell-bg" aria-hidden="true">
+        <CyberBackground />
+        <div className="cell-grid" />
+        <div className="cell-glow" />
+        <div className="cell-particles">
+          {CELL_PARTICLES.map((p, i) => (
+            <span key={i} style={{ left: p.l, animationDuration: p.d, animationDelay: p.delay }} />
+          ))}
+        </div>
+      </div>
       <Container>
         <Row className="g-4 justify-content-center feature-row">
           {FEATURES.map((f, i) => (

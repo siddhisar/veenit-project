@@ -1,4 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap'
+import CyberBackground from './CyberBackground.jsx'
 
 const FRAMEWORKS = [
   {
@@ -30,10 +31,15 @@ const FRAMEWORKS = [
 
 export default function ComplianceFramework() {
   return (
-    <section className="framework section" id="framework">
+    <section className="framework section cyber-cell" id="framework">
+      <div className="cyber-cell-bg" aria-hidden="true">
+        <CyberBackground />
+        <div className="cell-grid" />
+        <div className="cell-glow" />
+      </div>
       <Container>
-        <p className="eyebrow reveal from-top">Regulatory Alignment</p>
-        <h2 className="section-title reveal clip">Legal &amp; Compliance Framework</h2>
+        <p className="eyebrow on-dark reveal from-top">Regulatory Alignment</p>
+        <h2 className="section-title on-dark reveal clip">Legal &amp; Compliance Framework</h2>
 
         <Row className="g-4 justify-content-center framework-row mt-4">
           {FRAMEWORKS.map((f, i) => (
