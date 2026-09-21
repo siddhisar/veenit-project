@@ -136,7 +136,6 @@ export default function Header() {
                         </span>
                         <span className="service-item-body">
                           <span className="service-item-title">{s.title}</span>
-                          <span className="service-item-desc">{s.desc}</span>
                         </span>
                         <i className="bi bi-arrow-right service-item-arrow" />
                       </a>

@@ -1585,7 +1585,7 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(12px);
-  width: min(600px, 92vw);
+  width: min(380px, 92vw);
   padding-top: 14px; /* bridges the hover gap */
   opacity: 0;
   visibility: hidden;
@@ -1637,16 +1637,16 @@
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  grid-template-columns: 1fr;
+  gap: 10px;
 }
 .service-item {
   position: relative;
   overflow: hidden;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 13px;
-  padding: 15px 16px;
+  padding: 13px 15px;
   border-radius: 14px;
   border: 1px solid rgba(51, 189, 230, 0.12);
   background: rgba(255, 255, 255, 0.03);
