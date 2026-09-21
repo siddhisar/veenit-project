@@ -3,9 +3,39 @@ import { Navbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap'
 import { Link, useLocation } from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
 
+// Service links point to the Services section for now; swap `href` for a
+// dedicated route/page per service when those are built.
+const SERVICES = [
+  {
+    icon: 'bi-file-earmark-check',
+    title: 'Electronic Evidence & Section 63 Certification',
+    desc: 'Court-admissible digital evidence with Section 63 certification.',
+    href: '/#services'
+  },
+  {
+    icon: 'bi-phone',
+    title: 'Mobile Forensics',
+    desc: 'Forensic extraction and analysis of mobile devices.',
+    href: '/#services'
+  },
+  {
+    icon: 'bi-bug',
+    title: 'Vulnerability Assessment & Penetration Testing (VAPT)',
+    desc: 'Find and fix security weaknesses before attackers do.',
+    href: '/#services'
+  },
+  {
+    icon: 'bi-bank',
+    title: 'Cyber Law Advocacy',
+    desc: 'Expert legal counsel for cyber law and compliance.',
+    href: '/#services'
+  }
+]
+
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [expanded, setExpanded] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
   const { pathname } = useLocation()
 
   useEffect(() => {
@@ -15,7 +45,10 @@ export default function Header() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const close = () => setExpanded(false)
+  const close = () => {
+    setExpanded(false)
+    setServicesOpen(false)
+  }
   // On inner pages (over a light background) keep the header solid for contrast.
   const solid = scrolled || pathname !== '/'
 
@@ -57,9 +90,62 @@ export default function Header() {
                 Partner With Us
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="/#services" onClick={close}>
-              Services
-            </Nav.Link>
+
+            <div
+              className={`services-mega ${servicesOpen ? 'is-open' : ''}`}
+              onMouseEnter={() => {
+                // Hover opens on desktop only; mobile uses tap (below).
+                if (window.matchMedia('(min-width: 1200px)').matches) setServicesOpen(true)
+              }}
+              onMouseLeave={() => {
+                if (window.matchMedia('(min-width: 1200px)').matches) setServicesOpen(false)
+              }}
+            >
+              <button
+                type="button"
+                className="nav-link services-toggle"
+                aria-expanded={servicesOpen}
+                onClick={() => {
+                  // Tap toggles the accordion on mobile (< xl).
+                  if (window.matchMedia('(max-width: 1199.98px)').matches) {
+                    setServicesOpen((o) => !o)
+                  }
+                }}
+              >
+                Services
+                <i className="bi bi-chevron-down services-caret" />
+              </button>
+
+              <div className="services-panel" role="menu">
+                <div className="services-panel-inner">
+                  <span className="services-panel-eyebrow">
+                    <i className="bi bi-grid-3x3-gap" /> Our Services
+                  </span>
+                  <div className="services-grid">
+                    {SERVICES.map((s, i) => (
+                      <a
+                        key={s.title}
+                        href={s.href}
+                        className="service-item"
+                        role="menuitem"
+                        style={{ '--i': i }}
+                        onClick={close}
+                      >
+                        <span className="service-item-icon">
+                          <i className={`bi ${s.icon}`} />
+                        </span>
+                        <span className="service-item-body">
+                          <span className="service-item-title">{s.title}</span>
+                          <span className="service-item-desc">{s.desc}</span>
+                        </span>
+                        <i className="bi bi-arrow-right service-item-arrow" />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <Nav.Link href="/#framework" onClick={close}>
               Grow With Us
             </Nav.Link>

@@ -1559,3 +1559,203 @@
   .journey-track { grid-template-columns: repeat(2, 1fr); }
   .hero-chip { font-size: 0.72rem; padding: 5px 11px; }
 }
+
+/* ============================================================
+   Services mega-menu (desktop dropdown / mobile accordion)
+   ============================================================ */
+.services-mega { position: relative; display: flex; align-items: center; }
+.services-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  color: #000000;
+  font-weight: 500;
+  font-size: 0.98rem;
+}
+.services-caret { font-size: 0.7rem; transition: transform 0.3s ease; }
+.services-mega.is-open .services-caret { transform: rotate(180deg); }
+.services-mega.is-open .services-toggle { color: var(--accent); }
+
+.services-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  width: min(600px, 92vw);
+  padding-top: 14px; /* bridges the hover gap */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+  z-index: 1200;
+}
+.services-mega.is-open .services-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.services-panel-inner {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(160deg, #0b1330 0%, #070d22 100%);
+  border: 1px solid rgba(51, 189, 230, 0.25);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 30px 70px rgba(2, 8, 26, 0.5);
+  backdrop-filter: blur(12px);
+}
+.services-panel-inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(62% 60% at 100% 0%, rgba(51, 189, 230, 0.18), transparent 60%),
+    linear-gradient(rgba(51, 189, 230, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 189, 230, 0.05) 1px, transparent 1px);
+  background-size: auto, 30px 30px, 30px 30px;
+  mask-image: radial-gradient(ellipse at center, #000 40%, transparent 94%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 40%, transparent 94%);
+}
+.services-panel-eyebrow {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--brand-cyan);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.services-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.service-item {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 15px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(51, 189, 230, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease, border-color 0.3s ease,
+    background 0.3s ease, box-shadow 0.3s ease;
+}
+.services-mega.is-open .service-item {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: calc(var(--i) * 0.06s + 0.05s);
+}
+.service-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #33bde6, #0700b8);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 0.3s ease;
+}
+.service-item:hover {
+  transform: translateY(-3px);
+  border-color: rgba(51, 189, 230, 0.5);
+  background: rgba(51, 189, 230, 0.08);
+  box-shadow: 0 16px 34px rgba(2, 8, 26, 0.5), 0 0 22px rgba(51, 189, 230, 0.18);
+}
+.service-item:hover::before { transform: scaleY(1); }
+.service-item-icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 11px;
+  display: grid;
+  place-items: center;
+  background: rgba(51, 189, 230, 0.12);
+  border: 1px solid rgba(51, 189, 230, 0.25);
+  color: var(--brand-cyan);
+  font-size: 1.15rem;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.service-item:hover .service-item-icon {
+  transform: rotate(-6deg) scale(1.08);
+  background: rgba(51, 189, 230, 0.2);
+  box-shadow: 0 0 18px rgba(51, 189, 230, 0.4);
+}
+.service-item-body { display: flex; flex-direction: column; }
+.service-item-title {
+  color: #eaf1fb;
+  font-weight: 600;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+.service-item-desc { color: #9fb0c9; font-size: 0.78rem; line-height: 1.4; }
+.service-item-arrow {
+  align-self: center;
+  margin-left: auto;
+  color: var(--brand-cyan);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.service-item:hover .service-item-arrow { opacity: 1; transform: translateX(0); }
+
+/* Mobile: Services becomes an in-nav accordion */
+@media (max-width: 1199.98px) {
+  .services-mega { display: block; width: 100%; }
+  .services-toggle { width: 100%; justify-content: space-between; }
+  .services-panel {
+    position: static;
+    transform: none;
+    width: auto;
+    padding-top: 0;
+    opacity: 1;
+    visibility: visible;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .services-mega.is-open .services-panel { max-height: 780px; transform: none; }
+  .services-panel-inner {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    padding: 4px 0 8px 8px;
+  }
+  .services-panel-inner::before { display: none; }
+  .services-panel-eyebrow { color: var(--accent); }
+  .services-grid { grid-template-columns: 1fr; gap: 8px; }
+  .service-item {
+    background: rgba(51, 189, 230, 0.06);
+    border: 1px solid rgba(17, 21, 40, 0.08);
+  }
+  .service-item:hover { transform: none; box-shadow: none; background: rgba(51, 189, 230, 0.1); }
+  .service-item-title { color: #14181f; }
+  .service-item-desc { color: #5a6376; }
+  .service-item-arrow { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .services-panel,
+  .service-item { transition: none; }
+  .services-mega.is-open .service-item { transition-delay: 0s; }
+}
