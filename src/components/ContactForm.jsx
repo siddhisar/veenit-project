@@ -72,113 +72,135 @@ export default function ContactForm() {
 
       <Row className="g-4">
         <Col md={6}>
-          <Form.Group controlId="cf-name">
+          <Form.Group controlId="cf-name" className="cf-field reveal from-left d1">
             <Form.Label>
               Name <span className="req">*</span>
             </Form.Label>
-            <Form.Control
-              type="text"
-              name="name"
-              value={values.name}
-              onChange={handleChange}
-              isInvalid={!!errors.name}
-              placeholder="Your full name"
-            />
-            <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
+            <div className="cf-input">
+              <i className="bi bi-person" />
+              <Form.Control
+                type="text"
+                name="name"
+                value={values.name}
+                onChange={handleChange}
+                isInvalid={!!errors.name}
+                placeholder="Your full name"
+              />
+              <Form.Control.Feedback type="invalid">{errors.name}</Form.Control.Feedback>
+            </div>
           </Form.Group>
         </Col>
 
         <Col md={6}>
-          <Form.Group controlId="cf-email">
+          <Form.Group controlId="cf-email" className="cf-field reveal from-right d1">
             <Form.Label>
               Email <span className="req">*</span>
             </Form.Label>
-            <Form.Control
-              type="email"
-              name="email"
-              value={values.email}
-              onChange={handleChange}
-              isInvalid={!!errors.email}
-              placeholder="you@company.com"
-            />
-            <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
+            <div className="cf-input">
+              <i className="bi bi-envelope" />
+              <Form.Control
+                type="email"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+                isInvalid={!!errors.email}
+                placeholder="you@company.com"
+              />
+              <Form.Control.Feedback type="invalid">{errors.email}</Form.Control.Feedback>
+            </div>
           </Form.Group>
         </Col>
 
         <Col md={6}>
-          <Form.Group controlId="cf-phone">
+          <Form.Group controlId="cf-phone" className="cf-field reveal from-left d2">
             <Form.Label>
               Phone <span className="req">*</span>
             </Form.Label>
-            <Form.Control
-              type="tel"
-              name="phone"
-              value={values.phone}
-              onChange={handleChange}
-              isInvalid={!!errors.phone}
-              placeholder="+91 00000 00000"
-            />
-            <Form.Control.Feedback type="invalid">{errors.phone}</Form.Control.Feedback>
+            <div className="cf-input">
+              <i className="bi bi-telephone" />
+              <Form.Control
+                type="tel"
+                name="phone"
+                value={values.phone}
+                onChange={handleChange}
+                isInvalid={!!errors.phone}
+                placeholder="+91 00000 00000"
+              />
+              <Form.Control.Feedback type="invalid">{errors.phone}</Form.Control.Feedback>
+            </div>
           </Form.Group>
         </Col>
 
         <Col md={6}>
-          <Form.Group controlId="cf-solution">
+          <Form.Group controlId="cf-solution" className="cf-field reveal from-right d2">
             <Form.Label>Tell Us How We Can Help Your Organization</Form.Label>
-            <Form.Select name="solution" value={values.solution} onChange={handleChange}>
-              <option value="">Solution Type</option>
-              {SOLUTION_TYPES.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </Form.Select>
+            <div className="cf-input">
+              <i className="bi bi-shield-check" />
+              <Form.Select name="solution" value={values.solution} onChange={handleChange}>
+                <option value="">Solution Type</option>
+                {SOLUTION_TYPES.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </Form.Select>
+            </div>
           </Form.Group>
         </Col>
 
         <Col md={6}>
-          <Form.Group controlId="cf-urgency">
+          <Form.Group controlId="cf-urgency" className="cf-field reveal from-left d3">
             <Form.Label>Urgency Level</Form.Label>
-            <Form.Select name="urgency" value={values.urgency} onChange={handleChange}>
-              <option value="">Select urgency</option>
-              {URGENCY_LEVELS.map((u) => (
-                <option key={u} value={u}>
-                  {u}
-                </option>
-              ))}
-            </Form.Select>
+            <div className="cf-input">
+              <i className="bi bi-exclamation-triangle" />
+              <Form.Select name="urgency" value={values.urgency} onChange={handleChange}>
+                <option value="">Select urgency</option>
+                {URGENCY_LEVELS.map((u) => (
+                  <option key={u} value={u}>
+                    {u}
+                  </option>
+                ))}
+              </Form.Select>
+            </div>
           </Form.Group>
         </Col>
 
         <Col md={6}>
-          <Form.Group controlId="cf-systems">
+          <Form.Group controlId="cf-systems" className="cf-field reveal from-right d3">
             <Form.Label>Your System Count?</Form.Label>
-            <Form.Control
-              type="number"
-              min="0"
-              name="systems"
-              value={values.systems}
-              onChange={handleChange}
-              placeholder="e.g. 120"
-            />
+            <div className="cf-input">
+              <i className="bi bi-pc-display" />
+              <Form.Control
+                type="number"
+                min="0"
+                name="systems"
+                value={values.systems}
+                onChange={handleChange}
+                placeholder="e.g. 120"
+              />
+            </div>
           </Form.Group>
         </Col>
 
         <Col md={6}>
-          <Form.Group controlId="cf-lastaudit">
+          <Form.Group controlId="cf-lastaudit" className="cf-field reveal from-left d4">
             <Form.Label>Last Audit Date</Form.Label>
-            <Form.Control
-              type="date"
-              name="lastAudit"
-              value={values.lastAudit}
-              onChange={handleChange}
-            />
+            <div className="cf-input">
+              <i className="bi bi-calendar-event" />
+              <Form.Control
+                type="date"
+                name="lastAudit"
+                value={values.lastAudit}
+                onChange={handleChange}
+              />
+            </div>
           </Form.Group>
         </Col>
 
-        <Col xs={12} className="d-flex justify-content-end">
+        <Col xs={12} className="reveal d4">
           <Button type="submit" className="btn-cyber submit-case">
-            Submit Your Case
+            <span>Submit Your Case</span>
+            <i className="bi bi-arrow-right" />
           </Button>
         </Col>
       </Row>
