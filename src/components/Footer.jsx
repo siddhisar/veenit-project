@@ -36,9 +36,9 @@ export default function Footer() {
         <Row className="gy-5">
           <Col lg={3} md={6} className="reveal d1">
             <div className="footer-brand">
-              <img src={logo} alt="DTF-ISMS — Digital Task Force" className="footer-logo" />
+              <img src={logo} alt="DTF-ISMS — Cyber Crime Defence" className="footer-logo" />
               <h4 className="footer-brand-name">DTF-ISMS</h4>
-              <p className="footer-brand-sub">Digital Task Force</p>
+              <p className="footer-brand-sub">Cyber Crime Defence</p>
               <div className="footer-socials">
                 {SOCIALS.map((s) => (
                   <a key={s.label} href={s.href} aria-label={s.label} className="footer-social">
@@ -104,7 +104,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <Container className="footer-bottom-inner">
           <p className="footer-copy">
-            © 2026 <span>Digital Task Force - ISMS</span>
+            © 2026 <span>Cyber Crime Defence - ISMS</span>
           </p>
           <div className="footer-legal">
             <a href="#home">Privacy Policy</a>

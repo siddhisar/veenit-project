@@ -30,10 +30,10 @@ export default function Header() {
     >
       <Container className="header-inner">
         <Navbar.Brand as={Link} to="/" className="brand" onClick={close}>
-          <img src={logo} alt="DTF-ISMS — Digital Task Force" className="brand-logo" />
+          <img src={logo} alt="DTF-ISMS — Cyber Crime Defence" className="brand-logo" />
           <span className="brand-text">
             <span className="brand-name">DTF-ISMS</span>
-            <span className="brand-sub">DIGITAL TASK FORCE</span>
+            <span className="brand-sub">CYBER CRIME DEFENCE</span>
           </span>
         </Navbar.Brand>
 
@@ -49,7 +49,7 @@ export default function Header() {
                 Our Team
               </NavDropdown.Item>
               <NavDropdown.Item href="/#isms" onClick={close}>
-                Digital Task Force
+                Cyber Crime Defence
               </NavDropdown.Item>
               <NavDropdown.Item href="/#contact" onClick={close}>
                 Cyber Crime Helpline
