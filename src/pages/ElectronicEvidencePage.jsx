@@ -4,6 +4,7 @@ import Header from '../components/Header.jsx'
 import Footer from '../components/Footer.jsx'
 import BackToTop from '../components/BackToTop.jsx'
 import CyberBackground from '../components/CyberBackground.jsx'
+import EvidenceVisual from '../components/EvidenceVisual.jsx'
 import useScrollReveal from '../hooks/useScrollReveal.js'
 
 const EVIDENCE_TYPES = [
@@ -236,7 +237,7 @@ export default function ElectronicEvidencePage() {
           </Container>
         </section>
 
-        {/* 6. SUPPORTING TEAMS */}
+        {/* 6. SUPPORTING TEAMS — two-column: visual + narrative */}
         <section className="ee-support section">
           <svg className="ee-support-net" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
             <g stroke="rgba(51,189,230,0.28)" strokeWidth="1" fill="none">
@@ -255,22 +256,33 @@ export default function ElectronicEvidencePage() {
             </g>
           </svg>
           <Container className="position-relative">
-            <p className="eyebrow on-dark reveal">Nationwide</p>
-            <h2 className="section-title on-dark reveal d1">Supporting Legal &amp; Investigative Teams Across India</h2>
-            <div className="ee-support-text">
-              <p className="reveal d2">
-                Digital evidence can originate from phones, computers, cloud services, email
-                accounts, messaging platforms, CCTV systems, and other digital sources. We help
-                clients organize, preserve, examine, and document such material so that its
-                technical characteristics and handling history can be clearly presented to the
-                relevant legal or investigative authority.
-              </p>
-              <p className="reveal d3">
-                Whether the matter involves cybercrime, financial fraud, digital disputes, corporate
-                investigations, or other proceedings involving electronic records, our objective is
-                to provide technically sound evidence handling and clear forensic documentation.
-              </p>
-            </div>
+            <Row className="align-items-center g-5">
+              <Col lg={5} className="reveal from-left">
+                <EvidenceVisual />
+              </Col>
+              <Col lg={7}>
+                <p className="ee-support-eyebrow reveal">
+                  <i className="bi bi-geo-alt" /> Nationwide
+                </p>
+                <h2 className="ee-support-title reveal d1">
+                  Supporting Legal &amp; Investigative Teams Across India
+                </h2>
+                <span className="ee-support-bar reveal d1" aria-hidden="true" />
+                <p className="ee-support-para reveal d2">
+                  Digital evidence can originate from phones, computers, cloud services, email
+                  accounts, messaging platforms, and CCTV systems. We help clients
+                  <span className="ee-hl"> organize, preserve, examine, and document</span> such
+                  material so that its technical characteristics and handling history can be
+                  clearly presented to the <strong>relevant legal or investigative authority</strong>.
+                </p>
+                <p className="ee-support-para reveal d3">
+                  Whether the matter involves <strong>cybercrime, financial fraud, digital disputes,</strong>
+                  {' '}or corporate investigations, our objective is to provide
+                  <span className="ee-hl"> technically sound evidence handling</span> and
+                  <span className="ee-hl"> clear forensic documentation</span>.
+                </p>
+              </Col>
+            </Row>
           </Container>
         </section>
 
