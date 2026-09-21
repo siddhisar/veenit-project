@@ -5,6 +5,7 @@ import Footer from '../components/Footer.jsx'
 import BackToTop from '../components/BackToTop.jsx'
 import CyberBackground from '../components/CyberBackground.jsx'
 import EvidenceVisual from '../components/EvidenceVisual.jsx'
+import EvidenceHeroVisual from '../components/EvidenceHeroVisual.jsx'
 import useScrollReveal from '../hooks/useScrollReveal.js'
 
 const EVIDENCE_TYPES = [
@@ -104,22 +105,29 @@ export default function ElectronicEvidencePage() {
             <div className="svc-hero-glow" />
           </div>
           <Container className="ee-hero-inner">
-            <span className="svc-eyebrow reveal from-top">
-              <i className="bi bi-file-earmark-check" /> Digital Forensics
-            </span>
-            <h1 className="ee-hero-title reveal d1">Electronic Evidence &amp; Section 63 Certification</h1>
-            <p className="ee-hero-p reveal d2">
-              Digital evidence can play a decisive role in legal proceedings, investigations, and
-              dispute resolution. However, maintaining the integrity, authenticity, provenance, and
-              proper documentation of electronic records is essential when such material is intended
-              for use as evidence.
-            </p>
-            <p className="ee-hero-p reveal d3">
-              Our Electronic Evidence and Section 63 Certification services are designed to help
-              legal professionals, organizations, investigators, and individuals properly document
-              and preserve digital records in accordance with applicable Indian evidentiary
-              requirements.
-            </p>
+            <Row className="align-items-center g-5 ee-hero-row">
+              <Col lg={6} className="ee-hero-visual-col reveal from-left">
+                <EvidenceHeroVisual />
+              </Col>
+              <Col lg={6} className="ee-hero-copy">
+                <span className="svc-eyebrow reveal from-top">
+                  <i className="bi bi-file-earmark-check" /> Digital Forensics
+                </span>
+                <h1 className="ee-hero-title reveal d1">Electronic Evidence &amp; Section 63 Certification</h1>
+                <p className="ee-hero-p reveal d2">
+                  Digital evidence can play a decisive role in legal proceedings, investigations, and
+                  dispute resolution. However, maintaining the integrity, authenticity, provenance, and
+                  proper documentation of electronic records is essential when such material is intended
+                  for use as evidence.
+                </p>
+                <p className="ee-hero-p reveal d3">
+                  Our Electronic Evidence and Section 63 Certification services are designed to help
+                  legal professionals, organizations, investigators, and individuals properly document
+                  and preserve digital records in accordance with applicable Indian evidentiary
+                  requirements.
+                </p>
+              </Col>
+            </Row>
             <div className="ee-evidence-panel">
               <p className="ee-lead-text reveal d3">Our services cover a wide range of digital evidence, including:</p>
               <span className="ee-lead-bar reveal d3" aria-hidden="true" />
