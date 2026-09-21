@@ -61,14 +61,8 @@ export default function Header() {
             <Nav.Link href="/#services" onClick={close}>
               Services
             </Nav.Link>
-            <Nav.Link href="/#isms" onClick={close}>
-              DTF DPO 360
-            </Nav.Link>
             <Nav.Link href="/#framework" onClick={close}>
               Grow With Us
-            </Nav.Link>
-            <Nav.Link href="/#clients" onClick={close}>
-              Blogs
             </Nav.Link>
             <Nav.Link href="/#contact" onClick={close}>
               Contact Us
