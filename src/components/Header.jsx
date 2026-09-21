@@ -9,28 +9,27 @@ const ABOUT = [
   { icon: 'bi-headset', title: 'Cyber Crime Helpline', href: '/#get-in-touch' }
 ]
 
-// Service links point to the Services section for now; swap `href` for a
-// dedicated route/page per service when those are built.
+// Each service routes to its own dedicated page.
 const SERVICES = [
   {
     icon: 'bi-file-earmark-check',
     title: 'Electronic Evidence & Section 63 Certification',
-    href: '/#services'
+    to: '/services/electronic-evidence'
   },
   {
     icon: 'bi-phone',
     title: 'Mobile Forensics',
-    href: '/#services'
+    to: '/services/mobile-forensics'
   },
   {
     icon: 'bi-bug',
     title: 'Vulnerability Assessment & Penetration Testing (VAPT)',
-    href: '/#services'
+    to: '/services/vapt'
   },
   {
     icon: 'bi-bank',
     title: 'Cyber Law Advocacy',
-    href: '/#services'
+    to: '/services/cyber-law-advocacy'
   }
 ]
 
@@ -76,24 +75,42 @@ export default function Header() {
       <div className="services-panel" role="menu">
         <div className="services-panel-inner">
           <div className="services-grid">
-            {items.map((it, i) => (
-              <a
-                key={it.title}
-                href={it.href}
-                className="service-item"
-                role="menuitem"
-                style={{ '--i': i }}
-                onClick={close}
-              >
-                <span className="service-item-icon">
-                  <i className={`bi ${it.icon}`} />
-                </span>
-                <span className="service-item-body">
-                  <span className="service-item-title">{it.title}</span>
-                </span>
-                <i className="bi bi-arrow-right service-item-arrow" />
-              </a>
-            ))}
+            {items.map((it, i) => {
+              const inner = (
+                <>
+                  <span className="service-item-icon">
+                    <i className={`bi ${it.icon}`} />
+                  </span>
+                  <span className="service-item-body">
+                    <span className="service-item-title">{it.title}</span>
+                  </span>
+                  <i className="bi bi-arrow-right service-item-arrow" />
+                </>
+              )
+              return it.to ? (
+                <Link
+                  key={it.title}
+                  to={it.to}
+                  className="service-item"
+                  role="menuitem"
+                  style={{ '--i': i }}
+                  onClick={close}
+                >
+                  {inner}
+                </Link>
+              ) : (
+                <a
+                  key={it.title}
+                  href={it.href}
+                  className="service-item"
+                  role="menuitem"
+                  style={{ '--i': i }}
+                  onClick={close}
+                >
+                  {inner}
+                </a>
+              )
+            })}
           </div>
         </div>
       </div>

@@ -2,12 +2,29 @@ import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Home from './pages/Home.jsx'
 import RequestProposal from './pages/RequestProposal.jsx'
+import ServicePage from './pages/ServicePage.jsx'
 
-// Ensure each route change starts at the top (unless it's an in-page hash link)
-function ScrollToTop() {
+// Manage scroll on navigation: jump to top on a route change, and smooth-scroll
+// to an in-page section when the URL carries a hash (works across routes too).
+function ScrollManager() {
   const { pathname, hash } = useLocation()
   useEffect(() => {
-    if (hash) return
+    if (hash) {
+      const scrollToHash = () => {
+        const el = document.querySelector(hash)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          return true
+        }
+        return false
+      }
+      // The target may not be mounted yet right after a route change — retry briefly.
+      if (!scrollToHash()) {
+        const t = setTimeout(scrollToHash, 300)
+        return () => clearTimeout(t)
+      }
+      return undefined
+    }
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [pathname, hash])
   return null
@@ -16,9 +33,10 @@ function ScrollToTop() {
 function App() {
   return (
     <>
-      <ScrollToTop />
+      <ScrollManager />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/services/:slug" element={<ServicePage />} />
         <Route path="/request-proposal" element={<RequestProposal />} />
         <Route path="*" element={<Home />} />
       </Routes>
