@@ -6,7 +6,7 @@ import logo from '../assets/images/logo.svg'
 const ABOUT = [
   { icon: 'bi-people', title: 'Our Team', href: '/#framework' },
   { icon: 'bi-shield-lock', title: 'Cyber Crime Defence', href: '/#isms' },
-  { icon: 'bi-headset', title: 'Cyber Crime Helpline', href: '/#contact' }
+  { icon: 'bi-headset', title: 'Cyber Crime Helpline', href: '/#get-in-touch' }
 ]
 
 // Service links point to the Services section for now; swap `href` for a
@@ -135,12 +135,12 @@ export default function Header() {
               Contact Us
             </Nav.Link>
             <Button
-              as={Link}
-              to="/request-proposal"
+              as="a"
+              href="/#get-in-touch"
               className="btn-cyber rfp-btn ms-xl-3"
               onClick={close}
             >
-              Request For Proposal
+              Request for Enquiry
             </Button>
           </Nav>
         </Navbar.Collapse>

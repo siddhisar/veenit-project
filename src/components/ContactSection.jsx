@@ -3,7 +3,7 @@ import ContactForm from './ContactForm.jsx'
 
 export default function ContactSection() {
   return (
-    <section className="contact section" id="contact">
+    <section className="contact section" id="get-in-touch">
       <div className="contact-pattern" aria-hidden="true" />
       <Container className="position-relative">
         <p className="eyebrow reveal from-top">Get In Touch</p>

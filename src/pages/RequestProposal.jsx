@@ -38,7 +38,7 @@ export default function RequestProposal() {
         <section className="rp-form-section section" id="request-form">
           <div className="contact-pattern" aria-hidden="true" />
           <Container className="position-relative">
-            <p className="eyebrow reveal">Request For Proposal</p>
+            <p className="eyebrow reveal">Request for Enquiry</p>
             <h2 className="section-title reveal">Submit Your Case</h2>
             <p className="rp-form-sub reveal d1">
               Share a few details and our experts will respond with a tailored proposal.
