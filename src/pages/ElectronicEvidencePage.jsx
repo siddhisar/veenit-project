@@ -1,7 +1,5 @@
-import { Link } from 'react-router-dom'
 import { Container, Row, Col } from 'react-bootstrap'
 import Header from '../components/Header.jsx'
-import Footer from '../components/Footer.jsx'
 import BackToTop from '../components/BackToTop.jsx'
 import CyberBackground from '../components/CyberBackground.jsx'
 import EvidenceVisual from '../components/EvidenceVisual.jsx'
@@ -293,19 +291,7 @@ export default function ElectronicEvidencePage() {
             </Row>
           </Container>
         </section>
-
-        {/* 7. FINAL CTA */}
-        <section className="svc-cta section-sm">
-          <Container className="svc-cta-inner reveal">
-            <h2>Need Assistance With Digital Evidence?</h2>
-            <p>Talk to our forensic team about preserving, examining, and certifying your electronic records.</p>
-            <Link to="/#get-in-touch" className="btn-cyber">
-              Request for Enquiry <i className="bi bi-arrow-right" />
-            </Link>
-          </Container>
-        </section>
       </main>
-      <Footer />
       <BackToTop />
     </>
   )
