@@ -1810,3 +1810,174 @@
   .service-item { transition: none; }
   .services-mega.is-open .service-item { transition-delay: 0s; }
 }
+
+/* ============================================================
+   Cyber defence monitoring visual (ISMS section left side)
+   ============================================================ */
+.cyber-visual {
+  position: relative;
+  height: 100%;
+  min-height: 560px;
+  border-radius: 20px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #0a1230 0%, #060b20 100%);
+  border: 1px solid rgba(51, 189, 230, 0.18);
+  box-shadow: 0 30px 60px rgba(10, 20, 50, 0.25);
+}
+.cv-bg { position: absolute; inset: 0; z-index: 0; }
+.cv-bg .cyber-canvas { opacity: 0.4; }
+.cv-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(51, 189, 230, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 189, 230, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse at center, #000 30%, transparent 82%);
+  -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 82%);
+  animation: cvGridDrift 30s linear infinite;
+}
+@keyframes cvGridDrift {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 40px 40px, 40px 40px; }
+}
+.cv-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(45% 40% at 50% 46%, rgba(51, 189, 230, 0.22), transparent 60%);
+}
+.cv-stage {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cv-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: 1px dashed rgba(51, 189, 230, 0.28);
+  transform: translate(-50%, -50%);
+}
+.cv-ring-1 { width: 360px; height: 360px; animation: cvSpin 42s linear infinite; }
+.cv-ring-2 {
+  width: 264px;
+  height: 264px;
+  border-color: rgba(51, 189, 230, 0.22);
+  animation: cvSpinRev 34s linear infinite;
+}
+.cv-ring-3 {
+  width: 172px;
+  height: 172px;
+  border-style: solid;
+  border-color: rgba(51, 189, 230, 0.16);
+  animation: cvPulseRing 4s ease-in-out infinite;
+}
+@keyframes cvSpin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+@keyframes cvSpinRev { to { transform: translate(-50%, -50%) rotate(-360deg); } }
+@keyframes cvPulseRing {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
+  50% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+}
+.cv-radar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(from 0deg, rgba(51, 189, 230, 0.28), rgba(51, 189, 230, 0) 70deg);
+  mask-image: radial-gradient(circle, #000 60%, transparent 71%);
+  -webkit-mask-image: radial-gradient(circle, #000 60%, transparent 71%);
+  animation: cvSpin 6s linear infinite;
+}
+.cv-orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  animation: cvOrbit 30s linear infinite;
+}
+@keyframes cvOrbit { to { transform: rotate(360deg); } }
+.cv-node {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 38px;
+  height: 38px;
+  margin: -19px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(160deg, #0d1836, #0a1430);
+  border: 1px solid rgba(51, 189, 230, 0.4);
+  box-shadow: 0 0 14px rgba(51, 189, 230, 0.25);
+  transform: rotate(var(--a)) translateY(-150px) rotate(calc(-1 * var(--a)));
+}
+.cv-node i {
+  color: var(--brand-cyan);
+  font-size: 1rem;
+  display: block;
+  animation: cvSpinRevSpin 30s linear infinite;
+}
+@keyframes cvSpinRevSpin { to { transform: rotate(-360deg); } }
+.cv-core { position: relative; z-index: 3; animation: cvFloat 6s ease-in-out infinite; }
+@keyframes cvFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.cv-shield { width: 132px; height: 154px; filter: drop-shadow(0 0 26px rgba(51, 189, 230, 0.5)); }
+.cv-check { stroke-dasharray: 90; stroke-dashoffset: 90; animation: cvDraw 4s ease-in-out infinite; }
+@keyframes cvDraw {
+  0% { stroke-dashoffset: 90; }
+  45%, 65% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: 0; }
+}
+.cv-status {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border-radius: 999px;
+  background: rgba(51, 189, 230, 0.08);
+  border: 1px solid rgba(51, 189, 230, 0.28);
+  color: #bfe6f5;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+}
+.cv-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #33bde6;
+  box-shadow: 0 0 8px #33bde6;
+  animation: cvBlink 1.6s ease-in-out infinite;
+}
+@keyframes cvBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+@media (max-width: 575.98px) {
+  .cyber-visual { min-height: 440px; }
+  .cv-ring-1, .cv-radar { width: 300px; height: 300px; }
+  .cv-ring-2 { width: 220px; height: 220px; }
+  .cv-node { transform: rotate(var(--a)) translateY(-126px) rotate(calc(-1 * var(--a))); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cv-grid, .cv-ring, .cv-radar, .cv-orbit, .cv-node i,
+  .cv-core, .cv-check, .cv-status-dot { animation: none; }
+  .cv-check { stroke-dashoffset: 0; }
+}

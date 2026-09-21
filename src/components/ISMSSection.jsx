@@ -1,5 +1,5 @@
 import { Container, Row, Col } from 'react-bootstrap'
-import ismsVisual from '../assets/images/isms-visual.svg'
+import CyberShieldVisual from './CyberShieldVisual.jsx'
 
 const APPROACH = [
   {
@@ -38,11 +38,9 @@ export default function ISMSSection() {
   return (
     <section className="isms section" id="isms">
       <Container>
-        <Row className="align-items-start g-5">
+        <Row className="align-items-stretch g-5">
           <Col lg={6}>
-            <div className="isms-visual reveal from-left">
-              <img src={ismsVisual} alt="Cyber Crime Defence security illustration" />
-            </div>
+            <CyberShieldVisual />
           </Col>
           <Col lg={6}>
             <h2 className="approach-statement reveal from-right">
