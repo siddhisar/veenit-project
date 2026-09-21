@@ -9,7 +9,7 @@ export default function ContactSection() {
         <p className="eyebrow reveal from-top">Get In Touch</p>
         <h2 className="contact-title contact-why reveal">Why Contact Cyber Crime Defence?</h2>
         <p className="contact-lead reveal d1">
-          When you engage Cyber Crime Defence PVT LTD, you gain more than a cybersecurity service
+          When you engage Cyber Crime Defence, you gain more than a cybersecurity service
           provider &mdash; you gain a trusted security partner backed by experienced professionals
           and structured security practices.
         </p>

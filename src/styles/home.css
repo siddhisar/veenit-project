@@ -2015,3 +2015,11 @@
 @media (prefers-reduced-motion: reduce) {
   .contact-why::after { transition: none; transform: translateX(-50%) scaleX(1); }
 }
+
+/* Registered-trademark suffix on the brand name */
+.brand-reg {
+  font-size: 0.45em;
+  font-weight: 600;
+  margin-left: 2px;
+  opacity: 0.8;
+}

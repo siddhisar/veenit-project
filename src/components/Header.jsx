@@ -113,7 +113,7 @@ export default function Header() {
         <Navbar.Brand as={Link} to="/" className="brand" onClick={close}>
           <img src={logo} alt="Cyber Crime Defence" className="brand-logo" />
           <span className="brand-text">
-            <span className="brand-name">CYBER CRIME DEFENCE</span>
+            <span className="brand-name">CYBER CRIME DEFENCE<sup className="brand-reg">®</sup></span>
           </span>
         </Navbar.Brand>
 

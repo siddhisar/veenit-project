@@ -37,8 +37,7 @@ export default function Footer() {
           <Col lg={3} md={6} className="reveal d1">
             <div className="footer-brand">
               <img src={logo} alt="Cyber Crime Defence" className="footer-logo" />
-              <h4 className="footer-brand-name">Cyber Crime Defence</h4>
-              <p className="footer-brand-sub">PVT LTD</p>
+              <h4 className="footer-brand-name">Cyber Crime Defence<sup className="brand-reg">®</sup></h4>
               <div className="footer-socials">
                 {SOCIALS.map((s) => (
                   <a key={s.label} href={s.href} aria-label={s.label} className="footer-social">
@@ -104,7 +103,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <Container className="footer-bottom-inner">
           <p className="footer-copy">
-            © 2026 <span>Cyber Crime Defence PVT LTD</span>
+            © 2026 <span>Cyber Crime Defence</span>
           </p>
           <div className="footer-legal">
             <a href="#home">Privacy Policy</a>

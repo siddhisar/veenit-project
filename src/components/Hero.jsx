@@ -182,7 +182,7 @@ export default function Hero() {
         </span>
         <p className="hero-eyebrow reveal d1">Strengthening Security Through Compliance</p>
         <h1 className="hero-title reveal d2">
-          Cyber Crime Defence <span className="hero-title-accent">PVT LTD</span>
+          Cyber Crime Defence<sup className="brand-reg">®</sup>
         </h1>
         <p className="hero-desc reveal d3">
           Delivering specialized cybersecurity and digital forensic solutions to protect
