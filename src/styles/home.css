@@ -302,6 +302,17 @@
   z-index: 3;
   text-align: center;
   padding-top: var(--header-h);
+  transform: translateY(-3vh);
+}
+/* soft dark scrim behind the copy so it stays crisp over the animated scene */
+.hero-content::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -8% -12%;
+  background: radial-gradient(58% 62% at 50% 52%, rgba(5, 8, 22, 0.6), transparent 76%);
+  filter: blur(12px);
+  pointer-events: none;
 }
 .hero-badge {
   display: inline-flex;
@@ -373,41 +384,102 @@
   margin: 0 auto 30px;
   font-size: clamp(1rem, 1.5vw, 1.16rem);
   line-height: 1.75;
+  text-shadow: 0 2px 16px rgba(4, 8, 20, 0.85);
 }
 .hero-desc strong {
   color: var(--brand-cyan);
   font-weight: 600;
 }
-.hero-standards {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 4px;
+/* ---- Cyber analyst command-center scene ---- */
+.hero-scene {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: min(820px, 90vw);
+  z-index: 1;
+  opacity: 0.72;
+  pointer-events: none;
+  filter: drop-shadow(0 0 26px rgba(51, 189, 230, 0.28));
+  animation: sceneFloat 10s ease-in-out infinite;
 }
-.hero-standard {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 18px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.035);
-  border: 1px solid rgba(51, 189, 230, 0.22);
-  color: #d6e2f2;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.2px;
-  backdrop-filter: blur(4px);
-  transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+@keyframes sceneFloat {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
 }
-.hero-standard i {
-  color: var(--brand-cyan);
-  font-size: 1rem;
+.scene-glow {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sceneGlow 4.5s ease-in-out infinite;
 }
-.hero-standard:hover {
-  border-color: rgba(51, 189, 230, 0.55);
-  background: rgba(51, 189, 230, 0.07);
-  transform: translateY(-3px);
+@keyframes sceneGlow {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.95; }
+}
+.scene-scan { animation: sceneScan 3.6s linear infinite; }
+@keyframes sceneScan {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(106px); }
+}
+.mon-line {
+  stroke-dasharray: 520;
+  stroke-dashoffset: 520;
+  filter: drop-shadow(0 0 3px rgba(51, 189, 230, 0.8));
+  animation: monDraw 5s ease-in-out infinite alternate;
+}
+@keyframes monDraw { to { stroke-dashoffset: 0; } }
+.scene-cursor { animation: blinkCursor 1.2s steps(1) infinite; }
+@keyframes blinkCursor { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0.1; } }
+.scene-code rect { animation: codeFlicker 4s ease-in-out infinite; }
+.scene-code rect:nth-child(2) { animation-delay: 0.5s; }
+.scene-code rect:nth-child(3) { animation-delay: 1s; }
+.scene-code rect:nth-child(4) { animation-delay: 1.5s; }
+.scene-code rect:nth-child(5) { animation-delay: 2s; }
+.scene-code rect:nth-child(6) { animation-delay: 2.5s; }
+.scene-code rect:nth-child(7) { animation-delay: 3s; }
+@keyframes codeFlicker { 0%, 100% { opacity: 0.4; } 50% { opacity: 0.85; } }
+.scene-bars rect {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: barsPulse 3.4s ease-in-out infinite;
+}
+.scene-bars rect:nth-child(2) { animation-delay: 0.4s; }
+.scene-bars rect:nth-child(3) { animation-delay: 0.8s; }
+.scene-bars rect:nth-child(4) { animation-delay: 1.2s; }
+@keyframes barsPulse { 0%, 100% { transform: scaleY(0.72); opacity: 0.7; } 50% { transform: scaleY(1); opacity: 1; } }
+.scene-radar {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: radarSweep 4s linear infinite;
+}
+@keyframes radarSweep { to { transform: rotate(360deg); } }
+
+/* ---- drifting data particles ---- */
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-particles span {
+  position: absolute;
+  bottom: -12px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(51, 189, 230, 0.8);
+  box-shadow: 0 0 8px rgba(51, 189, 230, 0.9);
+  opacity: 0;
+  animation-name: particleRise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes particleRise {
+  0% { transform: translateY(0) scale(1); opacity: 0; }
+  12% { opacity: 0.9; }
+  85% { opacity: 0.5; }
+  100% { transform: translateY(-92vh) scale(0.35); opacity: 0; }
 }
 .hero-actions {
   display: flex;
@@ -426,7 +498,18 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-scan,
-  .hero-node-pulse { animation: none; }
+  .hero-node-pulse,
+  .hero-scene,
+  .scene-glow,
+  .scene-scan,
+  .mon-line,
+  .scene-cursor,
+  .scene-code rect,
+  .scene-bars rect,
+  .scene-radar,
+  .hero-particles span { animation: none; }
+  .mon-line { stroke-dashoffset: 0; }
+  .hero-particles { display: none; }
 }
 
 /* ---------------- Feature strip ---------------- */
