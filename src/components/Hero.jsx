@@ -1,5 +1,4 @@
-import { Container, Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Container } from 'react-bootstrap'
 import CyberBackground from './CyberBackground.jsx'
 import heroVideo from '../assets/videos/cyber-hero.mp4'
 import heroPoster from '../assets/videos/cyber-hero-poster.jpg'
@@ -33,25 +32,6 @@ export default function Hero() {
           delivering <strong>End-to-End Cyber Audits, VAPT, and Compliance Assurance</strong> for
           Enterprises, Startups.
         </p>
-        <div className="hero-actions reveal d4">
-          <Button as={Link} to="/request-proposal" className="btn-cyber">
-            Request For Proposal
-          </Button>
-          <Button className="btn-ghost" href="#services">
-            Explore Services
-          </Button>
-        </div>
-
-        <div className="hero-flow" aria-hidden="true">
-          <span className="hero-chip reveal zoom-in d1">Data</span>
-          <span className="hero-chip reveal zoom-in d2">Device</span>
-          <span className="hero-chip reveal zoom-in d3">Email</span>
-          <span className="hero-chip reveal zoom-in d4">Network</span>
-          <i className="bi bi-arrow-right hero-flow-arrow reveal d5" />
-          <span className="hero-chip strong reveal zoom-in d5">Investigation</span>
-          <i className="bi bi-arrow-right hero-flow-arrow reveal d6" />
-          <span className="hero-chip strong reveal zoom-in d6">Report</span>
-        </div>
       </Container>
 
       <div className="hero-fade" />
