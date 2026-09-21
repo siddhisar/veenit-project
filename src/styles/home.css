@@ -371,6 +371,11 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  /* legal suffix: ~45% smaller and lighter than the main company name */
+  font-size: 0.55em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  opacity: 0.9;
 }
 .hero-tagline {
   color: #ece6d6;
