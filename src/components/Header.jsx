@@ -118,9 +118,6 @@ export default function Header() {
 
               <div className="services-panel" role="menu">
                 <div className="services-panel-inner">
-                  <span className="services-panel-eyebrow">
-                    <i className="bi bi-grid-3x3-gap" /> Our Services
-                  </span>
                   <div className="services-grid">
                     {SERVICES.map((s, i) => (
                       <a
