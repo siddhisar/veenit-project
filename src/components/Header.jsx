@@ -33,7 +33,10 @@ const SERVICES = [
   {
     icon: 'bi-bank',
     title: 'Cyber Law Advocacy',
-    to: '/services/cyber-law-advocacy'
+    to: '/services/cyber-law-advocacy',
+    children: [
+      { icon: 'bi-people', title: 'Divorce & Family Disputes', to: '/services/divorce-family-disputes' }
+    ]
   }
 ]
 

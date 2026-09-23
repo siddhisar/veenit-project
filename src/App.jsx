@@ -8,6 +8,7 @@ import MobileForensicsPage from './pages/MobileForensicsPage.jsx'
 import ServicePlaceholder from './pages/ServicePlaceholder.jsx'
 import WebPenTestingPage from './pages/WebPenTestingPage.jsx'
 import MobileAppSecPage from './pages/MobileAppSecPage.jsx'
+import DivorceFamilyPage from './pages/DivorceFamilyPage.jsx'
 
 // Manage scroll on navigation: jump to top on a route change, and smooth-scroll
 // to an in-page section when the URL carries a hash (works across routes too).
@@ -45,6 +46,7 @@ function App() {
         <Route path="/services/mobile-forensics" element={<MobileForensicsPage />} />
         <Route path="/services/web-penetration-testing" element={<WebPenTestingPage />} />
         <Route path="/services/mobile-application-security-testing" element={<MobileAppSecPage />} />
+        <Route path="/services/divorce-family-disputes" element={<DivorceFamilyPage />} />
         <Route path="/services/:slug" element={<ServicePage />} />
         <Route path="/request-proposal" element={<RequestProposal />} />
         <Route path="*" element={<Home />} />
