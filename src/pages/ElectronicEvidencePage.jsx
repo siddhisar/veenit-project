@@ -80,14 +80,6 @@ const APPROACH = [
   { icon: 'bi-person-badge', label: 'Expert assistance and testimony, where legally and professionally appropriate' }
 ]
 
-const WHY = [
-  { icon: 'bi-fingerprint', title: 'Digital Forensics Expertise', text: 'Structured handling and examination of electronic evidence.' },
-  { icon: 'bi-hash', title: 'Evidence Integrity', text: 'Hash-based verification and documented evidence handling procedures.' },
-  { icon: 'bi-journal-text', title: 'Legal-Focused Documentation', text: 'Reports designed to clearly communicate technical findings to legal and investigative stakeholders.' },
-  { icon: 'bi-tools', title: 'Technical Capability', text: 'Use of appropriate forensic tools and examination methodologies.' },
-  { icon: 'bi-diagram-3', title: 'End-to-End Assistance', text: 'Support ranging from evidence acquisition and analysis to reporting and, where applicable, expert testimony.' }
-]
-
 export default function ElectronicEvidencePage() {
   useScrollReveal()
 
@@ -221,29 +213,7 @@ export default function ElectronicEvidencePage() {
           </Container>
         </section>
 
-        {/* 5. WHY WORK WITH US */}
-        <section className="ee-whyus section">
-          <div className="ee-whyus-bg" aria-hidden="true" />
-          <Container className="position-relative">
-            <p className="eyebrow on-dark reveal">Our Value</p>
-            <h2 className="section-title on-dark reveal d1">Why Work With Us?</h2>
-            <Row className="g-4 justify-content-center mt-2">
-              {WHY.map((w, i) => (
-                <Col xs={12} md={6} key={w.title}>
-                  <div className="ee-why-card reveal zoom-in" style={{ transitionDelay: `${0.05 + i * 0.06}s` }}>
-                    <span className="ee-why-icon"><i className={`bi ${w.icon}`} /></span>
-                    <div>
-                      <h3 className="ee-why-title">{w.title}</h3>
-                      <p className="ee-why-text">{w.text}</p>
-                    </div>
-                  </div>
-                </Col>
-              ))}
-            </Row>
-          </Container>
-        </section>
-
-        {/* 6. SUPPORTING TEAMS — two-column: visual + narrative */}
+        {/* SUPPORTING TEAMS — two-column: visual + narrative */}
         <section className="ee-support section">
           <svg className="ee-support-net" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
             <g stroke="rgba(51,189,230,0.28)" strokeWidth="1" fill="none">
