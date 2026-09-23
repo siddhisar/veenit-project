@@ -3161,7 +3161,59 @@
 @media (max-width: 520px) { .mf-step-items { grid-template-columns: 1fr; } }
 
 /* artifact cards (section 4) */
-.mf-artifacts { background: linear-gradient(180deg, #eef3fb 0%, #f4f7fb 100%); }
+/* dark forensic-analysis treatment for the evidence explorer section */
+.mf-artifacts {
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(80% 60% at 50% 0%, #0d1548 0%, #0a0e30 45%, #070a24 100%);
+}
+.mf-artifacts .ee-approach-lead { color: #b9c6df; }
+.mf-art-bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.mf-art-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(51, 189, 230, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(51, 189, 230, 0.05) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 82%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 82%);
+}
+.mf-art-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(38% 40% at 50% 34%, rgba(51, 189, 230, 0.16), transparent 66%);
+  animation: mfArtGlow 12s ease-in-out infinite;
+}
+@keyframes mfArtGlow {
+  0%, 100% { opacity: 0.7; transform: translateX(-4%); }
+  50% { opacity: 1; transform: translateX(4%); }
+}
+.mf-art-net { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.55; }
+.mf-art-dot { transform-box: fill-box; transform-origin: center; animation: mfArtDot 4s ease-in-out infinite; }
+.mf-art-dot:nth-of-type(2) { animation-delay: 1.3s; }
+.mf-art-dot:nth-of-type(3) { animation-delay: 2.4s; }
+@keyframes mfArtDot { 0%, 100% { opacity: 0.4; r: 4px; } 50% { opacity: 1; r: 6.5px; } }
+.mf-art-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 160px;
+  background: linear-gradient(180deg, rgba(51, 189, 230, 0) 0%, rgba(51, 189, 230, 0.05) 70%, rgba(51, 189, 230, 0.1) 100%);
+  border-bottom: 1px solid rgba(51, 189, 230, 0.18);
+  animation: mfArtScan 9s ease-in-out infinite;
+}
+@keyframes mfArtScan {
+  0% { transform: translateY(-160px); opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { transform: translateY(760px); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mf-art-glow, .mf-art-dot, .mf-art-scan { animation: none; }
+  .mf-art-scan { display: none; }
+}
 .mf-artifact-grid { margin-top: 8px; }
 .mf-artifact-grid > [class*='col'] { display: flex; }
 .mf-af-card {
@@ -3942,4 +3994,118 @@
 @media (prefers-reduced-motion: reduce) {
   .pst-panel-inner { animation: none; }
   .pst-rail-fill, .pst-node, .pst-step-title { transition: none; }
+}
+
+/* =====================================================================
+   Evidence explorer — dark forensic-analysis skin + layered entrance
+   (scoped to .mf-artifacts; the explorer is only used in that section)
+   ===================================================================== */
+.mf-artifacts .afx-tab {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(51, 189, 230, 0.18);
+  color: #e7edf9;
+  box-shadow: none;
+}
+.mf-artifacts .afx-tab:hover {
+  border-color: rgba(51, 189, 230, 0.45);
+  background: rgba(51, 189, 230, 0.08);
+}
+.mf-artifacts .afx-tab.active {
+  background: linear-gradient(135deg, rgba(51, 189, 230, 0.18), rgba(7, 0, 184, 0.16));
+  border-color: rgba(51, 189, 230, 0.55);
+  box-shadow: 0 0 0 1px rgba(51, 189, 230, 0.18), 0 14px 32px rgba(3, 8, 30, 0.55);
+}
+.mf-artifacts .afx-tab-icon {
+  background: rgba(51, 189, 230, 0.12);
+  border-color: rgba(51, 189, 230, 0.3);
+  color: var(--brand-cyan);
+}
+.mf-artifacts .afx-tab.active .afx-tab-icon { background: linear-gradient(135deg, #33bde6, #0700b8); color: #fff; }
+.mf-artifacts .afx-tab-label { color: #e7edf9; }
+.mf-artifacts .afx-tab-arrow { color: rgba(123, 220, 247, 0.4); }
+.mf-artifacts .afx-tab.active .afx-tab-arrow { color: var(--brand-cyan); }
+
+.mf-artifacts .afx-panel {
+  position: relative;
+  background: rgba(9, 16, 42, 0.62);
+  border-color: rgba(51, 189, 230, 0.25);
+  box-shadow: 0 26px 60px rgba(3, 8, 30, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.mf-artifacts .afx-panel::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 26px;
+  right: 26px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(51, 189, 230, 0.7), transparent);
+}
+.mf-artifacts .afx-panel-icon {
+  background: linear-gradient(135deg, rgba(51, 189, 230, 0.18), rgba(7, 0, 184, 0.16));
+  border-color: rgba(51, 189, 230, 0.4);
+  color: var(--brand-cyan);
+  animation: afxIconGlow 3.6s ease-in-out infinite;
+}
+@keyframes afxIconGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(51, 189, 230, 0); }
+  50% { box-shadow: 0 0 20px rgba(51, 189, 230, 0.35); }
+}
+.mf-artifacts .afx-panel-title { color: #fff; }
+.mf-artifacts .afx-panel-desc { color: #b7c2da; }
+.mf-artifacts .afx-panel-items li { color: #cfd9ee; }
+.mf-artifacts .afx-panel-items li::before { box-shadow: 0 0 0 3px rgba(51, 189, 230, 0.18), 0 0 8px rgba(51, 189, 230, 0.5); }
+.mf-artifacts .afx-panel-note { background: rgba(51, 189, 230, 0.08); border-color: rgba(51, 189, 230, 0.25); color: #c3cfe6; }
+.mf-artifacts .afx-panel-note i { color: var(--brand-cyan); }
+
+/* status indicator on the analysis panel */
+.afx-panel-status {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(51, 189, 230, 0.1);
+  border: 1px solid rgba(51, 189, 230, 0.3);
+  color: #cfeefb;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+.afx-panel-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #58e08a;
+  box-shadow: 0 0 0 0 rgba(88, 224, 138, 0.6);
+  animation: evPing 2s ease-out infinite;
+}
+
+/* accordion (mobile) dark */
+.mf-artifacts .afx-acc-item {
+  background: rgba(9, 16, 42, 0.6);
+  border-color: rgba(51, 189, 230, 0.2);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.mf-artifacts .afx-acc-item.open { border-color: rgba(51, 189, 230, 0.45); }
+.mf-artifacts .afx-acc-btn { color: #e7edf9; }
+.mf-artifacts .afx-acc-caret { color: var(--brand-cyan); }
+
+/* layered entrance — driven by the component's own in-view class (.shown) */
+.afx-root .afx-tab,
+.afx-root .afx-panel,
+.afx-root .afx-acc-item { opacity: 0; }
+.afx-root.shown .afx-tab { animation: afxRise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; animation-delay: calc(0.05s + var(--i, 0) * 0.05s); }
+.afx-root.shown .afx-acc-item { animation: afxRise 0.5s ease both; animation-delay: calc(var(--i, 0) * 0.04s); }
+.afx-root.shown .afx-panel { animation: afxRise 0.55s ease both; animation-delay: 0.28s; }
+@keyframes afxRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .afx-root .afx-tab,
+  .afx-root .afx-panel,
+  .afx-root .afx-acc-item { opacity: 1 !important; animation: none !important; }
+  .mf-artifacts .afx-panel-icon { animation: none; }
 }

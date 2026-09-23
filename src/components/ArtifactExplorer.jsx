@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // Evidence categories — same content as before, reorganized for interactive exploration.
 const CATEGORIES = [
@@ -58,6 +58,7 @@ function PanelBody({ cat }) {
       <div className="afx-panel-head">
         <span className="afx-panel-icon"><i className={`bi ${cat.icon}`} /></span>
         <h3 className="afx-panel-title">{cat.title}</h3>
+        <span className="afx-panel-status"><span className="afx-panel-status-dot" /> Evidence record</span>
       </div>
       <p className="afx-panel-desc">{cat.desc}</p>
       <ul className="afx-panel-items">
@@ -73,6 +74,8 @@ function PanelBody({ cat }) {
 }
 
 export default function ArtifactExplorer() {
+  const rootRef = useRef(null)
+  const [shown, setShown] = useState(false)
   const [active, setActive] = useState(0)
   const [mobileOpen, setMobileOpen] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
@@ -85,57 +88,74 @@ export default function ArtifactExplorer() {
     return () => mq.removeEventListener('change', apply)
   }, [])
 
-  if (isMobile) {
-    return (
-      <div className="afx-accordion reveal">
-        {CATEGORIES.map((c, i) => {
-          const open = mobileOpen === i
-          return (
-            <div className={`afx-acc-item ${open ? 'open' : ''}`} key={c.key}>
+  // Own in-view observer on a stable wrapper, so the layered entrance works
+  // reliably even after the desktop/mobile layout swap.
+  useEffect(() => {
+    const el = rootRef.current
+    if (!el) return undefined
+    if (!('IntersectionObserver' in window)) { setShown(true); return undefined }
+    const ob = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => { if (e.isIntersecting) { setShown(true); ob.disconnect() } })
+      },
+      { threshold: 0.12 }
+    )
+    ob.observe(el)
+    return () => ob.disconnect()
+  }, [])
+
+  return (
+    <div className={`afx-root ${shown ? 'shown' : ''}`} ref={rootRef}>
+      {isMobile ? (
+        <div className="afx-accordion">
+          {CATEGORIES.map((c, i) => {
+            const open = mobileOpen === i
+            return (
+              <div className={`afx-acc-item ${open ? 'open' : ''}`} key={c.key} style={{ '--i': i }}>
+                <button
+                  type="button"
+                  className="afx-acc-btn"
+                  aria-expanded={open}
+                  onClick={() => setMobileOpen(open ? -1 : i)}
+                >
+                  <span className="afx-tab-icon"><i className={`bi ${c.icon}`} /></span>
+                  <span className="afx-tab-label">{c.label}</span>
+                  <i className="bi bi-chevron-down afx-acc-caret" />
+                </button>
+                {open && (
+                  <div className="afx-acc-panel">
+                    <PanelBody cat={c} />
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </div>
+      ) : (
+        <div className="afx">
+          <div className="afx-list" role="tablist" aria-label="Evidence categories">
+            {CATEGORIES.map((c, i) => (
               <button
                 type="button"
-                className="afx-acc-btn"
-                aria-expanded={open}
-                onClick={() => setMobileOpen(open ? -1 : i)}
+                key={c.key}
+                role="tab"
+                aria-selected={active === i}
+                className={`afx-tab ${active === i ? 'active' : ''}`}
+                style={{ '--i': i }}
+                onClick={() => setActive(i)}
+                onMouseEnter={() => setActive(i)}
               >
                 <span className="afx-tab-icon"><i className={`bi ${c.icon}`} /></span>
                 <span className="afx-tab-label">{c.label}</span>
-                <i className="bi bi-chevron-down afx-acc-caret" />
+                <i className="bi bi-chevron-right afx-tab-arrow" />
               </button>
-              {open && (
-                <div className="afx-acc-panel">
-                  <PanelBody cat={c} />
-                </div>
-              )}
-            </div>
-          )
-        })}
-      </div>
-    )
-  }
-
-  return (
-    <div className="afx reveal">
-      <div className="afx-list" role="tablist" aria-label="Evidence categories">
-        {CATEGORIES.map((c, i) => (
-          <button
-            type="button"
-            key={c.key}
-            role="tab"
-            aria-selected={active === i}
-            className={`afx-tab ${active === i ? 'active' : ''}`}
-            onClick={() => setActive(i)}
-            onMouseEnter={() => setActive(i)}
-          >
-            <span className="afx-tab-icon"><i className={`bi ${c.icon}`} /></span>
-            <span className="afx-tab-label">{c.label}</span>
-            <i className="bi bi-chevron-right afx-tab-arrow" />
-          </button>
-        ))}
-      </div>
-      <div className="afx-panel" role="tabpanel">
-        <PanelBody cat={CATEGORIES[active]} />
-      </div>
+            ))}
+          </div>
+          <div className="afx-panel" role="tabpanel">
+            <PanelBody cat={CATEGORIES[active]} />
+          </div>
+        </div>
+      )}
     </div>
   )
 }

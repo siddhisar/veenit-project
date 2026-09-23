@@ -153,11 +153,34 @@ export default function MobileForensicsPage() {
           </Container>
         </section>
 
-        {/* 4. WHAT INFORMATION CAN BE EXAMINED? */}
+        {/* 4. WHAT INFORMATION CAN BE EXAMINED? — dark forensic explorer */}
         <section className="ee-approach section mf-artifacts">
-          <Container>
-            <p className="eyebrow reveal">Artifacts</p>
-            <h2 className="section-title reveal d1">What Information Can Be Examined?</h2>
+          <div className="mf-art-bg" aria-hidden="true">
+            <div className="mf-art-grid" />
+            <div className="mf-art-glow" />
+            <svg className="mf-art-net" viewBox="0 0 1400 600" preserveAspectRatio="xMidYMid slice">
+              <g stroke="rgba(51,189,230,0.18)" strokeWidth="1" fill="none">
+                <path d="M120 120 L320 220 L250 400 L120 500" />
+                <path d="M1280 100 L1080 240 L1180 420 L1300 500" />
+                <path d="M320 220 L1080 240" />
+                <path d="M250 400 L1180 420" />
+                <path d="M700 60 L700 540" />
+              </g>
+              <g fill="#33bde6">
+                <circle cx="120" cy="120" r="3.5" /><circle cx="320" cy="220" r="4" className="mf-art-dot" />
+                <circle cx="250" cy="400" r="3.5" /><circle cx="1280" cy="100" r="3.5" />
+                <circle cx="1080" cy="240" r="4" className="mf-art-dot" /><circle cx="1180" cy="420" r="3.5" />
+                <circle cx="700" cy="60" r="3.5" /><circle cx="700" cy="540" r="4" className="mf-art-dot" />
+                <circle cx="120" cy="500" r="3" /><circle cx="1300" cy="500" r="3" />
+              </g>
+              <rect x="628" y="180" width="144" height="240" rx="22" fill="none" stroke="rgba(51,189,230,0.16)" strokeWidth="1.5" />
+              <rect x="648" y="210" width="104" height="150" rx="6" fill="rgba(51,189,230,0.05)" stroke="rgba(51,189,230,0.14)" strokeWidth="1" />
+            </svg>
+            <span className="mf-art-scan" />
+          </div>
+          <Container className="position-relative">
+            <p className="eyebrow on-dark reveal">Artifacts</p>
+            <h2 className="section-title on-dark reveal d1">What Information Can Be Examined?</h2>
             <p className="ee-approach-lead reveal d2">
               The exact information available varies from device to device. Subject to technical
               feasibility and authorization, a mobile forensic examination may identify and analyze
