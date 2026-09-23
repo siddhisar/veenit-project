@@ -278,7 +278,7 @@ export default function MobileForensicsPage() {
               <span className="ee-timeline-line reveal draw-y" aria-hidden="true" />
               {STEPS.map((s, i) => (
                 <div className={`ee-step ${i % 2 ? 'right' : 'left'}`} key={s.n}>
-                  <div className={`ee-step-card mf-step-card reveal ${i % 2 ? 'from-right' : 'from-left'}`}>
+                  <div className="ee-step-card mf-step-card reveal mf-rise">
                     <span className="ee-step-icon"><i className={`bi ${s.icon}`} /></span>
                     <h3 className="ee-step-title">{s.title}</h3>
                     <p className="ee-step-text">{s.desc}</p>
@@ -291,7 +291,7 @@ export default function MobileForensicsPage() {
                     </ul>
                     <p className="mf-step-end"><i className="bi bi-arrow-return-right" />{s.end}</p>
                   </div>
-                  <span className="ee-node reveal zoom-in">{s.n}</span>
+                  <span className="ee-node reveal mf-rise">{s.n}</span>
                 </div>
               ))}
             </div>
@@ -311,7 +311,7 @@ export default function MobileForensicsPage() {
             <Row className="g-4 mf-artifact-grid">
               {ARTIFACTS.map((a, i) => (
                 <Col xs={12} md={6} lg={a.feature ? 8 : 4} key={a.n}>
-                  <div className={`mf-af-card reveal zoom-in ${a.feature ? 'mf-af-feature' : ''}`} style={{ transitionDelay: `${0.04 * (i % 3)}s` }}>
+                  <div className={`mf-af-card reveal mf-rise ${a.feature ? 'mf-af-feature' : ''}`} style={{ transitionDelay: `${0.04 * (i % 3)}s` }}>
                     <div className="mf-af-head">
                       <span className="mf-af-icon"><i className={`bi ${a.icon}`} /></span>
                       <span className="mf-af-num">{a.n}</span>

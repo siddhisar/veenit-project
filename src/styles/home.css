@@ -3588,3 +3588,11 @@
 .mf-page .mf-af-items li::before { width: 4px; height: 4px; margin-top: 6px; }
 .mf-page .mf-af-note { padding: 10px 12px; font-size: 0.75rem; line-height: 1.45; margin-top: 10px; }
 .mf-page .mf-af-note i { font-size: 0.85rem; }
+
+/* Mobile Forensics — subtle, short entrance for timeline + artifact cards.
+   Replaces the side-slide / zoom-pop with a gentle fade + small rise. */
+.reveal.mf-rise { transform: translateY(14px); transition-duration: 0.5s; }
+.reveal.mf-rise.is-visible { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal.mf-rise { transform: none !important; transition: none !important; }
+}
