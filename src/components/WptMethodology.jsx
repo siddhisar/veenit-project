@@ -73,6 +73,8 @@ export default function WptMethodology() {
             role="tab"
             aria-selected={active === i}
             className={`wm-step ${active === i ? 'active' : ''} ${i < active ? 'done' : ''}`}
+            onMouseEnter={() => setActive(i)}
+            onFocus={() => setActive(i)}
             onClick={() => setActive(i)}
           >
             <span className="wm-node">{step.n}</span>

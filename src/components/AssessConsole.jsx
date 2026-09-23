@@ -41,6 +41,8 @@ export default function AssessConsole() {
             role="tab"
             aria-selected={active === i}
             className={`wac-tab ${active === i ? 'active' : ''}`}
+            onMouseEnter={() => setActive(i)}
+            onFocus={() => setActive(i)}
             onClick={() => setActive(i)}
           >
             <i className={`bi ${tab.icon}`} />
