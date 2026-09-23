@@ -4188,16 +4188,51 @@
 }
 .service-subitem:hover .service-subitem-arrow { opacity: 1; transform: none; }
 
-/* Desktop: reveal nested menu on hover of the parent item */
+/* Desktop: cascading second-level menu that opens to the RIGHT of the parent */
 @media (min-width: 1200px) {
-  .service-item-wrap.has-sub .service-sub-caret { opacity: 0.55; transform: none; }
+  /* allow the flyout to escape the first-level panel */
+  .services-panel-inner { overflow: visible; }
+
+  .service-item-wrap.has-sub .service-sub-caret { opacity: 0.6; transform: none; }
   .service-item-wrap.has-sub:hover .service-sub-caret,
-  .service-item-wrap.has-sub:focus-within .service-sub-caret { opacity: 1; transform: rotate(90deg); }
+  .service-item-wrap.has-sub:focus-within .service-sub-caret { opacity: 1; transform: translateX(2px); }
+
+  .service-sub {
+    position: absolute;
+    top: -6px;
+    left: calc(100% + 12px);
+    width: 266px;
+    max-height: none;
+    overflow: visible;
+    opacity: 0;
+    margin-top: 0;
+    padding: 8px;
+    gap: 3px;
+    border-radius: 14px;
+    background: linear-gradient(160deg, #0b1330 0%, #070d22 100%);
+    border: 1px solid rgba(51, 189, 230, 0.25);
+    box-shadow: 0 26px 60px rgba(2, 8, 26, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transform: translateX(-8px);
+    pointer-events: none;
+    transition: opacity 0.28s ease, transform 0.28s ease;
+    z-index: 30;
+  }
+  /* transparent bridge so the hover isn't lost crossing the gap */
+  .service-sub::before {
+    left: -14px;
+    top: 0;
+    bottom: 0;
+    width: 14px;
+    background: transparent;
+  }
+  .service-subitem::after { display: none; }
   .service-item-wrap.has-sub:hover .service-sub,
   .service-item-wrap.has-sub:focus-within .service-sub {
-    max-height: 170px;
     opacity: 1;
-    margin-top: 3px;
+    transform: translateX(0);
+    pointer-events: auto;
   }
 }
 /* Mobile: nested items stay visible (indented) while the Services menu is open */
