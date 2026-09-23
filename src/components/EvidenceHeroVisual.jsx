@@ -62,30 +62,35 @@ export default function EvidenceHeroVisual() {
           </defs>
         </svg>
 
-        {/* shield protecting the evidence document */}
-        <div className="eh-shield">
-          <svg className="eh-shield-svg" viewBox="0 0 150 172">
+        {/* legal gavel — Section 63 / court admissibility */}
+        <div className="eh-gavel">
+          <svg className="eh-gavel-svg" viewBox="0 0 180 180">
             <defs>
-              <linearGradient id="ehShield" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stopColor="#6fd6f5" />
+              <linearGradient id="ehGavel" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stopColor="#7bdcf7" />
                 <stop offset="1" stopColor="#1f7fc0" />
               </linearGradient>
+              <linearGradient id="ehGavelBand" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="#33bde6" />
+                <stop offset="1" stopColor="#0700b8" />
+              </linearGradient>
             </defs>
-            <path
-              d="M75 6 L135 28 V86 C135 128 108 152 75 166 C42 152 15 128 15 86 V28 Z"
-              fill="rgba(9,16,42,0.72)"
-              stroke="url(#ehShield)"
-              strokeWidth="3"
-            />
+            {/* mallet + handle, angled like an auction gavel */}
+            <g transform="rotate(-34 90 78)">
+              {/* handle */}
+              <rect x="84" y="74" width="13" height="70" rx="6.5" fill="rgba(9,16,42,0.92)" stroke="url(#ehGavel)" strokeWidth="3" />
+              {/* mallet head */}
+              <rect x="40" y="44" width="100" height="40" rx="14" fill="rgba(9,16,42,0.92)" stroke="url(#ehGavel)" strokeWidth="3" />
+              {/* end rings */}
+              <rect x="52" y="40" width="12" height="48" rx="5" fill="url(#ehGavel)" opacity="0.85" />
+              <rect x="116" y="40" width="12" height="48" rx="5" fill="url(#ehGavel)" opacity="0.85" />
+              {/* central accent band */}
+              <rect x="80" y="40" width="20" height="48" rx="5" fill="url(#ehGavelBand)" />
+            </g>
+            {/* sound block (base) */}
+            <rect x="46" y="146" width="88" height="16" rx="8" fill="rgba(9,16,42,0.92)" stroke="url(#ehGavel)" strokeWidth="3" />
           </svg>
-          <div className="eh-doc">
-            <span className="eh-doc-seal"><i className="bi bi-file-earmark-lock2" /></span>
-            <span className="eh-doc-line l1" />
-            <span className="eh-doc-line l2" />
-            <span className="eh-doc-line l3" />
-            <span className="eh-doc-check"><i className="bi bi-check-lg" /></span>
-            <span className="eh-doc-scan" />
-          </div>
+          <span className="eh-gavel-strike" />
         </div>
       </div>
 

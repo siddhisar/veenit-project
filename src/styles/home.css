@@ -2984,6 +2984,32 @@
   100% { transform: translateY(92px); opacity: 0; }
 }
 
+/* legal gavel centerpiece (Section 63 / court admissibility) */
+.eh-gavel { position: relative; width: 168px; height: 168px; }
+.eh-gavel-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 20px rgba(51, 189, 230, 0.45));
+}
+.eh-gavel-strike {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  width: 96px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(51, 189, 230, 0.5), transparent 75%);
+  animation: ehStrike 2.6s ease-in-out infinite;
+}
+@keyframes ehStrike {
+  0%, 100% { opacity: 0.35; transform: translateX(-50%) scaleX(0.8); }
+  50% { opacity: 0.9; transform: translateX(-50%) scaleX(1.05); }
+}
+@media (prefers-reduced-motion: reduce) { .eh-gavel-strike { animation: none; } }
+
 /* floating evidence-file chips */
 .eh-file {
   position: absolute;
