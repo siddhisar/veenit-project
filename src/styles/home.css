@@ -4109,3 +4109,114 @@
   .afx-root .afx-acc-item { opacity: 1 !important; animation: none !important; }
   .mf-artifacts .afx-panel-icon { animation: none; }
 }
+
+/* =====================================================================
+   Services dropdown — nested submenu (VAPT → Web / Mobile App testing)
+   ===================================================================== */
+.service-item-wrap { position: relative; }
+.service-sub-caret { transition: transform 0.3s ease, opacity 0.3s ease; }
+
+.service-sub {
+  position: relative;
+  display: grid;
+  gap: 3px;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  padding-left: 34px;
+  transition: max-height 0.35s ease, opacity 0.3s ease, margin-top 0.3s ease;
+}
+.service-sub::before {
+  content: '';
+  position: absolute;
+  left: 21px;
+  top: 4px;
+  bottom: 10px;
+  width: 1px;
+  background: rgba(51, 189, 230, 0.28);
+}
+.service-subitem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 10px;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+.service-subitem::after {
+  content: '';
+  position: absolute;
+  left: -13px;
+  top: 50%;
+  width: 10px;
+  height: 1px;
+  background: rgba(51, 189, 230, 0.28);
+}
+.service-subitem:hover {
+  background: rgba(51, 189, 230, 0.09);
+  border-color: rgba(51, 189, 230, 0.3);
+  transform: translateX(2px);
+}
+.service-subitem-icon {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  display: grid;
+  place-items: center;
+  background: rgba(51, 189, 230, 0.1);
+  border: 1px solid rgba(51, 189, 230, 0.2);
+  color: var(--brand-cyan);
+  font-size: 0.8rem;
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+.service-subitem:hover .service-subitem-icon {
+  transform: scale(1.08);
+  background: rgba(51, 189, 230, 0.2);
+  box-shadow: 0 0 12px rgba(51, 189, 230, 0.35);
+}
+.service-subitem-title { color: #cdd9ea; font-weight: 500; font-size: 0.8rem; line-height: 1.25; }
+.service-subitem-arrow {
+  margin-left: auto;
+  color: var(--brand-cyan);
+  opacity: 0;
+  transform: translateX(-5px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.service-subitem:hover .service-subitem-arrow { opacity: 1; transform: none; }
+
+/* Desktop: reveal nested menu on hover of the parent item */
+@media (min-width: 1200px) {
+  .service-item-wrap.has-sub .service-sub-caret { opacity: 0.55; transform: none; }
+  .service-item-wrap.has-sub:hover .service-sub-caret,
+  .service-item-wrap.has-sub:focus-within .service-sub-caret { opacity: 1; transform: rotate(90deg); }
+  .service-item-wrap.has-sub:hover .service-sub,
+  .service-item-wrap.has-sub:focus-within .service-sub {
+    max-height: 170px;
+    opacity: 1;
+    margin-top: 3px;
+  }
+}
+/* Mobile: nested items stay visible (indented) while the Services menu is open */
+@media (max-width: 1199.98px) {
+  .service-sub { max-height: none; opacity: 1; margin-top: 4px; padding-left: 30px; }
+  .service-subitem-title { color: #2a3450; }
+  .service-subitem-icon { color: var(--accent); }
+  .service-sub::before,
+  .service-subitem::after { background: rgba(11, 118, 168, 0.3); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .service-sub, .service-subitem, .service-sub-caret,
+  .service-subitem-icon, .service-subitem-arrow { transition: none; }
+}
+
+/* Placeholder service hero — fills the viewport so the page reads as complete */
+.svc-hero-placeholder {
+  min-height: calc(100vh - var(--header-h));
+  display: flex;
+  align-items: center;
+}
+.svc-hero-placeholder .svc-hero-actions { margin-top: 26px; }

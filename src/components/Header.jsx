@@ -24,7 +24,11 @@ const SERVICES = [
   {
     icon: 'bi-bug',
     title: 'Vulnerability Assessment & Penetration Testing (VAPT)',
-    to: '/services/vapt'
+    to: '/services/vapt',
+    children: [
+      { icon: 'bi-globe2', title: 'Web Penetration Testing', to: '/services/web-penetration-testing' },
+      { icon: 'bi-phone-vibrate', title: 'Mobile Application Security Testing', to: '/services/mobile-application-security-testing' }
+    ]
   },
   {
     icon: 'bi-bank',
@@ -84,12 +88,11 @@ export default function Header() {
                   <span className="service-item-body">
                     <span className="service-item-title">{it.title}</span>
                   </span>
-                  <i className="bi bi-arrow-right service-item-arrow" />
+                  <i className={`bi ${it.children ? 'bi-chevron-right service-sub-caret' : 'bi-arrow-right'} service-item-arrow`} />
                 </>
               )
-              return it.to ? (
+              const linkEl = it.to ? (
                 <Link
-                  key={it.title}
                   to={it.to}
                   className="service-item"
                   role="menuitem"
@@ -100,7 +103,6 @@ export default function Header() {
                 </Link>
               ) : (
                 <a
-                  key={it.title}
                   href={it.href}
                   className="service-item"
                   role="menuitem"
@@ -110,6 +112,30 @@ export default function Header() {
                   {inner}
                 </a>
               )
+              if (it.children) {
+                return (
+                  <div className="service-item-wrap has-sub" key={it.title}>
+                    {linkEl}
+                    <div className="service-sub" role="menu">
+                      {it.children.map((c, j) => (
+                        <Link
+                          key={c.title}
+                          to={c.to}
+                          className="service-subitem"
+                          role="menuitem"
+                          style={{ '--j': j }}
+                          onClick={close}
+                        >
+                          <span className="service-subitem-icon"><i className={`bi ${c.icon}`} /></span>
+                          <span className="service-subitem-title">{c.title}</span>
+                          <i className="bi bi-arrow-right service-subitem-arrow" />
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )
+              }
+              return <div className="service-item-wrap" key={it.title}>{linkEl}</div>
             })}
           </div>
         </div>
