@@ -41,39 +41,36 @@ export default function FamilyEvidenceVisual() {
         <span className="eh-ring eh-ring-2" />
         <span className="eh-radar" />
 
-        <div className="dfd-cluster">
-          {/* verified legal document / certificate */}
-          <div className="dfd-cert2">
-            <span className="dfd-cert2-seal"><i className="bi bi-patch-check-fill" /></span>
-            <span className="dfd-cert2-line l1" />
-            <span className="dfd-cert2-line l2" />
-            <span className="dfd-cert2-line l3" />
-            <span className="dfd-cert2-line l4" />
-            <span className="dfd-cert2-scan" />
+        <div className="dfd-scene">
+          {/* the two parties in a family/matrimonial matter */}
+          <span className="dfd-party pa"><i className="bi bi-person" /></span>
+          <span className="dfd-link" />
+          <span className="dfd-party pb"><i className="bi bi-person" /></span>
+
+          {/* the digital evidence under consideration */}
+          <div className="dfd-evi">
+            <span className="dfd-evi-seal"><i className="bi bi-file-earmark-check" /></span>
+            <span className="dfd-evi-line l1" />
+            <span className="dfd-evi-line l2" />
+            <span className="dfd-evi-check"><i className="bi bi-check-lg" /></span>
+            <span className="dfd-evi-scan" />
           </div>
 
-          {/* phone of digital conversations */}
-          <div className="dfd-phone">
-            <span className="dfd-phone-notch" />
-            <div className="dfd-phone-screen">
-              <span className="dfd-bubble b-in" />
-              <span className="dfd-bubble b-out" />
-              <span className="dfd-bubble b-in b-in2" />
-              <span className="dfd-bubble b-out b-out2" />
-              <span className="dfd-phone-scan" />
-            </div>
-          </div>
-
-          {/* subtle legal / courtroom element */}
-          <span className="dfd-gavel">
-            <svg viewBox="0 0 40 40" width="20" height="20">
-              <g transform="rotate(-32 20 17)" stroke="#fff" strokeWidth="3.2" strokeLinecap="round" fill="none">
-                <rect x="8" y="10" width="24" height="9" rx="4" fill="rgba(255,255,255,0.15)" />
-                <line x1="20" y1="19" x2="20" y2="33" />
-              </g>
-              <line x1="10" y1="36" x2="30" y2="36" stroke="#fff" strokeWidth="3.2" strokeLinecap="round" />
-            </svg>
-          </span>
+          {/* scales of justice — legal proceedings */}
+          <svg className="dfd-scales" viewBox="0 0 180 150" aria-hidden="true">
+            <g stroke="#7bdcf7" strokeWidth="3.6" fill="none" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="90" y1="30" x2="90" y2="118" />
+              <line x1="26" y1="38" x2="154" y2="38" />
+              <line x1="70" y1="118" x2="110" y2="118" />
+              <line x1="90" y1="118" x2="90" y2="130" />
+              <line x1="74" y1="130" x2="106" y2="130" />
+              <line x1="26" y1="38" x2="26" y2="56" />
+              <path d="M8 56 Q26 80 44 56" />
+              <line x1="154" y1="38" x2="154" y2="56" />
+              <path d="M136 56 Q154 80 172 56" />
+            </g>
+            <circle cx="90" cy="27" r="6" fill="#7bdcf7" />
+          </svg>
         </div>
       </div>
 
