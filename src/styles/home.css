@@ -3558,3 +3558,33 @@
   .mf-page .ee-workflow-lead,
   .mf-page .ee-approach-lead { width: 100%; }
 }
+
+/* =====================================================================
+   Mobile Forensics — compact the card-based sections (timeline + artifact
+   cards). Scoped to .mf-page. Layout, colors, alternating design and content
+   are unchanged — this only reduces scale, padding and spacing.
+   ===================================================================== */
+/* process timeline step cards */
+.mf-page .ee-step { margin-bottom: 26px; }
+.mf-page .ee-step-card { padding: 18px 20px; }
+.mf-page .ee-step-icon { width: 40px; height: 40px; font-size: 1.15rem; margin-bottom: 10px; }
+.mf-page .ee-step-title { font-size: 1rem; margin-bottom: 6px; }
+.mf-page .ee-step-text { font-size: 0.85rem; line-height: 1.5; }
+.mf-page .mf-step-pre { font-size: 0.82rem; line-height: 1.5; margin-bottom: 8px; }
+.mf-page .mf-step-intro { font-size: 0.84rem; margin-bottom: 8px; }
+.mf-page .mf-step-items { gap: 5px 14px; margin-bottom: 10px; }
+.mf-page .mf-step-items li { font-size: 0.8rem; line-height: 1.35; }
+.mf-page .mf-step-items li i { font-size: 0.72rem; margin-top: 3px; }
+.mf-page .mf-step-end { font-size: 0.82rem; padding-top: 10px; line-height: 1.45; }
+
+/* artifact cards */
+.mf-page .mf-af-card { padding: 18px 18px; }
+.mf-page .mf-af-head { margin-bottom: 10px; }
+.mf-page .mf-af-icon { width: 42px; height: 42px; font-size: 1.2rem; border-radius: 11px; }
+.mf-page .mf-af-num { font-size: 1.05rem; }
+.mf-page .mf-af-title { font-size: 0.98rem; margin-bottom: 4px; }
+.mf-page .mf-af-desc { font-size: 0.82rem; line-height: 1.45; margin-bottom: 8px; }
+.mf-page .mf-af-items li { font-size: 0.8rem; line-height: 1.4; margin-bottom: 3px; }
+.mf-page .mf-af-items li::before { width: 4px; height: 4px; margin-top: 6px; }
+.mf-page .mf-af-note { padding: 10px 12px; font-size: 0.75rem; line-height: 1.45; margin-top: 10px; }
+.mf-page .mf-af-note i { font-size: 0.85rem; }
