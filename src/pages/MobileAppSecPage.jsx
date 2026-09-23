@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { Container, Row, Col } from 'react-bootstrap'
 import Header from '../components/Header.jsx'
 import BackToTop from '../components/BackToTop.jsx'
@@ -242,23 +241,6 @@ export default function MobileAppSecPage() {
                 </div>
               ))}
             </div>
-          </Container>
-        </section>
-
-        {/* 10. OUTCOME + CTA (dark) */}
-        <section className="wpt-outcome section">
-          <div className="wpt-outcome-bg" aria-hidden="true"><div className="mf-art-grid" /><div className="mf-art-glow" /></div>
-          <Container className="position-relative wpt-outcome-inner reveal">
-            <span className="svc-eyebrow"><i className="bi bi-shield-check" /> Outcome</span>
-            <h2 className="wpt-outcome-title">Strengthen Your Mobile Application Security</h2>
-            <p className="wpt-outcome-text">
-              Our testing provides organizations with actionable visibility into mobile application
-              risks, helping development and security teams prioritize remediation and improve the
-              application&rsquo;s overall security resilience.
-            </p>
-            <Link to="/#get-in-touch" className="btn-cyber">
-              Request for Enquiry <i className="bi bi-arrow-right" />
-            </Link>
           </Container>
         </section>
       </main>
