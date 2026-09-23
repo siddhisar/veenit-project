@@ -3074,18 +3074,18 @@
 .ee-hero-copy .mf-hero-tagline { max-width: none; }
 @media (max-width: 991.98px) { .ee-hero-copy .mf-hero-tagline { text-align: center; } }
 
-/* intro prose (not cards) */
+/* intro prose (not cards) — wide, left-aligned editorial block */
 .mf-prose {
-  max-width: 820px;
-  margin: 14px auto 0;
-  text-align: center;
+  width: 88%;
+  max-width: 960px;
+  margin: 22px auto 0;
+  text-align: left;
 }
 .mf-prose p {
   color: var(--text-body);
-  font-size: 1.05rem;
-  line-height: 1.85;
-  margin-bottom: 16px;
-  text-wrap: balance;
+  font-size: 1.06rem;
+  line-height: 1.8;
+  margin-bottom: 18px;
 }
 .mf-prose p:last-child { margin-bottom: 0; }
 
@@ -3262,8 +3262,8 @@
 @media (max-width: 575.98px) { .mf-af-feature .mf-af-items { columns: 1; } }
 
 /* deleted-recovery flow */
-.mf-recovery-intro { max-width: 860px; margin: 16px auto 0; text-align: center; }
-.mf-recovery-intro p { color: #c3cfe6; font-size: 1.04rem; line-height: 1.8; margin-bottom: 16px; text-wrap: balance; }
+.mf-recovery-intro { width: 88%; max-width: 960px; margin: 22px auto 0; text-align: left; }
+.mf-recovery-intro p { color: #c3cfe6; font-size: 1.05rem; line-height: 1.8; margin-bottom: 18px; }
 .mf-recovery-intro p:last-child { margin-bottom: 0; color: #dbe6fb; font-weight: 600; }
 .mf-flow {
   display: flex;
@@ -3539,4 +3539,22 @@
   .mf-progress span, .mf-scan, .mf-chip { animation: none; }
   .mf-scan { opacity: 0.3; }
   .mf-progress span { width: 60%; }
+}
+
+/* Mobile Forensics — widen section intro leads (left-aligned editorial width).
+   Scoped to .mf-page so the Electronic Evidence page is unaffected. */
+.mf-page .ee-workflow-lead,
+.mf-page .ee-approach-lead {
+  width: 88%;
+  max-width: 960px;
+  margin: 22px auto 0;
+  text-align: left;
+  line-height: 1.8;
+  text-wrap: normal;
+}
+@media (max-width: 575.98px) {
+  .mf-page .mf-prose,
+  .mf-page .mf-recovery-intro,
+  .mf-page .ee-workflow-lead,
+  .mf-page .ee-approach-lead { width: 100%; }
 }
