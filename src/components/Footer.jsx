@@ -59,7 +59,7 @@ export default function Footer() {
                 <i className="bi bi-telephone-fill" />
                 <div className="fc-body">
                   <span className="fc-label">Cyber Crime Defence</span>
-                  <a className="fc-value" href="tel:+919405644094">Veenit Birje &ndash; 9405644094</a>
+                  <a className="fc-value" href="tel:+919405644094">Veenit Birje &ndash; +91 9405644094</a>
                 </div>
               </li>
               <li>
