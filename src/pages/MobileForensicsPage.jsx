@@ -6,6 +6,7 @@ import BackToTop from '../components/BackToTop.jsx'
 import CyberBackground from '../components/CyberBackground.jsx'
 import MobileForensicVisual from '../components/MobileForensicVisual.jsx'
 import ArtifactExplorer from '../components/ArtifactExplorer.jsx'
+import ProcessStepper from '../components/ProcessStepper.jsx'
 import useScrollReveal from '../hooks/useScrollReveal.js'
 
 const IDENTIFY = [
@@ -21,82 +22,6 @@ const IDENTIFY = [
   { icon: 'bi-person-badge', label: 'Account and authentication artifacts' },
   { icon: 'bi-clock-history', label: 'Timestamps and metadata' },
   { icon: 'bi-search', label: 'Relevant digital activity associated with an investigation' }
-]
-
-const STEPS = [
-  {
-    n: '01',
-    icon: 'bi-clipboard-check',
-    title: 'Case Intake & Scope Definition',
-    desc: 'Every examination begins by understanding the purpose and scope of the investigation.',
-    items: [
-      'Device make and model',
-      'Operating system and version',
-      'Device condition',
-      'Identification details where appropriate',
-      'Available passcode or authorization',
-      'Nature of the investigation',
-      'Specific evidence requirements',
-      'Applicable legal or organizational requirements'
-    ],
-    end: 'A clearly defined scope helps ensure that the examination remains focused and appropriately documented.'
-  },
-  {
-    n: '02',
-    icon: 'bi-clipboard-data',
-    title: 'Device Identification & Documentation',
-    desc: 'Before acquisition, the device and its condition are documented.',
-    items: [
-      'Device photographs',
-      'Model and serial information',
-      'IMEI or other device identifiers',
-      'SIM and storage details',
-      'Physical condition',
-      'Power state',
-      'Screen state',
-      'Available network connections',
-      'Relevant accessories or storage media'
-    ],
-    end: 'This initial documentation helps establish the condition of the evidence when it was received.'
-  },
-  {
-    n: '03',
-    icon: 'bi-download',
-    title: 'Forensic Data Acquisition',
-    desc: 'The next stage involves obtaining available information using an appropriate forensic acquisition technique.',
-    pre: 'Depending on the device and circumstances, acquisition may involve logical, file-system, physical, or other supported forensic methods.',
-    listIntro: 'The acquisition method is selected according to factors such as:',
-    items: [
-      'Android or iOS platform',
-      'Device model',
-      'OS version',
-      'Security configuration',
-      'Device accessibility',
-      'Encryption',
-      'Available forensic capabilities',
-      'Scope of the investigation'
-    ],
-    end: 'Where technically feasible, acquisition is performed in a manner designed to minimize changes to the original evidence.'
-  },
-  {
-    n: '04',
-    icon: 'bi-hash',
-    title: 'Evidence Integrity & Hashing',
-    desc: 'Maintaining evidence integrity is a fundamental component of digital forensics.',
-    pre: 'Where applicable, forensic images, extracted datasets, and evidence files can be assigned cryptographic hash values. These values can subsequently be used to demonstrate whether the associated forensic data has changed.',
-    listIntro: 'Relevant examination records may include:',
-    items: [
-      'Acquisition details',
-      'Tool and software information',
-      'Date and time',
-      'Examiner information',
-      'Evidence identifiers',
-      'Hash values',
-      'Processing activities',
-      'Examination notes'
-    ],
-    end: 'This creates a documented trail from evidence acquisition through analysis and reporting.'
-  }
 ]
 
 const FLOW = [
@@ -224,27 +149,7 @@ export default function MobileForensicsPage() {
               to minimize unnecessary interaction with the original device and maintain a clear
               record of the examination.
             </p>
-            <div className="ee-timeline">
-              <span className="ee-timeline-line reveal draw-y" aria-hidden="true" />
-              {STEPS.map((s, i) => (
-                <div className={`ee-step ${i % 2 ? 'right' : 'left'}`} key={s.n}>
-                  <div className="ee-step-card mf-step-card reveal mf-rise">
-                    <span className="ee-step-icon"><i className={`bi ${s.icon}`} /></span>
-                    <h3 className="ee-step-title">{s.title}</h3>
-                    <p className="ee-step-text">{s.desc}</p>
-                    {s.pre && <p className="mf-step-pre">{s.pre}</p>}
-                    {s.listIntro && <p className="mf-step-intro">{s.listIntro}</p>}
-                    <ul className="mf-step-items">
-                      {s.items.map((it) => (
-                        <li key={it}><i className="bi bi-check2" />{it}</li>
-                      ))}
-                    </ul>
-                    <p className="mf-step-end"><i className="bi bi-arrow-return-right" />{s.end}</p>
-                  </div>
-                  <span className="ee-node reveal mf-rise">{s.n}</span>
-                </div>
-              ))}
-            </div>
+            <ProcessStepper />
           </Container>
         </section>
 
