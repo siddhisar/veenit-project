@@ -5,6 +5,7 @@ import Footer from '../components/Footer.jsx'
 import BackToTop from '../components/BackToTop.jsx'
 import CyberBackground from '../components/CyberBackground.jsx'
 import MobileForensicVisual from '../components/MobileForensicVisual.jsx'
+import ArtifactExplorer from '../components/ArtifactExplorer.jsx'
 import useScrollReveal from '../hooks/useScrollReveal.js'
 
 const IDENTIFY = [
@@ -95,57 +96,6 @@ const STEPS = [
       'Examination notes'
     ],
     end: 'This creates a documented trail from evidence acquisition through analysis and reporting.'
-  }
-]
-
-const ARTIFACTS = [
-  {
-    n: '01', icon: 'bi-telephone-inbound', title: 'Call Records',
-    desc: 'Potentially relevant information can include:',
-    items: ['Incoming calls', 'Outgoing calls', 'Missed calls', 'Call timestamps', 'Call duration', 'Associated contact information']
-  },
-  {
-    n: '02', icon: 'bi-person-lines-fill', title: 'Contacts',
-    desc: 'Contact-related artifacts may provide information such as:',
-    items: ['Names', 'Telephone numbers', 'Email addresses', 'Contact metadata', 'Associated accounts']
-  },
-  {
-    n: '03', icon: 'bi-chat-dots', title: 'SMS & Messaging Data',
-    desc: 'Depending on the platform and acquisition method, examination may include available messaging artifacts such as:',
-    items: ['SMS messages', 'MMS content', 'Message timestamps', 'Attachments', 'Conversation metadata', 'Deleted or partially recoverable records'],
-    note: 'Application-specific messaging data is dependent on the application, device state, encryption, and available forensic extraction capabilities.'
-  },
-  {
-    n: '04', icon: 'bi-images', title: 'Photographs & Videos',
-    desc: 'Multimedia examination can help identify:',
-    items: ['Images', 'Videos', 'Creation timestamps', 'Modification timestamps', 'File metadata', 'Associated locations where available', 'Thumbnails and cached media', 'Deleted-media remnants where technically recoverable']
-  },
-  {
-    n: '05', icon: 'bi-geo-alt', title: 'Location & Movement Artifacts',
-    desc: 'Potential sources may include:',
-    items: ['GPS information', 'Location services', 'Wi-Fi-related artifacts', 'Cellular network information', 'Application-generated location records', 'Maps and navigation artifacts', 'Location metadata embedded in files'],
-    note: 'Location information should be interpreted carefully because different sources can have different levels of accuracy and reliability.'
-  },
-  {
-    n: '06', icon: 'bi-envelope', title: 'Email & Attachments',
-    desc: 'Where technically available, examination may identify:',
-    items: ['Email messages', 'Sender and recipient information', 'Timestamps', 'Attachments', 'Account information', 'Local email artifacts']
-  },
-  {
-    n: '07', icon: 'bi-globe2', title: 'Internet & Browser Activity',
-    desc: 'Depending on the device and available data, examination may include:',
-    items: ['Browser history', 'Search activity', 'Bookmarks', 'Cookies', 'Cached information', 'Downloads', 'Visited websites']
-  },
-  {
-    n: '08', icon: 'bi-grid-1x2', title: 'Application Artifacts', feature: true,
-    desc: 'Potential applications:',
-    items: ['Messaging applications', 'Social-media applications', 'Email applications', 'Browsers', 'Cloud-storage applications', 'Navigation applications', 'Shopping applications', 'Financial applications', 'Productivity applications'],
-    note: "The availability and interpretation of application artifacts depend heavily on the application's architecture, encryption mechanisms, storage method, and device configuration."
-  },
-  {
-    n: '09', icon: 'bi-file-earmark-richtext', title: 'Documents & Files',
-    desc: 'Potential evidence can include:',
-    items: ['PDFs', 'Office documents', 'Text files', 'Downloaded files', 'Audio recordings', 'Images', 'Videos', 'Compressed files', 'Application-generated documents']
   }
 ]
 
@@ -308,28 +258,7 @@ export default function MobileForensicsPage() {
               feasibility and authorization, a mobile forensic examination may identify and analyze
               a broad range of artifacts.
             </p>
-            <Row className="g-4 mf-artifact-grid">
-              {ARTIFACTS.map((a, i) => (
-                <Col xs={12} md={6} lg={a.feature ? 8 : 4} key={a.n}>
-                  <div className={`mf-af-card reveal mf-rise ${a.feature ? 'mf-af-feature' : ''}`} style={{ transitionDelay: `${0.04 * (i % 3)}s` }}>
-                    <div className="mf-af-head">
-                      <span className="mf-af-icon"><i className={`bi ${a.icon}`} /></span>
-                      <span className="mf-af-num">{a.n}</span>
-                    </div>
-                    <h3 className="mf-af-title">{a.title}</h3>
-                    <p className="mf-af-desc">{a.desc}</p>
-                    <ul className="mf-af-items">
-                      {a.items.map((it) => (
-                        <li key={it}>{it}</li>
-                      ))}
-                    </ul>
-                    {a.note && (
-                      <p className="mf-af-note"><i className="bi bi-info-circle" />{a.note}</p>
-                    )}
-                  </div>
-                </Col>
-              ))}
-            </Row>
+            <ArtifactExplorer />
           </Container>
         </section>
 

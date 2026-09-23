@@ -3596,3 +3596,191 @@
 @media (prefers-reduced-motion: reduce) {
   .reveal.mf-rise { transform: none !important; transition: none !important; }
 }
+
+/* =====================================================================
+   Mobile Forensics — interactive evidence explorer (replaces artifact grid)
+   ===================================================================== */
+.afx {
+  display: grid;
+  grid-template-columns: minmax(260px, 320px) 1fr;
+  gap: 22px;
+  align-items: start;
+  max-width: 1080px;
+  margin: 10px auto 0;
+}
+.afx-list { display: flex; flex-direction: column; gap: 8px; }
+.afx-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-sm);
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.92rem;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+.afx-tab:hover { border-color: rgba(51, 189, 230, 0.4); transform: translateY(-1px); }
+.afx-tab.active {
+  border-color: rgba(51, 189, 230, 0.5);
+  background: linear-gradient(135deg, rgba(51, 189, 230, 0.1), rgba(7, 0, 184, 0.05));
+  box-shadow: 0 12px 28px rgba(20, 30, 70, 0.1);
+}
+.afx-tab::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) scaleY(0);
+  width: 3px;
+  height: 62%;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, #0700b8, #33bde6);
+  transition: transform 0.25s ease;
+}
+.afx-tab.active::before { transform: translateY(-50%) scaleY(1); }
+.afx-tab-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(51, 189, 230, 0.1);
+  border: 1px solid rgba(51, 189, 230, 0.22);
+  color: var(--accent);
+  font-size: 1.05rem;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.afx-tab.active .afx-tab-icon {
+  background: linear-gradient(135deg, #33bde6, #0700b8);
+  color: #fff;
+  transform: scale(1.06);
+}
+.afx-tab-label { flex: 1; }
+.afx-tab-arrow {
+  color: rgba(11, 118, 168, 0.4);
+  font-size: 0.9rem;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease, color 0.25s ease;
+}
+.afx-tab.active .afx-tab-arrow { opacity: 1; transform: none; color: var(--brand-cyan); }
+
+.afx-panel {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 18px;
+  padding: 30px 32px;
+  box-shadow: var(--shadow-sm);
+  min-height: 360px;
+  overflow: hidden;
+}
+.afx-panel-inner { animation: afxIn 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+@keyframes afxIn { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }
+.afx-panel-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.afx-panel-icon {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(51, 189, 230, 0.16), rgba(7, 0, 184, 0.12));
+  border: 1px solid rgba(51, 189, 230, 0.3);
+  color: var(--accent);
+  font-size: 1.5rem;
+}
+.afx-panel-title { margin: 0; font-size: 1.3rem; font-weight: 800; color: var(--text-dark); }
+.afx-panel-desc { color: var(--text-body); font-size: 0.95rem; line-height: 1.6; margin-bottom: 18px; }
+.afx-panel-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 26px;
+}
+.afx-panel-items li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 0.92rem;
+  color: var(--text-dark);
+  line-height: 1.4;
+}
+.afx-panel-items li::before {
+  content: "";
+  flex: none;
+  width: 6px;
+  height: 6px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: var(--brand-cyan);
+  box-shadow: 0 0 0 3px rgba(51, 189, 230, 0.15);
+}
+.afx-panel-note {
+  display: flex;
+  gap: 9px;
+  align-items: flex-start;
+  margin: 20px 0 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(51, 189, 230, 0.07);
+  border: 1px solid rgba(51, 189, 230, 0.2);
+  font-size: 0.85rem;
+  color: var(--text-body);
+  line-height: 1.55;
+}
+.afx-panel-note i { color: var(--accent); font-size: 1rem; margin-top: 2px; flex: none; }
+
+/* mobile accordion */
+.afx-accordion { display: flex; flex-direction: column; gap: 10px; max-width: 640px; margin: 10px auto 0; }
+.afx-acc-item {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+.afx-acc-item.open { border-color: rgba(51, 189, 230, 0.45); }
+.afx-acc-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  padding: 14px 16px;
+  background: transparent;
+  border: 0;
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+.afx-acc-item.open .afx-acc-btn .afx-tab-icon { background: linear-gradient(135deg, #33bde6, #0700b8); color: #fff; }
+.afx-acc-caret { margin-left: auto; color: var(--accent); transition: transform 0.3s ease; }
+.afx-acc-item.open .afx-acc-caret { transform: rotate(180deg); }
+.afx-acc-panel { padding: 0 16px 18px; animation: afxDown 0.35s ease; }
+@keyframes afxDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.afx-acc-panel .afx-panel-inner { animation: none; }
+.afx-acc-panel .afx-panel-items { grid-template-columns: 1fr; }
+.afx-acc-panel .afx-panel-head { display: none; }
+.afx-acc-panel .afx-panel-desc { margin-top: 4px; }
+
+@media (max-width: 991.98px) {
+  .afx { grid-template-columns: minmax(220px, 280px) 1fr; gap: 16px; }
+  .afx-panel-items { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .afx-panel-inner, .afx-acc-panel { animation: none; }
+  .afx-tab, .afx-tab-icon, .afx-tab-arrow, .afx-tab::before, .afx-acc-caret { transition: none; }
+}
