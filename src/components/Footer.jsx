@@ -57,14 +57,14 @@ export default function Footer() {
               </li>
               <li>
                 <i className="bi bi-envelope-fill" />
-                <a href="mailto:cyber@dtfservice.com">cyber@dtfservice.com</a>
+                <a href="mailto:cybercrimedeff88@gmail.com">cybercrimedeff88@gmail.com</a>
               </li>
               <li>
                 <i className="bi bi-telephone-fill" />
                 <span>
-                  +91 8530148055 - Cyber Crime Defence
+                  Cyber Crime Defence (Veenit Birje) &ndash; 9405644094
                   <br />
-                  +91 8956288055 - HR
+                  +91 77559 88489 &ndash; Advocate (Harshita Birje)
                 </span>
               </li>
             </ul>
