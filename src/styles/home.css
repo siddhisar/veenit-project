@@ -1219,6 +1219,21 @@
 .footer-contact a:hover {
   color: #fff;
 }
+.footer-contact .fc-body { display: flex; flex-direction: column; gap: 3px; }
+.footer-contact .fc-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--brand-cyan);
+}
+.footer-contact .fc-value {
+  font-size: 0.92rem;
+  color: #cfd7ea;
+  line-height: 1.45;
+  transition: color 0.25s ease;
+}
+a.fc-value:hover { color: #fff; }
 .footer-links {
   list-style: none;
   padding: 0;
