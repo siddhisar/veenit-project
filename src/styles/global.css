@@ -68,7 +68,10 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-h);
+  /* slightly smaller global type scale for a lighter, less bulky feel */
+  font-size: 15px;
 }
+@media (max-width: 575.98px) { html { font-size: 14px; } }
 
 body {
   margin: 0;
