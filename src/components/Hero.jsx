@@ -194,6 +194,8 @@ export default function Hero() {
           <p className="hero-desc reveal d4">
             Delivering specialized cybersecurity and digital forensic solutions to protect
             information, investigate digital incidents, and strengthen organizational resilience.
+          </p>
+          <p className="hero-desc hero-desc-2 reveal d5">
             Our services follow rigorous quality and information-security practices aligned with
             ISO 9001 and ISO 27001 standards.
           </p>

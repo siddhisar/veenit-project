@@ -5189,3 +5189,56 @@ a.fc-value:hover { color: #fff; }
   .hero-frame { padding: 26px 18px; border-radius: 16px; }
   .hf-corner { width: 18px; height: 18px; }
 }
+
+/* hero description split into two sentences on separate lines */
+.hero-frame .hero-desc { margin-bottom: 14px; }
+.hero-frame .hero-desc:last-of-type { margin-bottom: 0; }
+
+/* =====================================================================
+   PARAGRAPH ALIGNMENT NORMALIZATION
+   Roots out inconsistent widths / uneven wrapping across sections by
+   giving every centered lead one measure and every editorial prose block
+   one measure, all centered, with balanced line wrapping. Deliberately
+   does NOT touch the two-column hero copy (.ee-hero-copy .ee-hero-p),
+   which is intentionally justified.
+   ===================================================================== */
+:root {
+  --measure-lead: 780px;   /* centered intro/lead paragraphs */
+  --measure-prose: 900px;  /* left-aligned editorial prose blocks */
+}
+
+/* Centered lead paragraphs — one width, centered container, balanced lines */
+.hero-desc,
+.wpt-lead,
+.contact-lead,
+.ee-approach-lead,
+.mf-hero-tagline.centered {
+  max-width: var(--measure-lead);
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  text-wrap: balance;          /* even line lengths, no long/short orphans */
+}
+/* the dark glass-panel lead keeps its slightly wider panel but balanced text */
+.wpt-lead.on-dark { max-width: 860px; }
+
+/* Left-aligned editorial prose — one width, centered container */
+.mf-prose,
+.dfd-intro-lead {
+  width: min(92%, var(--measure-prose));
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  text-wrap: pretty;           /* avoid single-word orphan lines */
+}
+/* consistent, equal spacing between stacked editorial paragraphs */
+.dfd-intro-lead { margin-top: 0; margin-bottom: 18px; }
+.dfd-intro-lead:last-of-type { margin-bottom: 0; }
+.mf-prose p { margin-bottom: 18px; }
+.mf-prose p:last-child { margin-bottom: 0; }
+
+/* keep the balanced measure on tablet/mobile too (width caps handle small screens) */
+@media (max-width: 575.98px) {
+  .hero-desc, .wpt-lead, .contact-lead, .ee-approach-lead { text-wrap: pretty; }
+}
+/* ===================================================================== */
