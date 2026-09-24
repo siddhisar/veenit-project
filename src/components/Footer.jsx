@@ -1,6 +1,9 @@
 import { Container, Row, Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import logo from '../assets/images/logo.svg'
+import CyberBackground from './CyberBackground.jsx'
+import heroVideo from '../assets/videos/cyber-hero.mp4'
+import heroPoster from '../assets/videos/cyber-hero-poster.jpg'
 
 const SERVICES = [
   { title: 'Electronic Evidence & Section 63 Certification', to: '/services/electronic-evidence' },
@@ -21,7 +24,24 @@ const SOCIALS = [
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <div className="footer-pattern" aria-hidden="true" />
+      {/* same ambient background as the Hero section */}
+      <div className="footer-bg" aria-hidden="true">
+        <video
+          className="footer-video"
+          src={heroVideo}
+          poster={heroPoster}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="none"
+        />
+        <CyberBackground />
+        <div className="footer-grid" />
+        <div className="footer-glow" />
+        <div className="footer-overlay" />
+        <div className="footer-vignette" />
+      </div>
       <Container className="position-relative">
         <Row className="gy-5 align-items-start footer-row">
           <Col xs={{ span: 12, order: 2 }} md={{ span: 6, order: 2 }} lg={{ span: 4, order: 1 }} className="footer-services-col reveal d1">
