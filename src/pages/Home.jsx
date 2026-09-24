@@ -1,6 +1,5 @@
 import Header from '../components/Header.jsx'
 import Hero from '../components/Hero.jsx'
-import FeatureCards from '../components/FeatureCards.jsx'
 import ISMSSection from '../components/ISMSSection.jsx'
 import ChainOfCustody from '../components/ChainOfCustody.jsx'
 import ContactSection from '../components/ContactSection.jsx'
@@ -17,7 +16,6 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        <FeatureCards />
         <ISMSSection />
         <ChainOfCustody />
         <ClientLogos />
