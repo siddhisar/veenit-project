@@ -23,9 +23,23 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="footer-pattern" aria-hidden="true" />
       <Container className="position-relative">
-        <Row className="gy-5">
-          <Col lg={3} md={6} className="reveal d1">
-            <div className="footer-brand">
+        <Row className="gy-5 align-items-start footer-row">
+          <Col xs={{ span: 12, order: 2 }} md={{ span: 6, order: 2 }} lg={{ span: 4, order: 1 }} className="footer-services-col reveal d1">
+            <h5 className="footer-heading">Our Services</h5>
+            <ul className="footer-links">
+              {SERVICES.map((s) => (
+                <li key={s.to}>
+                  <Link to={s.to}>
+                    <i className="bi bi-caret-right-fill" />
+                    {s.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </Col>
+
+          <Col xs={{ span: 12, order: 1 }} md={{ span: 12, order: 1 }} lg={{ span: 4, order: 2 }} className="footer-brand-col reveal d2">
+            <div className="footer-brand footer-brand--center">
               <img src={logo} alt="Cyber Crime Defence" className="footer-logo" />
               <h4 className="footer-brand-name">Cyber Crime Defence<sup className="brand-reg">®</sup></h4>
               <div className="footer-socials">
@@ -38,7 +52,7 @@ export default function Footer() {
             </div>
           </Col>
 
-          <Col lg={5} md={6} id="contact-info" className="reveal d2">
+          <Col xs={{ span: 12, order: 3 }} md={{ span: 6, order: 3 }} lg={{ span: 4, order: 3 }} id="contact-info" className="footer-contact-col reveal d3">
             <h5 className="footer-heading">Contact Us</h5>
             <ul className="footer-contact">
               <li>
@@ -69,20 +83,6 @@ export default function Footer() {
                   <a className="fc-value" href="tel:+917755988489">Harshita Birje &ndash; +91 77559 88489</a>
                 </div>
               </li>
-            </ul>
-          </Col>
-
-          <Col lg={4} md={6} className="reveal d3">
-            <h5 className="footer-heading">Our Services</h5>
-            <ul className="footer-links">
-              {SERVICES.map((s) => (
-                <li key={s.to}>
-                  <Link to={s.to}>
-                    <i className="bi bi-caret-right-fill" />
-                    {s.title}
-                  </Link>
-                </li>
-              ))}
             </ul>
           </Col>
         </Row>

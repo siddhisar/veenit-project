@@ -5242,3 +5242,45 @@ a.fc-value:hover { color: #fff; }
   .hero-desc, .wpt-lead, .contact-lead, .ee-approach-lead { text-wrap: pretty; }
 }
 /* ===================================================================== */
+
+/* =====================================================================
+   FOOTER — balanced 3-column composition
+   Our Services (left) | large centered logo + socials | Contact Us (right)
+   Layout/spacing only — colors, type, icons, logo unchanged.
+   ===================================================================== */
+/* centered brand block with a larger, clearly-visible logo */
+.footer-brand.footer-brand--center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.footer-brand--center .footer-logo {
+  width: 118px;
+  height: 118px;
+  margin-bottom: 14px;
+}
+.footer-brand--center .footer-brand-name { margin-bottom: 12px; }
+.footer-brand--center .footer-socials { justify-content: center; }
+
+/* Desktop: mirror the Contact column toward the right corner so the two
+   side columns sit at opposite edges around the centered brand */
+@media (min-width: 992px) {
+  .footer-contact-col { text-align: right; }
+  .footer-contact-col .footer-heading { display: inline-block; }
+  .footer-contact-col .footer-heading::after { left: auto; right: 0; }
+  .footer-contact-col .footer-contact li {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+  .footer-contact-col .fc-body { align-items: flex-end; }
+  /* keep the left Services column hugging the left edge */
+  .footer-services-col { text-align: left; }
+}
+
+/* Tablet/mobile: brand centered on top, the two lists left-aligned below */
+@media (max-width: 991.98px) {
+  .footer-brand.footer-brand--center { align-items: center; }
+  .footer-services-col, .footer-contact-col { text-align: left; }
+}
+/* ===================================================================== */
