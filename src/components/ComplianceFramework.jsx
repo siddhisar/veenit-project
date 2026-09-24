@@ -14,8 +14,8 @@ const FRAMEWORKS = [
   },
   {
     icon: 'bi-shield-lock',
-    title: 'CERT-In Directions (April 2022)',
-    text: 'Incident Reporting, Log Retention & SOC Readiness'
+    title: 'Section 63, Bharatiya Sakshya Adhiniyam',
+    text: 'Admissibility & Certification of Electronic Evidence'
   },
   {
     icon: 'bi-hammer',
