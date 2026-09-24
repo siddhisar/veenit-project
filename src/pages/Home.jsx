@@ -1,5 +1,6 @@
 import Header from '../components/Header.jsx'
 import Hero from '../components/Hero.jsx'
+import ComplianceFramework from '../components/ComplianceFramework.jsx'
 import ISMSSection from '../components/ISMSSection.jsx'
 import ChainOfCustody from '../components/ChainOfCustody.jsx'
 import ContactSection from '../components/ContactSection.jsx'
@@ -16,6 +17,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <ComplianceFramework />
         <ISMSSection />
         <ChainOfCustody />
         <ClientLogos />
