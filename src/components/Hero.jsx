@@ -176,48 +176,28 @@ export default function Hero() {
       </div>
 
       <Container className="hero-content">
-        <span className="hero-badge reveal">
-          <i className="bi bi-shield-lock" />
-          Cyber Crime Cell · Digital Forensics
-        </span>
-        <p className="hero-eyebrow reveal d1">Strengthening Security Through Compliance</p>
-        <h1 className="hero-title reveal d2">
-          Cyber Crime Defence<sup className="brand-reg">®</sup>
-        </h1>
-        <p className="hero-desc reveal d3">
-          Delivering specialized cybersecurity and digital forensic solutions to protect
-          information, investigate digital incidents, and strengthen organizational resilience.
-          Our services follow rigorous quality and information-security practices aligned with
-          ISO 9001 and ISO 27001 standards.
-        </p>
+        <div className="hero-frame reveal zoom-in">
+          <span className="hf-corner tl" aria-hidden="true" />
+          <span className="hf-corner tr" aria-hidden="true" />
+          <span className="hf-corner bl" aria-hidden="true" />
+          <span className="hf-corner br" aria-hidden="true" />
+          <span className="hf-scan" aria-hidden="true" />
 
-        <div className="hero-cta reveal d4">
-          <a href="#get-in-touch" className="btn-cyber hero-cta-btn">
-            Request for Enquiry <i className="bi bi-arrow-right" />
-          </a>
-          <a href="#isms" className="hero-cta-ghost">
-            Explore Capabilities <i className="bi bi-chevron-down" />
-          </a>
-        </div>
-
-        <ul className="hero-creds reveal d5" aria-label="Standards and assurance">
-          <li>
-            <i className="bi bi-patch-check" />
-            <span><strong>ISO 9001</strong>Quality Management</span>
-          </li>
-          <li>
+          <span className="hero-badge reveal d1">
             <i className="bi bi-shield-lock" />
-            <span><strong>ISO 27001</strong>Information Security</span>
-          </li>
-          <li>
-            <i className="bi bi-diagram-3" />
-            <span><strong>CERT-In</strong>Aligned Practices</span>
-          </li>
-          <li>
-            <i className="bi bi-fingerprint" />
-            <span><strong>Chain of Custody</strong>Evidence Integrity</span>
-          </li>
-        </ul>
+            Cyber Crime Cell · Digital Forensics
+          </span>
+          <p className="hero-eyebrow reveal d2">Strengthening Security Through Compliance</p>
+          <h1 className="hero-title reveal d3">
+            Cyber Crime Defence<sup className="brand-reg">®</sup>
+          </h1>
+          <p className="hero-desc reveal d4">
+            Delivering specialized cybersecurity and digital forensic solutions to protect
+            information, investigate digital incidents, and strengthen organizational resilience.
+            Our services follow rigorous quality and information-security practices aligned with
+            ISO 9001 and ISO 27001 standards.
+          </p>
+        </div>
       </Container>
 
       <div className="hero-fade" />
