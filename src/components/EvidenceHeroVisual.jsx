@@ -62,24 +62,73 @@ export default function EvidenceHeroVisual() {
           </defs>
         </svg>
 
-        {/* 3D verified-evidence document — Section 63 certification */}
-        <div className="eh-cert3d">
-          <span className="eh-cert3d-shadow" />
-          <div className="eh-cert3d-stack">
-            <span className="eh-cert3d-page pg2" />
-            <span className="eh-cert3d-page pg1" />
-            <div className="eh-cert3d-doc">
-              <span className="eh-cert3d-ribbon"><i className="bi bi-file-earmark-lock2" /></span>
-              <span className="eh-cert3d-line w1" />
-              <span className="eh-cert3d-line w2" />
-              <span className="eh-cert3d-line w3" />
-              <span className="eh-cert3d-line w4" />
-              <span className="eh-cert3d-scan" />
-            </div>
-          </div>
-          <span className="eh-cert3d-seal">
-            <i className="bi bi-patch-check-fill" />
-          </span>
+        {/* 3D animated legal gavel — Section 63 / court admissibility */}
+        <div className="eh-gavel3d">
+          <svg className="eh-gavel3d-svg" viewBox="0 0 260 260">
+            <defs>
+              {/* cylindrical shading for the mallet head */}
+              <linearGradient id="ehgHead" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="#24406f" />
+                <stop offset="0.32" stopColor="#3f6ea3" />
+                <stop offset="0.5" stopColor="#9fd8f2" />
+                <stop offset="0.68" stopColor="#3f6ea3" />
+                <stop offset="1" stopColor="#16264a" />
+              </linearGradient>
+              <linearGradient id="ehgHandle" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stopColor="#16264a" />
+                <stop offset="0.5" stopColor="#5f8fc0" />
+                <stop offset="1" stopColor="#16264a" />
+              </linearGradient>
+              <linearGradient id="ehgBand" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="#bff0ff" />
+                <stop offset="0.5" stopColor="#33bde6" />
+                <stop offset="1" stopColor="#0a4f86" />
+              </linearGradient>
+              <radialGradient id="ehgCap" cx="50%" cy="40%" r="65%">
+                <stop offset="0" stopColor="#6fa6d6" />
+                <stop offset="1" stopColor="#16264a" />
+              </radialGradient>
+              <linearGradient id="ehgBase" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stopColor="#2a4a78" />
+                <stop offset="1" stopColor="#0e1c3e" />
+              </linearGradient>
+              <radialGradient id="ehgBaseTop" cx="50%" cy="45%" r="60%">
+                <stop offset="0" stopColor="#4f80b4" />
+                <stop offset="1" stopColor="#16294f" />
+              </radialGradient>
+            </defs>
+
+            {/* sound block (base) */}
+            <g className="ehg-base">
+              <ellipse cx="130" cy="232" rx="66" ry="15" fill="#050a1c" opacity="0.55" />
+              <rect x="70" y="212" width="120" height="20" rx="10" fill="url(#ehgBase)" stroke="rgba(51,189,230,0.5)" strokeWidth="1.4" />
+              <ellipse cx="130" cy="212" rx="60" ry="13" fill="url(#ehgBaseTop)" stroke="rgba(123,220,247,0.6)" strokeWidth="1.4" />
+            </g>
+
+            {/* impact ripple on strike */}
+            <ellipse className="ehg-impact" cx="130" cy="210" rx="42" ry="9" fill="none" stroke="#7bdcf7" strokeWidth="2" />
+
+            {/* the hammer (head + handle) — swings to strike */}
+            <g className="ehg-hammer">
+              {/* handle */}
+              <g transform="rotate(38 130 120)">
+                <rect x="122" y="118" width="16" height="104" rx="8" fill="url(#ehgHandle)" stroke="rgba(51,189,230,0.45)" strokeWidth="1.4" />
+                <circle cx="130" cy="222" r="9" fill="url(#ehgCap)" stroke="rgba(123,220,247,0.6)" strokeWidth="1.4" />
+              </g>
+              {/* mallet head — horizontal cylinder */}
+              <g transform="rotate(-16 130 96)">
+                <rect x="66" y="72" width="128" height="48" rx="16" fill="url(#ehgHead)" stroke="rgba(51,189,230,0.55)" strokeWidth="1.6" />
+                {/* end caps */}
+                <ellipse cx="72" cy="96" rx="11" ry="26" fill="url(#ehgCap)" stroke="rgba(123,220,247,0.55)" strokeWidth="1.4" />
+                <ellipse cx="188" cy="96" rx="11" ry="26" fill="url(#ehgCap)" stroke="rgba(123,220,247,0.55)" strokeWidth="1.4" />
+                {/* metallic centre band */}
+                <rect x="116" y="68" width="30" height="56" rx="6" fill="url(#ehgBand)" stroke="rgba(191,240,255,0.7)" strokeWidth="1.2" />
+                {/* specular highlight */}
+                <rect x="74" y="80" width="112" height="7" rx="3.5" fill="rgba(255,255,255,0.35)" />
+              </g>
+            </g>
+          </svg>
+          <span className="eh-gavel3d-glow" />
         </div>
       </div>
 
