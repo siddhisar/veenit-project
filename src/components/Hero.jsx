@@ -190,6 +190,34 @@ export default function Hero() {
           Our services follow rigorous quality and information-security practices aligned with
           ISO 9001 and ISO 27001 standards.
         </p>
+
+        <div className="hero-cta reveal d4">
+          <a href="#get-in-touch" className="btn-cyber hero-cta-btn">
+            Request for Enquiry <i className="bi bi-arrow-right" />
+          </a>
+          <a href="#isms" className="hero-cta-ghost">
+            Explore Capabilities <i className="bi bi-chevron-down" />
+          </a>
+        </div>
+
+        <ul className="hero-creds reveal d5" aria-label="Standards and assurance">
+          <li>
+            <i className="bi bi-patch-check" />
+            <span><strong>ISO 9001</strong>Quality Management</span>
+          </li>
+          <li>
+            <i className="bi bi-shield-lock" />
+            <span><strong>ISO 27001</strong>Information Security</span>
+          </li>
+          <li>
+            <i className="bi bi-diagram-3" />
+            <span><strong>CERT-In</strong>Aligned Practices</span>
+          </li>
+          <li>
+            <i className="bi bi-fingerprint" />
+            <span><strong>Chain of Custody</strong>Evidence Integrity</span>
+          </li>
+        </ul>
       </Container>
 
       <div className="hero-fade" />
