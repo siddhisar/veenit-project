@@ -16,15 +16,6 @@ const CONCEPTS = [
   { icon: 'bi-file-earmark-text', label: 'Documents' }
 ]
 
-const CHRONO = [
-  { icon: 'bi-clock-history', title: 'Chronology', text: 'Establish a sequence of relevant digital events.' },
-  { icon: 'bi-chat-square-text', title: 'Communication Patterns', text: 'Understand relevant communication and interaction patterns.' },
-  { icon: 'bi-credit-card', title: 'Financial Activity', text: 'Review relevant digital payment or transaction records.' },
-  { icon: 'bi-diagram-3', title: 'Relationship Between Events', text: 'Connect different digital records to understand the context surrounding an event.' },
-  { icon: 'bi-folder2-open', title: 'Supporting Documentation', text: 'Organize relevant electronic records and associated documentation.' }
-]
-
-
 const S63_FLOW = [
   { icon: 'bi-file-earmark', label: 'Electronic Record' },
   { icon: 'bi-shield-lock', label: 'Preservation' },
@@ -120,29 +111,6 @@ export default function DivorceFamilyPage() {
             <EvidenceExplorer />
           </Container>
         </section>
-
-        {/* 4. EVIDENCE → CHRONOLOGY → CONTEXT */}
-        <section className="dfd-light section">
-          <Container>
-            <p className="eyebrow reveal">Context</p>
-            <h2 className="section-title reveal d1">Evidence, Chronology &amp; Context</h2>
-            <p className="dfd-flowline reveal d2">
-              Digital Record <i className="bi bi-arrow-right" /> Timestamp <i className="bi bi-arrow-right" /> Event
-              <i className="bi bi-arrow-right" /> Related Evidence <i className="bi bi-arrow-right" /> Timeline
-            </p>
-            <div className="dfd-tl">
-              <span className="dfd-tl-track reveal draw-x" aria-hidden="true" />
-              {CHRONO.map((c, i) => (
-                <div className="dfd-tl-item reveal" key={c.title} style={{ transitionDelay: `${0.1 * i}s` }}>
-                  <span className="dfd-tl-node"><i className={`bi ${c.icon}`} /></span>
-                  <h3 className="dfd-tl-title">{c.title}</h3>
-                  <p className="dfd-tl-text">{c.text}</p>
-                </div>
-              ))}
-            </div>
-          </Container>
-        </section>
-
 
         {/* 6. SECTION 63 CERTIFICATION SUPPORT */}
         <section className="dfd-light section">
