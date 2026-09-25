@@ -24,15 +24,6 @@ const CHRONO = [
   { icon: 'bi-folder2-open', title: 'Supporting Documentation', text: 'Organize relevant electronic records and associated documentation.' }
 ]
 
-const INTEGRITY_POINTS = ['Authenticity', 'Relevance', 'Integrity', 'Proper documentation', 'Applicable legal requirements']
-
-const INTEGRITY_FLOW = [
-  { icon: 'bi-file-earmark', title: 'Digital Record', text: 'A relevant electronic record is identified.' },
-  { icon: 'bi-shield-lock', title: 'Preservation', text: 'The record is preserved in a structured manner.' },
-  { icon: 'bi-search', title: 'Forensic Examination', text: 'The evidence is examined using forensic procedures.' },
-  { icon: 'bi-journal-text', title: 'Documentation', text: 'Handling and findings are clearly documented.' },
-  { icon: 'bi-patch-check', title: 'Certification Support', text: 'Section 63-related certification support is provided.' }
-]
 
 const S63_FLOW = [
   { icon: 'bi-file-earmark', label: 'Electronic Record' },
@@ -152,36 +143,6 @@ export default function DivorceFamilyPage() {
           </Container>
         </section>
 
-        {/* 5. AUTHENTICITY & INTEGRITY */}
-        <section className="dfd-dark section">
-          <div className="dfd-bg" aria-hidden="true"><div className="mf-art-grid" /><div className="mf-art-glow" /></div>
-          <Container className="position-relative">
-            <p className="eyebrow on-dark reveal">Standards</p>
-            <h2 className="section-title on-dark reveal d1">Evidence Integrity &amp; Legal Documentation</h2>
-            <p className="wpt-lead on-dark reveal d2">
-              Digital evidence should be considered with attention to:
-            </p>
-            <div className="dfd-pills reveal d2">
-              {INTEGRITY_POINTS.map((p, i) => (
-                <span className="dfd-pill reveal zoom-in" key={p} style={{ transitionDelay: `${0.05 * i}s` }}>
-                  <i className="bi bi-check2-circle" />{p}
-                </span>
-              ))}
-            </div>
-            <div className="wpt-remed-flow dfd-remed">
-              {INTEGRITY_FLOW.map((r, i) => (
-                <div className={`wpt-remed-step reveal from-left ${i === INTEGRITY_FLOW.length - 1 ? 'is-verified' : ''}`} key={r.title} style={{ transitionDelay: `${0.09 * i}s` }}>
-                  <span className="wpt-remed-icon"><i className={`bi ${r.icon}`} /></span>
-                  <div className="wpt-remed-body">
-                    <h3 className="wpt-remed-title">{r.title}</h3>
-                    <p className="wpt-remed-text">{r.text}</p>
-                  </div>
-                  {i < INTEGRITY_FLOW.length - 1 && <span className="wpt-remed-line" aria-hidden="true" />}
-                </div>
-              ))}
-            </div>
-          </Container>
-        </section>
 
         {/* 6. SECTION 63 CERTIFICATION SUPPORT */}
         <section className="dfd-light section">
