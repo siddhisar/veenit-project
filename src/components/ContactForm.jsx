@@ -22,15 +22,24 @@ const INITIAL = {
   lastAudit: ''
 }
 
+// Web3Forms — free form-to-email service. The access key is PUBLIC and
+// safe to expose in the frontend; the recipient business email is bound
+// to the key on web3forms.com (never stored in code). Configured via an
+// env var so it can be set in Vercel without code changes.
+// e.g. VITE_WEB3FORMS_ACCESS_KEY="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
+const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
+
 export default function ContactForm() {
   const [values, setValues] = useState(INITIAL)
   const [errors, setErrors] = useState({})
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState('idle') // idle | submitting | success | error
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setValues((v) => ({ ...v, [name]: value }))
     if (errors[name]) setErrors((er) => ({ ...er, [name]: '' }))
+    if (status === 'error') setStatus('idle')
   }
 
   const validate = () => {
@@ -49,24 +58,79 @@ export default function ContactForm() {
     return next
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    if (status === 'submitting') return // prevent duplicate submissions
+
     const next = validate()
     setErrors(next)
-    if (Object.keys(next).length === 0) {
-      // Front-end only — no backend wired up yet.
-      setSubmitted(true)
-      setValues(INITIAL)
-      setTimeout(() => setSubmitted(false), 6000)
+    if (Object.keys(next).length > 0) return
+
+    if (!WEB3FORMS_ACCESS_KEY) {
+      // Misconfiguration — never pretend the email was sent.
+      console.error('VITE_WEB3FORMS_ACCESS_KEY is not set; cannot submit the enquiry.')
+      setStatus('error')
+      return
+    }
+
+    setStatus('submitting')
+
+    // Human-readable payload so the team email is easy to read.
+    const payload = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      subject: 'New Case Enquiry – Cyber Crime Defence',
+      from_name: 'Cyber Crime Defence Website',
+      replyto: values.email,
+      Name: values.name,
+      Email: values.email,
+      Phone: values.phone,
+      'Service / Case Type': values.solution || 'Not specified',
+      'Urgency Level': values.urgency || 'Not specified',
+      'System Count': values.systems || 'Not specified',
+      'Last Audit Date': values.lastAudit || 'Not specified',
+      Submitted: new Date().toLocaleString(),
+      botcheck: '' // honeypot — must stay empty
+    }
+
+    try {
+      const res = await fetch(WEB3FORMS_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
+      })
+      const data = await res.json().catch(() => ({}))
+
+      if (res.ok && data.success) {
+        setStatus('success')
+        setValues(INITIAL)
+        setTimeout(() => setStatus('idle'), 8000)
+      } else {
+        setStatus('error')
+      }
+    } catch (err) {
+      setStatus('error')
     }
   }
 
+  const submitting = status === 'submitting'
+
   return (
     <Form className="contact-form" noValidate onSubmit={handleSubmit}>
-      {submitted && (
+      {status === 'success' && (
         <Alert variant="success" className="contact-alert">
           <i className="bi bi-check-circle-fill me-2" />
-          Thank you — your case has been received. Our experts will reach out shortly.
+          Thank you. Your enquiry has been submitted successfully. Our team will contact you shortly.
+        </Alert>
+      )}
+
+      {status === 'error' && (
+        <Alert variant="danger" className="contact-alert">
+          <i className="bi bi-exclamation-triangle-fill me-2" />
+          We couldn&apos;t submit your enquiry right now. Please try again or contact us directly at
+          {' '}cybercrimedeff88@gmail.com.
         </Alert>
       )}
 
@@ -198,9 +262,9 @@ export default function ContactForm() {
         </Col>
 
         <Col xs={12} className="reveal d4">
-          <Button type="submit" className="btn-cyber submit-case">
-            <span>Submit Your Case</span>
-            <i className="bi bi-arrow-right" />
+          <Button type="submit" className="btn-cyber submit-case" disabled={submitting}>
+            <span>{submitting ? 'Submitting…' : 'Submit Your Case'}</span>
+            <i className={`bi ${submitting ? 'bi-arrow-repeat' : 'bi-arrow-right'}`} />
           </Button>
         </Col>
       </Row>
