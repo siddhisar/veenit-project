@@ -24,10 +24,10 @@ const INITIAL = {
 
 // Web3Forms — free form-to-email service. The access key is PUBLIC and
 // safe to expose in the frontend; the recipient business email is bound
-// to the key on web3forms.com (never stored in code). Configured via an
-// env var so it can be set in Vercel without code changes.
-// e.g. VITE_WEB3FORMS_ACCESS_KEY="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
+// to the key on web3forms.com (never stored in code). An env var can
+// override it in Vercel, otherwise the committed key below is used.
+const WEB3FORMS_ACCESS_KEY =
+  import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '9bb82b1b-e85c-4ea0-b5c2-5d3bd9889abe'
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
 
 export default function ContactForm() {
