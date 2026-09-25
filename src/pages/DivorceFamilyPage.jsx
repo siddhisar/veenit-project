@@ -13,7 +13,6 @@ const CONCEPTS = [
   { icon: 'bi-images', label: 'Photos & Videos' },
   { icon: 'bi-share', label: 'Social Media' },
   { icon: 'bi-geo-alt', label: 'Location' },
-  { icon: 'bi-credit-card', label: 'Digital Payments' },
   { icon: 'bi-file-earmark-text', label: 'Documents' }
 ]
 
