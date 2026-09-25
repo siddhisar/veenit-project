@@ -5680,3 +5680,99 @@ a.fc-value:hover { color: #fff; }
   .dfd-chip:hover { transform: translateY(-3px) scale(1.03); }
 }
 /* ===================================================================== */
+
+/* =====================================================================
+   FOOTER redesign — Contact (left) · Brand (center) · Services (right)
+   De-boxed logo, gradient-highlighted lists, hover glow/scale, ambient
+   light motion. Layout/colours stay on-theme.
+   ===================================================================== */
+@media (min-width: 992px) {
+  /* Contact now on the LEFT — normal alignment */
+  .footer-contact-col { text-align: left; }
+  .footer-contact-col .footer-heading { display: block; }
+  .footer-contact-col .footer-heading::after { left: 0; right: auto; }
+  .footer-contact-col .footer-contact li { flex-direction: row; text-align: left; }
+  .footer-contact-col .fc-body { align-items: flex-start; }
+
+  /* Services now on the RIGHT — mirrored to the corner */
+  .footer-services-col { text-align: right; }
+  .footer-services-col .footer-heading { display: inline-block; }
+  .footer-services-col .footer-heading::after { left: auto; right: 0; }
+  .footer-services-col .footer-links a { flex-direction: row-reverse; justify-content: flex-end; text-align: right; }
+}
+
+/* ---- de-boxed, glowing central logo ---- */
+.footer-brand--center .footer-logo {
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(51, 189, 230, 0.18), 0 14px 34px rgba(2, 8, 26, 0.5), 0 0 30px rgba(51, 189, 230, 0.16);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
+}
+.footer-brand--center .footer-logo:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 0 0 1px rgba(51, 189, 230, 0.4), 0 18px 44px rgba(2, 8, 26, 0.6), 0 0 46px rgba(51, 189, 230, 0.4);
+}
+.footer-brand--center .footer-brand-name {
+  background: linear-gradient(90deg, #ffffff, #bfe6f5);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---- Contact items: crisp icon badges + hover glow/scale ---- */
+.footer-contact li {
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+.footer-contact li > i {
+  display: grid; place-items: center;
+  flex: none;
+  width: 40px; height: 40px;
+  border-radius: 11px;
+  background: linear-gradient(145deg, rgba(51, 189, 230, 0.16), rgba(7, 0, 184, 0.18));
+  border: 1px solid rgba(51, 189, 230, 0.28);
+  color: var(--brand-cyan);
+  font-size: 1.05rem;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+}
+.footer-contact li:hover {
+  background: rgba(51, 189, 230, 0.07);
+  transform: translateY(-2px);
+  box-shadow: inset 0 0 0 1px rgba(51, 189, 230, 0.16);
+}
+.footer-contact li:hover > i {
+  background: linear-gradient(145deg, #33bde6, #0700b8);
+  color: #fff;
+  transform: scale(1.09);
+  box-shadow: 0 8px 20px rgba(51, 189, 230, 0.45);
+}
+.footer-contact .fc-value { transition: color 0.25s ease, text-shadow 0.25s ease; }
+.footer-contact li:hover .fc-value { color: #fff; text-shadow: 0 0 12px rgba(51, 189, 230, 0.35); }
+
+/* ---- Services links: glow + slide + gradient caret ---- */
+.footer-links a { transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease; }
+.footer-links a i { transition: color 0.25s ease, transform 0.25s ease; }
+.footer-links a:hover { color: #fff; text-shadow: 0 0 12px rgba(51, 189, 230, 0.45); }
+.footer-links a:hover i { color: var(--brand-cyan); transform: scale(1.35); }
+@media (min-width: 992px) { .footer-services-col .footer-links a:hover { transform: translateX(-4px); } }
+@media (max-width: 991.98px) { .footer-links a:hover { transform: translateX(4px); } }
+
+/* ---- Social buttons: gradient fill + glow + scale ---- */
+.footer-social { transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease; }
+.footer-social:hover {
+  background: linear-gradient(145deg, #33bde6, #0700b8);
+  color: #fff;
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 10px 24px rgba(51, 189, 230, 0.5);
+}
+
+/* ---- ambient light drift in the dark background ---- */
+.footer-glow { animation: footerAmbient 16s ease-in-out infinite alternate; will-change: transform, opacity; }
+@keyframes footerAmbient {
+  0%   { transform: translate3d(0, 0, 0) scale(1);    opacity: 0.9; }
+  50%  { transform: translate3d(2%, -3%, 0) scale(1.1); opacity: 1; }
+  100% { transform: translate3d(-2%, 2%, 0) scale(1.05); opacity: 0.85; }
+}
+@media (prefers-reduced-motion: reduce) { .footer-glow { animation: none; } }
+/* ===================================================================== */

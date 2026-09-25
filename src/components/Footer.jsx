@@ -44,7 +44,7 @@ export default function Footer() {
       </div>
       <Container className="position-relative">
         <Row className="gy-5 align-items-start footer-row">
-          <Col xs={{ span: 12, order: 2 }} md={{ span: 6, order: 2 }} lg={{ span: 4, order: 1 }} className="footer-services-col reveal d1">
+          <Col xs={{ span: 12, order: 3 }} md={{ span: 6, order: 3 }} lg={{ span: 4, order: 3 }} className="footer-services-col reveal d3">
             <h5 className="footer-heading">Our Services</h5>
             <ul className="footer-links">
               {SERVICES.map((s) => (
@@ -72,7 +72,7 @@ export default function Footer() {
             </div>
           </Col>
 
-          <Col xs={{ span: 12, order: 3 }} md={{ span: 6, order: 3 }} lg={{ span: 4, order: 3 }} id="contact-info" className="footer-contact-col reveal d3">
+          <Col xs={{ span: 12, order: 2 }} md={{ span: 6, order: 2 }} lg={{ span: 4, order: 1 }} id="contact-info" className="footer-contact-col reveal d1">
             <h5 className="footer-heading">Contact Us</h5>
             <ul className="footer-contact">
               <li>
