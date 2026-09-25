@@ -1,9 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // Interactive "digital evidence certification" workflow for the
 // Section 63 Certification Support section. Left: a large forensic
 // certification interface. Right: a 5-step vertical workflow whose
 // hover/focus/selection drives the highlighted stage in the interface.
+// Uses its own in-view observer (with a safety fallback) so the entrance
+// animation is reliable and the content can never stay hidden.
 const STEPS = [
   {
     icon: 'bi-file-earmark-text',
@@ -40,11 +42,35 @@ const META = [
 
 export default function Section63Cert() {
   const [active, setActive] = useState(0)
+  const [inView, setInView] = useState(false)
+  const rootRef = useRef(null)
+
+  useEffect(() => {
+    const el = rootRef.current
+    if (!el) return undefined
+    // safety net: never let the content stay hidden if the observer misfires
+    const fallback = setTimeout(() => setInView(true), 900)
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setInView(true)
+          io.disconnect()
+          clearTimeout(fallback)
+        }
+      },
+      { threshold: 0.2 }
+    )
+    io.observe(el)
+    return () => {
+      io.disconnect()
+      clearTimeout(fallback)
+    }
+  }, [])
 
   return (
-    <div className="s63">
+    <div className={`s63 ${inView ? 'is-in' : ''}`} ref={rootRef}>
       {/* ---------- LEFT: certification interface ---------- */}
-      <div className="s63-visual reveal from-left d2">
+      <div className="s63-visual">
         <div className="s63-panel">
           <div className="s63-panel-head">
             <span className="s63-seal"><i className="bi bi-patch-check-fill" /></span>
@@ -110,8 +136,8 @@ export default function Section63Cert() {
         {STEPS.map((s, i) => (
           <li
             key={s.title}
-            className={`s63-step reveal from-right ${i === active ? 'is-active' : ''} ${i < active ? 'is-done' : ''}`}
-            style={{ transitionDelay: `${0.08 * i}s` }}
+            className={`s63-step ${i === active ? 'is-active' : ''} ${i < active ? 'is-done' : ''}`}
+            style={{ '--i': i }}
             onMouseEnter={() => setActive(i)}
             onFocus={() => setActive(i)}
             onClick={() => setActive(i)}
