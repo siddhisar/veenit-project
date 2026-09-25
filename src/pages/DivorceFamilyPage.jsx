@@ -4,6 +4,7 @@ import BackToTop from '../components/BackToTop.jsx'
 import CyberBackground from '../components/CyberBackground.jsx'
 import FamilyEvidenceVisual from '../components/FamilyEvidenceVisual.jsx'
 import EvidenceExplorer from '../components/EvidenceExplorer.jsx'
+import Section63Cert from '../components/Section63Cert.jsx'
 import useScrollReveal from '../hooks/useScrollReveal.js'
 
 const CONCEPTS = [
@@ -16,13 +17,6 @@ const CONCEPTS = [
   { icon: 'bi-file-earmark-text', label: 'Documents' }
 ]
 
-const S63_FLOW = [
-  { icon: 'bi-file-earmark', label: 'Electronic Record' },
-  { icon: 'bi-shield-lock', label: 'Preservation' },
-  { icon: 'bi-search', label: 'Examination' },
-  { icon: 'bi-journal-text', label: 'Documentation' },
-  { icon: 'bi-patch-check', label: 'Section 63 Support' }
-]
 
 const PRESERVE = [
   { icon: 'bi-search', label: 'Identify' },
@@ -113,42 +107,31 @@ export default function DivorceFamilyPage() {
         </section>
 
         {/* 6. SECTION 63 CERTIFICATION SUPPORT */}
-        <section className="dfd-light section">
-          <Container>
+        <section className="dfd-light section dfd-s63">
+          <div className="dfd-s63-bg" aria-hidden="true">
+            <svg className="dfd-s63-scales" viewBox="0 0 240 200" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="120" y1="26" x2="120" y2="170" />
+              <line x1="40" y1="52" x2="200" y2="52" />
+              <line x1="96" y1="170" x2="144" y2="170" />
+              <line x1="120" y1="170" x2="120" y2="182" />
+              <line x1="94" y1="182" x2="146" y2="182" />
+              <path d="M40 52 L20 96 h40 z" />
+              <path d="M200 52 L180 96 h40 z" />
+              <circle cx="120" cy="22" r="6" />
+            </svg>
+            <span className="dfd-s63-node n1" /><span className="dfd-s63-node n2" />
+            <span className="dfd-s63-node n3" /><span className="dfd-s63-node n4" />
+          </div>
+          <Container className="position-relative">
             <p className="eyebrow reveal">Certification</p>
             <h2 className="section-title reveal d1">Section 63 Certification Support</h2>
-            <p className="dfd-intro-lead reveal d2">
+            <p className="wpt-lead reveal d2">
               Cyber Crime Defence provides Section 63-related certification support for legally
               authorized matters &mdash; preparing structured documentation for the electronic records
               examined, so legal professionals can evaluate the evidence within the appropriate
               proceedings.
             </p>
-            <div className="dfd-cert reveal d2">
-              <div className="dfd-cert-card">
-                <div className="dfd-cert-head">
-                  <span className="dfd-cert-seal"><i className="bi bi-patch-check-fill" /></span>
-                  <div>
-                    <span className="dfd-cert-kicker">Section 63</span>
-                    <span className="dfd-cert-title">Certification Support</span>
-                  </div>
-                </div>
-                <span className="dfd-cert-line l1" />
-                <span className="dfd-cert-line l2" />
-                <span className="dfd-cert-line l3" />
-                <span className="dfd-cert-scan" />
-              </div>
-              <div className="dfd-cert-flow">
-                {S63_FLOW.map((f, i) => (
-                  <div className="wpt-flow-item" key={f.label}>
-                    <div className="dfd-cert-node reveal zoom-in" style={{ transitionDelay: `${0.1 * i}s` }}>
-                      <span className="dfd-cert-node-icon"><i className={`bi ${f.icon}`} /></span>
-                      <span>{f.label}</span>
-                    </div>
-                    {i < S63_FLOW.length - 1 && <span className="dfd-cert-arrow" aria-hidden="true"><i className="bi bi-chevron-right" /></span>}
-                  </div>
-                ))}
-              </div>
-            </div>
+            <Section63Cert />
           </Container>
         </section>
 
