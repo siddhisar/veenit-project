@@ -38,7 +38,7 @@ export default function ISMSSection() {
   return (
     <section className="isms section" id="isms">
       <Container>
-        <Row className="align-items-stretch g-5">
+        <Row className="align-items-stretch g-4 g-lg-5">
           <Col lg={6}>
             <CyberShieldVisual />
           </Col>
