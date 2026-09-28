@@ -18,7 +18,7 @@ const CLIENTS = [
   { src: cyberintelsys, name: 'Cyberintelsys' },
   { src: etciso, name: 'ET CISO' },
   { src: systools, name: 'SysTools', dark: true },
-  { src: clientFlame, name: 'Client', dark: true }
+  { src: clientFlame, name: 'Apollo Hospitals', dark: true }
 ]
 
 export default function ClientLogos() {
