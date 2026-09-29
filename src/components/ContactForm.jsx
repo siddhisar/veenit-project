@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState } from 'react'
 import { Form, Row, Col, Button, Alert } from 'react-bootstrap'
 
 const SOLUTION_TYPES = [
@@ -30,76 +30,10 @@ const WEB3FORMS_ACCESS_KEY =
   import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '9bb82b1b-e85c-4ea0-b5c2-5d3bd9889abe'
 const WEB3FORMS_ENDPOINT = 'https://api.web3forms.com/submit'
 
-// hCaptcha — anti-bot. Using Web3Forms' shared hCaptcha site key means
-// Web3Forms verifies the token server-side (no secret key in the frontend,
-// no extra account needed). Override with VITE_HCAPTCHA_SITE_KEY if desired.
-const HCAPTCHA_SITE_KEY =
-  import.meta.env.VITE_HCAPTCHA_SITE_KEY || '50b2fe65-b00b-4b9e-ad62-3ba471098be2'
-
 export default function ContactForm() {
   const [values, setValues] = useState(INITIAL)
   const [errors, setErrors] = useState({})
   const [status, setStatus] = useState('idle') // idle | submitting | success | error
-  const [captchaToken, setCaptchaToken] = useState('')
-  const captchaRef = useRef(null)
-  const widgetIdRef = useRef(null)
-
-  // Load and render the hCaptcha widget (explicit render) once.
-  useEffect(() => {
-    let cancelled = false
-    const renderWidget = () => {
-      if (cancelled || !window.hcaptcha || !captchaRef.current) return
-      if (captchaRef.current.childElementCount > 0) return
-      try {
-        widgetIdRef.current = window.hcaptcha.render(captchaRef.current, {
-          sitekey: HCAPTCHA_SITE_KEY,
-          size: typeof window !== 'undefined' && window.innerWidth <= 360 ? 'compact' : 'normal',
-          callback: (token) => {
-            setCaptchaToken(token)
-            setErrors((er) => ({ ...er, captcha: '' }))
-          },
-          'expired-callback': () => setCaptchaToken(''),
-          'error-callback': () => setCaptchaToken('')
-        })
-      } catch (e) {
-        /* already rendered */
-      }
-    }
-    if (window.hcaptcha && window.hcaptcha.render) {
-      renderWidget()
-    } else {
-      let s = document.querySelector('script[data-hcaptcha]')
-      if (!s) {
-        s = document.createElement('script')
-        s.src = 'https://js.hcaptcha.com/1/api.js?render=explicit&recaptchacompat=off'
-        s.async = true
-        s.defer = true
-        s.setAttribute('data-hcaptcha', '1')
-        document.head.appendChild(s)
-      }
-      const iv = setInterval(() => {
-        if (window.hcaptcha && window.hcaptcha.render) {
-          clearInterval(iv)
-          renderWidget()
-        }
-      }, 300)
-      setTimeout(() => clearInterval(iv), 10000)
-    }
-    return () => {
-      cancelled = true
-    }
-  }, [])
-
-  const resetCaptcha = () => {
-    setCaptchaToken('')
-    if (window.hcaptcha && widgetIdRef.current !== null) {
-      try {
-        window.hcaptcha.reset(widgetIdRef.current)
-      } catch (e) {
-        /* ignore */
-      }
-    }
-  }
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -129,7 +63,6 @@ export default function ContactForm() {
     if (status === 'submitting') return // prevent duplicate submissions
 
     const next = validate()
-    if (!captchaToken) next.captcha = 'Please complete the verification.'
     setErrors(next)
     if (Object.keys(next).length > 0) return
 
@@ -160,7 +93,6 @@ export default function ContactForm() {
       'System Count': values.systems || 'Not specified',
       'Last Audit Date': values.lastAudit || 'Not specified',
       Submitted: new Date().toLocaleString(),
-      'h-captcha-response': captchaToken, // verified server-side by Web3Forms
       botcheck: '' // honeypot — must stay empty
     }
 
@@ -192,15 +124,12 @@ export default function ContactForm() {
 
         setStatus('success')
         setValues(INITIAL)
-        resetCaptcha()
         setTimeout(() => setStatus('idle'), 8000)
       } else {
         setStatus('error')
-        resetCaptcha()
       }
     } catch (err) {
       setStatus('error')
-      resetCaptcha()
     }
   }
 
@@ -351,16 +280,10 @@ export default function ContactForm() {
         </Col>
 
         <Col xs={12} className="reveal d4">
-          <div className="cf-submit-row">
-            <div className="cf-captcha">
-              <div ref={captchaRef} className="cf-hcaptcha" />
-              {errors.captcha && <span className="cf-captcha-error">{errors.captcha}</span>}
-            </div>
-            <Button type="submit" className="btn-cyber submit-case" disabled={submitting}>
-              <span>{submitting ? 'Submitting…' : 'Submit Your Case'}</span>
-              <i className={`bi ${submitting ? 'bi-arrow-repeat' : 'bi-arrow-right'}`} />
-            </Button>
-          </div>
+          <Button type="submit" className="btn-cyber submit-case" disabled={submitting}>
+            <span>{submitting ? 'Submitting…' : 'Submit Your Case'}</span>
+            <i className={`bi ${submitting ? 'bi-arrow-repeat' : 'bi-arrow-right'}`} />
+          </Button>
         </Col>
       </Row>
     </Form>
