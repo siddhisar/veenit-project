@@ -1,5 +1,6 @@
-import { Container } from 'react-bootstrap'
+import { Container, Row, Col } from 'react-bootstrap'
 import CyberBackground from './CyberBackground.jsx'
+import CyberShieldVisual from './CyberShieldVisual.jsx'
 import heroVideo from '../assets/videos/cyber-hero.mp4'
 import heroPoster from '../assets/videos/cyber-hero-poster.jpg'
 
@@ -74,92 +75,6 @@ export default function Hero() {
           <path className="hero-emblem-check" d="M74 112 l18 18 l36 -40" fill="none" />
         </svg>
 
-        {/* Cyber analyst working at a command-center console (silhouette, from behind) */}
-        <svg
-          className="hero-scene"
-          viewBox="0 0 760 470"
-          preserveAspectRatio="xMidYMax meet"
-          aria-hidden="true"
-        >
-          <defs>
-            <linearGradient id="scanGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="rgba(51,189,230,0)" />
-              <stop offset="50%" stopColor="rgba(123,220,247,0.5)" />
-              <stop offset="100%" stopColor="rgba(51,189,230,0)" />
-            </linearGradient>
-            <radialGradient id="screenLight" cx="50%" cy="0%" r="80%">
-              <stop offset="0" stopColor="rgba(51,189,230,0.5)" />
-              <stop offset="100%" stopColor="rgba(51,189,230,0)" />
-            </radialGradient>
-            <clipPath id="scrL"><rect x="70" y="118" width="162" height="112" rx="9" /></clipPath>
-            <clipPath id="scrC"><rect x="252" y="92" width="212" height="138" rx="9" /></clipPath>
-            <clipPath id="scrR"><rect x="484" y="118" width="162" height="112" rx="9" /></clipPath>
-          </defs>
-
-          {/* ambient glow */}
-          <ellipse className="scene-glow" cx="380" cy="200" rx="340" ry="170" fill="rgba(51,189,230,0.14)" />
-
-          {/* LEFT monitor — live line chart */}
-          <g className="scene-mon">
-            <rect x="70" y="118" width="162" height="112" rx="9" fill="rgba(9,18,40,0.94)" stroke="rgba(51,189,230,0.55)" strokeWidth="1.6" />
-            <g clipPath="url(#scrL)">
-              <line x1="70" y1="188" x2="232" y2="188" stroke="rgba(51,189,230,0.18)" strokeWidth="1" />
-              <polyline className="mon-line" points="80,214 108,190 132,200 158,168 184,182 208,150 228,164" fill="none" stroke="#33bde6" strokeWidth="2.4" />
-            </g>
-          </g>
-
-          {/* CENTER monitor — code + scanning bar */}
-          <g className="scene-mon">
-            <rect x="252" y="92" width="212" height="138" rx="9" fill="rgba(9,18,40,0.96)" stroke="rgba(51,189,230,0.7)" strokeWidth="1.8" />
-            <g clipPath="url(#scrC)">
-              <g className="scene-code" fill="rgba(140,220,245,0.7)">
-                <rect x="268" y="110" width="80" height="7" rx="3.5" />
-                <rect x="268" y="126" width="126" height="7" rx="3.5" />
-                <rect x="286" y="142" width="94" height="7" rx="3.5" />
-                <rect x="286" y="158" width="138" height="7" rx="3.5" />
-                <rect x="268" y="174" width="66" height="7" rx="3.5" />
-                <rect x="268" y="190" width="112" height="7" rx="3.5" />
-                <rect x="286" y="206" width="90" height="7" rx="3.5" />
-              </g>
-              <rect className="scene-cursor" x="384" y="206" width="9" height="8" fill="#7bdcf7" />
-              <rect className="scene-scan" x="252" y="92" width="212" height="34" fill="url(#scanGrad)" />
-            </g>
-          </g>
-
-          {/* RIGHT monitor — bar chart + radar */}
-          <g className="scene-mon">
-            <rect x="484" y="118" width="162" height="112" rx="9" fill="rgba(9,18,40,0.94)" stroke="rgba(51,189,230,0.55)" strokeWidth="1.6" />
-            <g clipPath="url(#scrR)">
-              <g className="scene-bars" fill="#33bde6">
-                <rect x="502" y="176" width="16" height="42" rx="2" />
-                <rect x="526" y="158" width="16" height="60" rx="2" />
-                <rect x="550" y="188" width="16" height="30" rx="2" />
-                <rect x="574" y="146" width="16" height="72" rx="2" />
-              </g>
-              <circle cx="616" cy="164" r="24" fill="none" stroke="rgba(51,189,230,0.45)" strokeWidth="1.3" />
-              <circle cx="616" cy="164" r="12" fill="none" stroke="rgba(51,189,230,0.3)" strokeWidth="1" />
-              <line className="scene-radar" x1="616" y1="164" x2="616" y2="140" stroke="#7bdcf7" strokeWidth="1.8" />
-            </g>
-          </g>
-
-          {/* screen light spilling onto the analyst */}
-          <ellipse cx="380" cy="300" rx="150" ry="90" fill="url(#screenLight)" />
-
-          {/* desk surface */}
-          <rect x="40" y="292" width="680" height="9" rx="4" fill="rgba(51,189,230,0.28)" />
-          <rect x="40" y="292" width="680" height="3" rx="2" fill="rgba(123,220,247,0.6)" />
-
-          {/* analyst silhouette from behind */}
-          <g className="scene-person">
-            <rect x="312" y="300" width="136" height="170" rx="42" fill="#0c1730" stroke="rgba(51,189,230,0.4)" strokeWidth="1.6" />
-            <path d="M320 470 q60 -104 120 0 Z" fill="#0c1730" stroke="rgba(51,189,230,0.4)" strokeWidth="1.6" />
-            <circle cx="380" cy="300" r="46" fill="#0c1730" stroke="rgba(51,189,230,0.5)" strokeWidth="1.8" />
-            {/* cyan rim / screen light on head + shoulders */}
-            <path d="M341 286 a46 46 0 0 1 78 0" fill="none" stroke="rgba(123,220,247,0.75)" strokeWidth="2.4" />
-            <path d="M330 452 q50 -80 100 0" fill="none" stroke="rgba(123,220,247,0.4)" strokeWidth="2" />
-          </g>
-        </svg>
-
         {/* drifting data particles */}
         <div className="hero-particles" aria-hidden="true">
           {PARTICLES.map((p, i) => (
@@ -176,30 +91,52 @@ export default function Hero() {
       </div>
 
       <Container className="hero-content">
-        <div className="hero-frame reveal zoom-in">
-          <span className="hf-corner tl" aria-hidden="true" />
-          <span className="hf-corner tr" aria-hidden="true" />
-          <span className="hf-corner bl" aria-hidden="true" />
-          <span className="hf-corner br" aria-hidden="true" />
-          <span className="hf-scan" aria-hidden="true" />
+        <Row className="align-items-center g-5 hero-row">
+          <Col lg={6} className="hero-copy">
+            <span className="hero-badge reveal from-left">
+              <i className="bi bi-shield-lock" />
+              Cyber Crime Cell · Digital Forensics
+            </span>
+            <p className="hero-eyebrow reveal from-left d1">Strengthening Security Through Compliance</p>
+            <h1 className="hero-title reveal from-left d2">
+              Cyber Crime Defence<sup className="brand-reg">®</sup>
+            </h1>
+            <p className="hero-desc reveal from-left d3">
+              Delivering specialized cybersecurity and digital forensic solutions to protect
+              information, investigate digital incidents, and strengthen organizational resilience.
+            </p>
+            <p className="hero-desc hero-desc-2 reveal from-left d4">
+              Our services follow rigorous quality and information-security practices aligned with
+              ISO 9001 and ISO 27001 standards.
+            </p>
+            <div className="hero-cta reveal from-left d5">
+              <a href="#get-in-touch" className="btn-cyber hero-cta-btn">
+                Request an Enquiry <i className="bi bi-arrow-right" />
+              </a>
+              <a href="#isms" className="hero-cta-ghost">
+                Explore Our Services <i className="bi bi-chevron-down" />
+              </a>
+            </div>
+          </Col>
 
-          <span className="hero-badge reveal d1">
-            <i className="bi bi-shield-lock" />
-            Cyber Crime Cell · Digital Forensics
-          </span>
-          <p className="hero-eyebrow reveal d2">Strengthening Security Through Compliance</p>
-          <h1 className="hero-title reveal d3">
-            Cyber Crime Defence<sup className="brand-reg">®</sup>
-          </h1>
-          <p className="hero-desc reveal d4">
-            Delivering specialized cybersecurity and digital forensic solutions to protect
-            information, investigate digital incidents, and strengthen organizational resilience.
-          </p>
-          <p className="hero-desc hero-desc-2 reveal d5">
-            Our services follow rigorous quality and information-security practices aligned with
-            ISO 9001 and ISO 27001 standards.
-          </p>
-        </div>
+          <Col lg={6} className="hero-visual-col reveal from-right d2">
+            <div className="hero-visual-wrap">
+              <CyberShieldVisual />
+              <span className="hv-chip hv-chip-a">
+                <span className="hv-chip-k">Uptime</span>
+                <span className="hv-chip-v">99.98%</span>
+              </span>
+              <span className="hv-chip hv-chip-b">
+                <span className="hv-chip-k">Events</span>
+                <span className="hv-chip-v">1,241</span>
+              </span>
+              <span className="hv-chip hv-chip-c">
+                <span className="hv-chip-k">Threat Level</span>
+                <span className="hv-chip-v ok"><i className="bi bi-shield-check" /> Low</span>
+              </span>
+            </div>
+          </Col>
+        </Row>
       </Container>
 
       <div className="hero-fade" />
