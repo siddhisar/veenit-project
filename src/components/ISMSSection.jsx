@@ -38,46 +38,41 @@ export default function ISMSSection() {
   return (
     <section className="isms section" id="isms">
       <Container>
-        {/* Intro — copy on the left, forensic HUD visual on the right */}
-        <Row className="align-items-center g-4 g-lg-5 isms-intro">
-          <Col lg={6} className="isms-copy">
-            <span className="isms-eyebrow reveal from-left">
-              <i className="bi bi-shield-lock" /> Cyber Crime Defence
-            </span>
-            <h2 className="approach-statement reveal from-left d1">
+        <Row className="align-items-stretch g-4 g-lg-5">
+          <Col lg={6}>
+            <CyberShieldVisual />
+          </Col>
+          <Col lg={6}>
+            <h2 className="approach-statement reveal from-right">
               Security is strongest when it is challenged before an attacker gets the opportunity.
             </h2>
-            <p className="approach-lead reveal from-left d2">
+            <p className="approach-lead reveal from-right d1">
               We approach every engagement from an adversary&rsquo;s perspective, examine digital
               evidence with forensic discipline, and help engineering teams build security into the
               systems they create.
             </p>
-          </Col>
-          <Col lg={6} className="isms-visual-col reveal from-right d1">
-            <CyberShieldVisual />
+
+            <h3 className="approach-heading reveal from-right d2">What Sets Our Approach Apart</h3>
+
+            <div className="approach-list">
+              <span className="approach-line reveal draw-y" aria-hidden="true" />
+              {APPROACH.map((a, i) => (
+                <div className={`approach-item reveal from-right d${i + 1}`} key={a.n}>
+                  <span className="approach-marker">
+                    <span className="approach-num">{a.n}</span>
+                  </span>
+                  <div className="approach-body">
+                    <h4 className="approach-title">
+                      <i className={`bi ${a.icon}`} />
+                      {a.title}
+                    </h4>
+                    <p className="approach-text">{a.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
           </Col>
         </Row>
-
-        {/* What sets the approach apart — content as a premium card grid */}
-        <div className="isms-approach">
-          <h3 className="approach-heading reveal from-left">What Sets Our Approach Apart</h3>
-          <div className="approach-grid">
-            {APPROACH.map((a, i) => (
-              <div className={`approach-item reveal zoom-in d${i + 1}`} key={a.n}>
-                <span className="approach-marker">
-                  <span className="approach-num">{a.n}</span>
-                </span>
-                <div className="approach-body">
-                  <h4 className="approach-title">
-                    <i className={`bi ${a.icon}`} />
-                    {a.title}
-                  </h4>
-                  <p className="approach-text">{a.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </Container>
     </section>
   )
