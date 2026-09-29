@@ -109,14 +109,6 @@ export default function Hero() {
               Our services follow rigorous quality and information-security practices aligned with
               ISO 9001 and ISO 27001 standards.
             </p>
-            <div className="hero-cta reveal from-left d5">
-              <a href="#get-in-touch" className="btn-cyber hero-cta-btn">
-                Request an Enquiry <i className="bi bi-arrow-right" />
-              </a>
-              <a href="#isms" className="hero-cta-ghost">
-                Explore Our Services <i className="bi bi-chevron-down" />
-              </a>
-            </div>
           </Col>
 
           <Col lg={6} className="hero-visual-col reveal from-right d2">
