@@ -5981,3 +5981,70 @@ a.fc-value:hover { color: #fff; }
 .cf-consent.is-invalid .cf-consent-box { border-color: #e0576f; }
 .cf-consent-error { margin-top: 7px; color: #e0576f; font-size: 0.82rem; font-weight: 600; }
 /* ===================================================================== */
+
+/* =====================================================================
+   ISMS section reframed — reference-style intro (copy left, HUD visual
+   right) + approach content as a premium 2-column card grid.
+   Same content, theme, and animations.
+   ===================================================================== */
+.isms-intro { margin-bottom: clamp(40px, 5vw, 64px); }
+.isms-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(51, 189, 230, 0.35);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+.isms-eyebrow i { color: var(--brand-cyan); font-size: 0.95rem; }
+.isms-copy .approach-statement {
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.3px;
+  margin-bottom: 20px;
+  max-width: 18ch;
+}
+.isms-copy .approach-lead {
+  font-size: clamp(1rem, 1.2vw, 1.14rem);
+  line-height: 1.85;
+  max-width: 560px;
+  margin-bottom: 0;
+}
+
+/* approach cards */
+.approach-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.approach-grid .approach-item {
+  padding: 22px 24px;
+  background: var(--cream);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  align-items: flex-start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.approach-grid .approach-item:hover {
+  transform: translateY(-4px);
+  border-color: rgba(51, 189, 230, 0.4);
+  box-shadow: 0 16px 34px rgba(20, 30, 70, 0.12);
+}
+.approach-grid .approach-item:hover .approach-marker {
+  transform: translateY(-2px);
+  border-color: var(--brand-cyan);
+}
+@media (max-width: 767.98px) {
+  .approach-grid { grid-template-columns: 1fr; gap: 16px; }
+  .isms-copy .approach-statement { max-width: none; }
+}
+/* ===================================================================== */
