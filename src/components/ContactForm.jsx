@@ -1,25 +1,28 @@
 import { useState } from 'react'
 import { Form, Row, Col, Button, Alert } from 'react-bootstrap'
 
-const SOLUTION_TYPES = [
-  'Cyber Security Audit / VAPT',
-  'Regulatory Compliance (DPDP Act, RBI, SEBI)',
-  'Digital Forensics & Incident Response',
-  'Maharashtra State Audit Mandate',
-  'Cyber Law Advocacy'
+const SERVICE_TYPES = [
+  'Electronic Evidence & Section 63 Certification',
+  'Mobile Forensics',
+  'VAPT',
+  'Web Application Penetration Testing',
+  'Mobile Application Security Testing',
+  'Cyber Law Advocacy',
+  'Divorce & Family Disputes – Electronic Evidence & Section 63 Certification',
+  'Other'
 ]
 
-const URGENCY_LEVELS = ['Low', 'Medium', 'High-Critical']
+const URGENCY_LEVELS = ['Low', 'Medium', 'High / Critical']
 
 const INITIAL = {
   name: '',
   email: '',
   phone: '',
-  message: '',
   solution: '',
+  caseDetails: '',
   urgency: '',
-  systems: '',
-  lastAudit: ''
+  organization: '',
+  consent: false
 }
 
 // Web3Forms — free form-to-email service. The access key is PUBLIC and
@@ -36,8 +39,8 @@ export default function ContactForm() {
   const [status, setStatus] = useState('idle') // idle | submitting | success | error
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setValues((v) => ({ ...v, [name]: value }))
+    const { name, value, type, checked } = e.target
+    setValues((v) => ({ ...v, [name]: type === 'checkbox' ? checked : value }))
     if (errors[name]) setErrors((er) => ({ ...er, [name]: '' }))
     if (status === 'error') setStatus('idle')
   }
@@ -55,6 +58,13 @@ export default function ContactForm() {
     } else if (!/^[+\d][\d\s-]{7,}$/.test(values.phone)) {
       next.phone = 'Please enter a valid phone number.'
     }
+    if (!values.solution) next.solution = 'Please select a service / case type.'
+    if (!values.caseDetails.trim()) {
+      next.caseDetails = 'Please describe your issue or requirement.'
+    } else if (values.caseDetails.trim().length < 10) {
+      next.caseDetails = 'Please add a little more detail (at least 10 characters).'
+    }
+    if (!values.consent) next.consent = 'Please provide your consent to proceed.'
     return next
   }
 
@@ -67,7 +77,6 @@ export default function ContactForm() {
     if (Object.keys(next).length > 0) return
 
     if (!WEB3FORMS_ACCESS_KEY) {
-      // Misconfiguration — never pretend the email was sent.
       console.error('VITE_WEB3FORMS_ACCESS_KEY is not set; cannot submit the enquiry.')
       setStatus('error')
       return
@@ -88,10 +97,11 @@ export default function ContactForm() {
       Name: values.name,
       Email: values.email,
       Phone: values.phone,
-      'Service / Case Type': values.solution || 'Not specified',
+      'Service / Case Type': values.solution,
+      'Case Details': values.caseDetails,
       'Urgency Level': values.urgency || 'Not specified',
-      'System Count': values.systems || 'Not specified',
-      'Last Audit Date': values.lastAudit || 'Not specified',
+      'Organization / Company': values.organization || 'Not specified',
+      Consent: 'Yes — consented to be contacted',
       Submitted: new Date().toLocaleString(),
       botcheck: '' // honeypot — must stay empty
     }
@@ -156,7 +166,7 @@ export default function ContactForm() {
         <Col md={6}>
           <Form.Group controlId="cf-name" className="cf-field reveal from-left d1">
             <Form.Label>
-              Name <span className="req">*</span>
+              Full Name <span className="req">*</span>
             </Form.Label>
             <div className="cf-input">
               <i className="bi bi-person" />
@@ -215,24 +225,53 @@ export default function ContactForm() {
 
         <Col md={6}>
           <Form.Group controlId="cf-solution" className="cf-field reveal from-right d2">
-            <Form.Label>Tell Us How We Can Help Your Organization</Form.Label>
+            <Form.Label>
+              Service / Case Type <span className="req">*</span>
+            </Form.Label>
             <div className="cf-input">
               <i className="bi bi-shield-check" />
-              <Form.Select name="solution" value={values.solution} onChange={handleChange}>
-                <option value="">Solution Type</option>
-                {SOLUTION_TYPES.map((s) => (
+              <Form.Select
+                name="solution"
+                value={values.solution}
+                onChange={handleChange}
+                isInvalid={!!errors.solution}
+              >
+                <option value="">Select service / case type</option>
+                {SERVICE_TYPES.map((s) => (
                   <option key={s} value={s}>
                     {s}
                   </option>
                 ))}
               </Form.Select>
+              <Form.Control.Feedback type="invalid">{errors.solution}</Form.Control.Feedback>
+            </div>
+          </Form.Group>
+        </Col>
+
+        <Col xs={12}>
+          <Form.Group controlId="cf-casedetails" className="cf-field reveal d3">
+            <Form.Label>
+              Case Details <span className="req">*</span>
+            </Form.Label>
+            <div className="cf-input cf-input--area">
+              <i className="bi bi-chat-left-text" />
+              <Form.Control
+                as="textarea"
+                rows={4}
+                name="caseDetails"
+                value={values.caseDetails}
+                onChange={handleChange}
+                isInvalid={!!errors.caseDetails}
+                placeholder="Briefly describe your issue or requirement"
+              />
+              <Form.Control.Feedback type="invalid">{errors.caseDetails}</Form.Control.Feedback>
             </div>
           </Form.Group>
         </Col>
 
         <Col md={6}>
           <Form.Group controlId="cf-urgency" className="cf-field reveal from-left d3">
-            <Form.Label>Urgency Level</Form.Label>
+            <Form.Label>Urgency Level (Optional)</Form.Label>
             <div className="cf-input">
               <i className="bi bi-exclamation-triangle" />
               <Form.Select name="urgency" value={values.urgency} onChange={handleChange}>
@@ -248,35 +287,37 @@ export default function ContactForm() {
         </Col>
 
         <Col md={6}>
-          <Form.Group controlId="cf-systems" className="cf-field reveal from-right d3">
-            <Form.Label>Your System Count?</Form.Label>
+          <Form.Group controlId="cf-organization" className="cf-field reveal from-right d3">
+            <Form.Label>Organization / Company (Optional)</Form.Label>
             <div className="cf-input">
-              <i className="bi bi-pc-display" />
+              <i className="bi bi-building" />
               <Form.Control
-                type="number"
-                min="0"
-                name="systems"
-                value={values.systems}
+                type="text"
+                name="organization"
+                value={values.organization}
                 onChange={handleChange}
-                placeholder="e.g. 120"
+                placeholder="Your organization or company name"
               />
             </div>
           </Form.Group>
         </Col>
 
-        <Col md={6}>
-          <Form.Group controlId="cf-lastaudit" className="cf-field reveal from-left d4">
-            <Form.Label>Last Audit Date</Form.Label>
-            <div className="cf-input">
-              <i className="bi bi-calendar-event" />
-              <Form.Control
-                type="date"
-                name="lastAudit"
-                value={values.lastAudit}
-                onChange={handleChange}
-              />
-            </div>
-          </Form.Group>
+        <Col xs={12} className="reveal d4">
+          <label className={`cf-consent ${errors.consent ? 'is-invalid' : ''}`}>
+            <input
+              type="checkbox"
+              name="consent"
+              checked={values.consent}
+              onChange={handleChange}
+            />
+            <span className="cf-consent-box" aria-hidden="true">
+              <i className="bi bi-check-lg" />
+            </span>
+            <span className="cf-consent-text">
+              I consent to being contacted regarding my enquiry. <span className="req">*</span>
+            </span>
+          </label>
+          {errors.consent && <div className="cf-consent-error">{errors.consent}</div>}
         </Col>
 
         <Col xs={12} className="reveal d4">

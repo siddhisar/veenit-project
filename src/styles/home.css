@@ -5929,3 +5929,49 @@ a.fc-value:hover { color: #fff; }
 
 /* homepage contact: animated indicator spacing above the form card */
 .contact-emph { margin: 0 auto 28px; }
+
+/* ---- Contact form: textarea + consent checkbox ---- */
+.cf-input--area > i { top: 22px; transform: none; }
+.contact-form textarea.form-control { resize: vertical; min-height: 116px; line-height: 1.55; }
+
+.cf-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  margin: 2px 0 0;
+}
+.cf-consent input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.cf-consent-box {
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-top: 1px;
+  border-radius: 6px;
+  border: 1.5px solid #cbd6e6;
+  background: #f6fafd;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.cf-consent-box i { font-size: 0.95rem; opacity: 0; transform: scale(0.6); transition: all 0.2s ease; }
+.cf-consent input:checked + .cf-consent-box {
+  background: var(--grad);
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(51, 189, 230, 0.4);
+}
+.cf-consent input:checked + .cf-consent-box i { opacity: 1; transform: scale(1); }
+.cf-consent input:focus-visible + .cf-consent-box {
+  box-shadow: 0 0 0 4px rgba(51, 189, 230, 0.22);
+}
+.cf-consent-text { font-size: 0.92rem; color: var(--text-body); line-height: 1.5; }
+.cf-consent.is-invalid .cf-consent-box { border-color: #e0576f; }
+.cf-consent-error { margin-top: 7px; color: #e0576f; font-size: 0.82rem; font-weight: 600; }
+/* ===================================================================== */
