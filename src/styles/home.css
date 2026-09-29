@@ -5857,3 +5857,72 @@ a.fc-value:hover { color: #fff; }
   border-color: rgba(51, 189, 230, 0.3);
 }
 /* ===================================================================== */
+
+/* ---- Request-proposal attention indicator (animated) ---- */
+.rp-emph {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 24px auto 0;
+  padding: 12px 24px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(7, 0, 184, 0.08), rgba(51, 189, 230, 0.14));
+  border: 1px solid rgba(51, 189, 230, 0.4);
+  box-shadow: 0 10px 26px rgba(51, 189, 230, 0.2);
+  color: var(--text-dark);
+  font-weight: 700;
+  font-size: 1.02rem;
+  animation: rpEmphFloat 3.6s ease-in-out infinite;
+}
+.rp-emph::before {
+  content: "";
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #33bde6;
+  box-shadow: 0 0 0 0 rgba(51, 189, 230, 0.55);
+  animation: rpEmphPulse 1.9s ease-out infinite;
+}
+@keyframes rpEmphPulse {
+  0% { box-shadow: 0 0 0 0 rgba(51, 189, 230, 0.55); }
+  70% { box-shadow: 0 0 0 13px rgba(51, 189, 230, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(51, 189, 230, 0); }
+}
+@keyframes rpEmphFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@media (max-width: 575.98px) {
+  .rp-emph { font-size: 0.92rem; padding: 11px 18px; gap: 9px; text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rp-emph, .rp-emph::before { animation: none; }
+}
+
+/* ---- Contact form: captcha + submit row ---- */
+.cf-submit-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.cf-captcha { max-width: 100%; }
+.cf-hcaptcha { max-width: 100%; overflow: hidden; }
+.cf-captcha-error {
+  display: block;
+  margin-top: 7px;
+  color: #d64545;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+.cf-submit-row .submit-case { flex: none; }
+@media (max-width: 575.98px) {
+  .cf-submit-row { flex-direction: column; align-items: stretch; gap: 16px; }
+  .cf-submit-row .submit-case { width: 100%; justify-content: center; }
+  .cf-captcha { display: flex; justify-content: center; }
+}
+/* ===================================================================== */
