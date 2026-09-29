@@ -6,14 +6,6 @@ export default function ContactSection() {
     <section className="contact section" id="get-in-touch">
       <div className="contact-pattern" aria-hidden="true" />
       <Container className="position-relative">
-        <p className="eyebrow reveal from-top">Get In Touch</p>
-        <h2 className="contact-title contact-why reveal">Why Contact Cyber Crime Defence?</h2>
-        <p className="contact-lead reveal d1">
-          When you engage Cyber Crime Defence, you gain more than a cybersecurity service
-          provider &mdash; you gain a trusted security partner backed by experienced professionals
-          and structured security practices.
-        </p>
-
         <div className="contact-card reveal d2">
           <span className="contact-card-badge">
             <i className="bi bi-shield-lock" />
