@@ -5926,3 +5926,6 @@ a.fc-value:hover { color: #fff; }
   .cf-captcha { display: flex; justify-content: center; }
 }
 /* ===================================================================== */
+
+/* homepage contact: animated indicator spacing above the form card */
+.contact-emph { margin: 0 auto 28px; }
